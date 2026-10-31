@@ -272,6 +272,52 @@ img { display: block; max-width: 100% }
 }
 @media (max-width: 560px) { .domains { display: none } }
 
+/* another example: what one party really made */
+.pnl { background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; grid-template-columns: 1.2fr 1fr; box-shadow: 0 24px 60px rgba(40,25,10,.1) }
+.pnl-l { padding: 26px 28px; display: grid; gap: 18px; align-content: start }
+.pnl-who { display: flex; align-items: center; gap: 14px; flex-wrap: wrap } .pnl-who .lg img { --h: 28px }
+.pnl-who span { font: 600 14px var(--sc); letter-spacing: .16em; text-transform: lowercase; color: var(--ink-2) }
+.pnl h4 { margin: 0 0 4px; font: 600 13px var(--sc); letter-spacing: .16em; text-transform: lowercase; color: var(--ink-2) }
+.ln { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 15.5px; font-variant-numeric: tabular-nums }
+.ln:last-child { border-bottom: 0 } .ln em { font-style: normal; font-size: 12.5px; color: #3f6b4a; margin-left: 8px; background: #e2eddf; border-radius: 10px; padding: 1px 8px }
+.ln.cost b { color: #8e3a28 } .ln b { font-weight: 600 }
+.pnl-r { background: var(--hub); color: var(--hub-ink); padding: 28px; display: grid; gap: 16px; align-content: center }
+.pnl-r .k { font: 600 13px var(--sc); letter-spacing: .18em; text-transform: lowercase; color: var(--hub-soft) }
+.pnl-r .big { font: 500 clamp(56px, 6vw, 84px)/1 var(--display) }
+.pnl-r .m { font-size: 16px; color: #cfe3c8 }
+.split { display: flex; height: 16px; border-radius: 8px; overflow: hidden; background: #3e4d43 }
+.split i { display: block; height: 100% } .split i.a { background: #e7c27a } .split i.b { background: #a9c6a6 } 
+.split-key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--hub-soft) }
+.split-key i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px }
+.pnl-r .note { font-size: 14.5px; color: var(--hub-ink); border-top: 1px solid #3e4d43; padding-top: 14px }
+.pnl-r .note b { color: #e7c27a; font-weight: 600 }
+
+/* a special project: ask Town Center anything (AI surfaces carry a soft green edge) */
+.sp-pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 20px; padding: 5px 12px; background: #e2eddf; color: #2f5a3a; font: 600 12px var(--body); letter-spacing: .08em; text-transform: uppercase; justify-self: start }
+.ask { background: var(--card); border: 1px solid #b9d3b3; border-radius: 22px; box-shadow: 0 0 0 4px rgba(79,122,82,.08), 0 24px 60px rgba(40,25,10,.1); overflow: hidden }
+.ask-in { display: flex; gap: 10px; align-items: center; padding: 18px; border-bottom: 1px solid var(--line) }
+.ask-in svg { flex: none; width: 22px; stroke: #4f7a52; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
+.ask-in input { flex: 1; min-width: 0; border: 0; background: none; font: 500 clamp(17px, 1.6vw, 21px) var(--body); color: var(--ink); outline: none }
+.ask-in button { flex: none; border: 0; border-radius: 10px; background: #3f6b4a; color: #fff; font: 600 15px var(--body); padding: 11px 18px; cursor: pointer }
+.ask-sugg { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 18px; background: var(--paper); border-bottom: 1px solid var(--line) }
+.ask-sugg button { border: 1px solid var(--line); background: var(--card); border-radius: 18px; padding: 7px 13px; font: 500 13.5px var(--body); color: var(--ink-2); cursor: pointer; text-align: left }
+.ask-sugg button:hover { border-color: #4f7a52; color: var(--ink) }
+.ask-out { padding: 26px 28px 28px; display: grid; gap: 18px; min-height: 340px; align-content: start }
+.ask-out .ans { font: 500 clamp(26px, 2.6vw, 36px)/1.15 var(--display); max-width: 30ch }
+.ask-out .ans b { color: #3f6b4a; font-weight: 600 }
+.ask-out .sub { color: var(--ink-2); font-size: 15px }
+.pair { display: grid; grid-template-columns: 130px 1fr 64px; gap: 6px 14px; align-items: center; font-size: 14.5px }
+.pair .bars { display: grid; gap: 4px }
+.pair .bars i { display: block; height: 10px; border-radius: 4px; width: calc(var(--w) * 1%); transition: width 1s ease }
+.pair .bars i.a { background: #d6cdbb } .pair .bars i.b { background: #4f7a52 }
+.pair em { font-style: normal; font-weight: 600; color: #3f6b4a; text-align: right }
+.ask-key { display: flex; gap: 18px; font-size: 13px; color: var(--ink-2) }
+.ask-key i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px }
+.thinking { display: flex; gap: 6px; align-items: center; color: var(--ink-2); font-size: 15px }
+.thinking i { width: 7px; height: 7px; border-radius: 50%; background: #4f7a52; animation: dotp 1s ease-in-out infinite } .thinking i:nth-child(2) { animation-delay: .15s } .thinking i:nth-child(3) { animation-delay: .3s }
+@keyframes dotp { 50% { opacity: .25; transform: translateY(-3px) } }
+@media (max-width: 860px) { .pnl { grid-template-columns: 1fr } .pair { grid-template-columns: 96px 1fr 54px; font-size: 13.5px } .ask-in button { padding: 10px 14px } .ask-out { padding: 22px 20px } }
+
 @media (max-width: 980px) {
   .flow { grid-template-columns: 1fr; gap: 0 }
   .pipe { min-height: 54px; height: 54px; width: 2px; margin: 0 auto }
@@ -444,6 +490,34 @@ img { display: block; max-width: 100% }
   <p class="sample rise">Sample numbers. With Ernie's connected, this fills in by itself after every show.</p>
 </div></section>
 
+<section class="sect" style="padding-top:0"><div class="wrap">
+  <div class="head rise"><span class="eyebrow">Another example</span><h2>What did the party really make?</h2><p>Every dollar in and out of one event, including the homes its guests booked.</p></div>
+  <div class="pnl rise">
+    <div class="pnl-l">
+      <div class="pnl-who"><span class="lg" style="--c:#b25466;--m:url(img/pinkhouse/logo-rose.png)"><img src="img/pinkhouse/logo-rose.png" alt="The Old Pink House"></span><span>Hardin bridal shower · Sat Nov 7 · 40 guests</span></div>
+      <div><h4>Came in</h4><div id="p-in"></div></div>
+      <div><h4>Went out</h4><div id="p-out"></div></div>
+    </div>
+    <div class="pnl-r">
+      <span class="k">What the party made, after costs</span><div class="big" id="p-made"></div><span class="m" id="p-margin"></span>
+      <div class="split" id="p-split"></div>
+      <div class="split-key"><span><i style="background:#e7c27a"></i>The party</span><span><i style="background:#a9c6a6"></i>Homes it booked</span></div>
+      <p class="note" id="p-note"></p>
+    </div>
+  </div>
+  <p class="sample rise">Sample numbers. Town Center adds up every event the morning after.</p>
+</div></section>
+
+<section class="sect" style="padding-top:0"><div class="wrap">
+  <div class="head rise"><span class="sp-pill">Special project</span><h2>Ask it anything.</h2><p>Type any question in plain English. Town Center answers from the numbers of every business at once.</p></div>
+  <div class="ask rise">
+    <form class="ask-in" id="askf"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><input id="askq" aria-label="Ask Town Center a question"><button type="submit">Ask</button></form>
+    <div class="ask-sugg" id="asks"></div>
+    <div class="ask-out" id="askout"></div>
+  </div>
+  <p class="sample rise">Sample answers. A custom build, made around the questions your team asks most.</p>
+</div></section>
+
 <section class="sect" style="background: var(--paper-2)"><div class="wrap">
   <div class="two">
     <div class="pane dark rise"><span class="eyebrow">Marketing, built in</span><h2>Get the word out from the same place.</h2>
@@ -572,6 +646,47 @@ img { display: block; max-width: 100% }
   }).join("");
   const tot = k => rows.reduce((a, r) => a + r[k], 0);
   document.getElementById("bsum").innerHTML = `<div><span>Paid to bands</span><b>${$k(tot("fee"))}</b></div><div><span>Came in the door</span><b>${tot("door")}</b></div><div><span>Register</span><b>${$k(tot("reg"))}</b></div><div class="up"><span>Made over normal nights</span><b>+${$k(tot("made"))}</b></div>`;
+
+  // one party, every dollar (sample)
+  const P_IN = [["Room rental", 1800], ["Food & tea service", 1640], ["Bar", 920], ["Homes its guests booked", 1180, "Clayborn & Cosmopolitan"]];
+  const P_OUT = [["Staff, 6 people", 860], ["Food cost", 590], ["Rentals & flowers", 340], ["Cleaning", 150]];
+  const pin = P_IN.reduce((a, x) => a + x[1], 0), pout = P_OUT.reduce((a, x) => a + x[1], 0), party = pin - P_IN[3][1];
+  document.getElementById("p-in").innerHTML = P_IN.map(([n, v, t]) => `<div class="ln"><span>${n}${t ? `<em>${t}</em>` : ""}</span><b>${$k(v)}</b></div>`).join("");
+  document.getElementById("p-out").innerHTML = P_OUT.map(([n, v]) => `<div class="ln cost"><span>${n}</span><b>−${$k(v)}</b></div>`).join("");
+  document.getElementById("p-made").textContent = $k(pin - pout);
+  document.getElementById("p-margin").textContent = `${Math.round((pin - pout) / pin * 100)}% of ${$k(pin)} brought in`;
+  document.getElementById("p-split").innerHTML = `<i class="a" style="width:${party / pin * 100}%"></i><i class="b" style="width:${P_IN[3][1] / pin * 100}%"></i>`;
+  document.getElementById("p-note").innerHTML = `Without the homes it filled, the party made <b>${$k(party - pout)}</b>. The homes are <b>${Math.round(P_IN[3][1] / (pin - pout) * 100)}%</b> of the profit, and no one would see that in one business's books.`;
+
+  // ask anything: a few sample questions with their answers
+  const ASK = [
+    { q: "When all four homes are booked for a weekend, how much more do the other businesses sell?", a: `On full-house weekends, the rest of town rings up <b>42% more</b>.`, sub: "6 full-house weekends vs. 18 others since May. About $7,400 more each weekend.", key: ["Normal weekend", "All homes booked"],
+      rows: [["Nettie Jarvis", 3200, 5100], ["Ernie's", 6800, 9400], ["Double Dip", 1900, 2850], ["Merrifield's", 1500, 2250], ["Rowdy's", 4100, 5300]] },
+    { q: "How much do guests at the homes spend in town?", a: `Each stay brings <b>$255</b> into town, on average.`, sub: "Matched by guest name and card across every register since May.", one: true,
+      rows: [["Boone's Cabin", 310], ["Miss Allie's", 280], ["Clayborn House", 240], ["Cosmopolitan", 190]] },
+    { q: "Which events bring people back the most?", a: `Tea service brings back <b>41%</b> of its guests within 90 days.`, sub: "Guests who returned to any business in town within 90 days.", one: true, pct: true,
+      rows: [["Afternoon tea", 41], ["Band nights", 34], ["Bourbon tastings", 28], ["Weddings", 19]] },
+    { q: "Which nights should Ernie's add a band?", a: `Thursdays look ready: <b>+$1,900</b> expected on a band night.`, sub: "Based on door counts, register totals and band fees on similar nights.", one: true, money: true,
+      rows: [["Thursday", 1900], ["Sunday afternoon", 1100], ["Wednesday", 400]] },
+  ];
+  const askq = document.getElementById("askq"), askout = document.getElementById("askout");
+  document.getElementById("asks").innerHTML = ASK.map((x, i) => `<button type="button" data-i="${i}">${x.q}</button>`).join("");
+  const answer = x => {
+    if (!x) { askout.innerHTML = `<div class="ans">In the real Town Center, this answers from your own numbers.</div><p class="sub">For now, try one of the questions above.</p>`; return; }
+    const top = Math.max(...x.rows.map(r => r[r.length - 1]));
+    const fmtv = v => x.pct ? v + "%" : $k(v);
+    askout.innerHTML = `<div class="ans">${x.a}</div><p class="sub">${x.sub}</p>${x.key ? `<div class="ask-key"><span><i style="background:#d6cdbb"></i>${x.key[0]}</span><span><i style="background:#4f7a52"></i>${x.key[1]}</span></div>` : ""}
+      <div style="display:grid;gap:12px">${x.rows.map(r => x.one ? `<div class="pair"><span>${r[0]}</span><div class="bars"><i class="b" style="--w:0" data-w="${r[1] / top * 100}"></i></div><em>${fmtv(r[1])}</em></div>`
+        : `<div class="pair"><span>${r[0]}</span><div class="bars"><i class="a" style="--w:0" data-w="${r[1] / top * 100}"></i><i class="b" style="--w:0" data-w="${r[2] / top * 100}"></i></div><em>+${Math.round((r[2] / r[1] - 1) * 100)}%</em></div>`).join("")}</div>`;
+    requestAnimationFrame(() => requestAnimationFrame(() => askout.querySelectorAll("[data-w]").forEach(i => i.style.setProperty("--w", i.dataset.w))));
+  };
+  const ask = (x, text) => {
+    askq.value = text; askout.innerHTML = `<div class="thinking"><i></i><i></i><i></i><span>Reading every business's numbers</span></div>`;
+    setTimeout(() => answer(x), 900);
+  };
+  document.getElementById("asks").addEventListener("click", e => { const b = e.target.closest("button"); if (b) ask(ASK[b.dataset.i], ASK[b.dataset.i].q); });
+  document.getElementById("askf").addEventListener("submit", e => { e.preventDefault(); const t = askq.value.trim().toLowerCase(); ask(ASK.find(x => x.q.toLowerCase() === t), askq.value); });
+  askq.value = ASK[0].q; answer(ASK[0]);
 
   // fade sections in as they scroll into view
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
