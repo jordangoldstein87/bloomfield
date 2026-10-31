@@ -206,6 +206,19 @@ img { display: block; max-width: 100% }
 .uses button { border: 1px solid #4b5c51; background: none; color: var(--hub-ink); border-radius: 30px; padding: 10px 18px; font: 500 15px var(--body); cursor: pointer; transition: background .2s, border-color .2s }
 .uses button[aria-pressed="true"] { background: #e7c27a; border-color: #e7c27a; color: #1f2a24 }
 .uses-k { font-size: 15px; color: var(--hub-soft) }
+/* who runs what: a short note to Jordan, opened in their own email app */
+.who-form { width: 100%; max-width: 720px; margin-top: 28px; background: var(--hub-2); border: 1px solid #3e4d43; border-radius: 20px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 14px; text-align: left }
+.who-form h3 { font-size: clamp(28px, 3vw, 38px); color: var(--hub-ink) }
+.who-form > p { color: #cfdccb; font-size: 16px }
+.who-form .two-f { display: grid; grid-template-columns: 1fr 1fr; gap: 12px }
+.who-form label { display: grid; gap: 6px; font: 600 12.5px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--hub-soft) }
+.who-form input, .who-form textarea { font: 400 16px/1.5 var(--body); color: var(--hub-ink); background: #1a231e; border: 1px solid #44554a; border-radius: 10px; padding: 11px 13px; width: 100%; outline: none }
+.who-form input:focus, .who-form textarea:focus { border-color: #e7c27a }
+.who-form textarea { min-height: 130px; resize: vertical }
+.who-form ::placeholder { color: #7f9286 }
+.who-form .send { justify-self: start; border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; font: 600 16px var(--body); padding: 13px 22px; cursor: pointer }
+.who-form .sent { font-size: 14px; color: #cfe3c8 }
+@media (max-width: 560px) { .who-form .two-f { grid-template-columns: 1fr } }
 .foot { background: #161d19; color: #8fa596; text-align: center; padding: 30px 20px; font-size: 13px }
 
 /* the front door: sliders through the websites */
@@ -543,6 +556,14 @@ img { display: block; max-width: 100% }
   <p class="rise">Every tool here is tailored to how Olde Bloomfield runs. Tell us what you use today, and we'll connect it.</p>
   <div class="uses rise" id="uses"></div>
   <span class="uses-k rise" id="usesk">Tap what you use today.</span>
+  <form class="who-form rise" id="whoform">
+    <h3>Who runs what?</h3>
+    <p>Give us a quick picture of who uses which software. Some of it may be replaced by tools built into Town Center, and save you the subscription.</p>
+    <div class="two-f"><label>Your name<input name="name" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
+    <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb messages: Jamie"></textarea></label>
+    <button class="send" type="submit">Send to Jordan</button>
+    <span class="sent" id="whosent" hidden>Your email app should open with the note ready. Press send there.</span>
+  </form>
 </div></section>
 <footer class="foot">Stay in Bloomfield · Town Center · A preview for Olde Bloomfield Operations</footer>
 
@@ -597,6 +618,15 @@ img { display: block; max-width: 100% }
     b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true"));
     const n = uses.querySelectorAll('[aria-pressed="true"]').length;
     usesk.textContent = n ? `${n} connected. We'll plug ${n === 1 ? "it" : "them"} into Town Center.` : "Tap what you use today.";
+  });
+
+  // who runs what: builds an email to Jordan with the tapped tools and their notes; nothing sends until they press send in their own app
+  document.getElementById("whoform").addEventListener("submit", e => {
+    e.preventDefault();
+    const f = e.target, picked = [...uses.querySelectorAll('[aria-pressed="true"]')].map(b => b.textContent);
+    const body = [`Name: ${f.name.value.trim()}`, `Role: ${f.role.value.trim()}`, `Tools we use: ${picked.join(", ") || "(none tapped)"}`, "", "Who runs what:", f.who.value.trim()].join("\n");
+    location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
+    document.getElementById("whosent").hidden = false;
   });
 
   // a staff member typing an update
