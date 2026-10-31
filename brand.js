@@ -47,8 +47,8 @@
     ["script", "The Postcard", "Script for the welcome-to-town feel. Best on photos."],
   ];
   const PALETTES = [
-    ["Fall on Main", ["#7b3b2c", "#b08a3e", "#2f3b31", "#efece5", "#50697a"]],
     ["Bourbon & Brick", ["#5c2b1f", "#c48a3e", "#1d1a17", "#f3ead9", "#8a5a2b"]],
+    ["Fall on Taylorsville Road", ["#7b3b2c", "#b08a3e", "#2f3b31", "#efece5", "#50697a"]],
     ["Creek & Limestone", ["#3d5560", "#9fb3b8", "#2a2a26", "#ecebe5", "#a2442c"]],
   ];
   const NAMES = [["Town Center", "Plain and clear. What it is."], ["The Depot", "Named for the old depot, now City Hall. Where everything comes and goes."], ["The Taylorsville Office", "The back office for every shop on the road."], ["The Ledger", "An old-town name for the place that keeps it all."]];
