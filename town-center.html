@@ -237,6 +237,9 @@ img { display: block; max-width: 100% }
 .costs div { background: #fbf8f2; border: 1px solid #e3dccd; border-radius: 14px; padding: 16px 18px; display: grid; gap: 4px; align-content: start }
 .costs span { font: 600 13px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: #3f6b4a }
 .costs p { font-size: 15px; color: #221e1a; max-width: none; line-height: 1.5 }
+.costs dl { margin: 0; display: grid; gap: 2px }
+.costs dt { font-weight: 600; font-size: 15px; color: #221e1a; margin-top: 6px } .costs dt:first-child { margin-top: 0 }
+.costs dd { margin: 0; font-size: 15px; color: #221e1a; line-height: 1.5 }
 @media (max-width: 860px) {
   .tl { grid-template-columns: 1fr; gap: 20px } .tl::before { top: 20px; bottom: 90px; left: 19px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, #b08a3e, #4f7a52) }
   .tl li { grid-template-columns: 40px 1fr; column-gap: 16px } .tl li i { grid-row: span 3; margin: 0 } .tl li > :not(i) { grid-column: 2 }
@@ -636,7 +639,7 @@ img { display: block; max-width: 100% }
     </ol>
     <div class="costs">
       <div><span>Upfront</span><p>The initial build and wiring in.</p></div>
-      <div><span>Subscriptions</span><p>A couple, for the AI that powers the analysis.</p></div>
+      <div class="ongo"><span>Ongoing</span><dl><dt>Subscriptions</dt><dd>A couple, for the AI that powers the analysis.</dd><dt>Development retainer</dt><dd>A small one, to keep everything running smooth on the back end.</dd></dl></div>
       <div><span>New builds</span><p>Anytime you want something new, there's a development cost. With AI doing the heavy lifting, it stays fairly small.</p></div>
     </div>
   </div>
