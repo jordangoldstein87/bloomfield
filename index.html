@@ -609,6 +609,45 @@ body.picking * { cursor: crosshair !important }
 .sell b { font-weight: 600; background: var(--paper-2); border-radius: 20px; padding: 4px 9px }
 .pkg .btn { justify-self: start }
 
+/* the revival page: Linda and Jerry Bruckheimer and the town that came back (classes start with rv- so nothing else catches them) */
+.rv-hero { position: relative; min-height: min(78vh, 720px); display: grid; align-items: end; color: #fff6ea; overflow: hidden; background: #1c1612 }
+.rv-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(.25) contrast(1.05) }
+.rv-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,12,6,.15), rgba(20,12,6,.2) 40%, rgba(20,12,6,.85)) }
+.rv-hero .wrap { position: relative; z-index: 1; padding-block: 60px; display: grid; gap: 14px; max-width: 980px }
+.rv-hero .eyebrow { color: #e7c27a } .rv-hero h1 { font-size: clamp(46px, 7vw, 96px); max-width: 14ch } .rv-hero p { font-size: clamp(18px, 1.7vw, 22px); max-width: 44ch; color: #f3e6d2 }
+.rv-two { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(28px, 5vw, 70px); align-items: center }
+.rv-intro { display: grid; gap: 14px } .rv-intro h2 { font-size: clamp(34px, 4vw, 52px) } .rv-intro p { font-size: 18px; color: var(--ink-2); max-width: 56ch }
+.rv-fig { margin: 0; display: grid; gap: 8px } .rv-fig img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; filter: grayscale(.2) } .rv-fig figcaption { font: 600 13px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--ink-2) }
+.rv-nums { background: #2a1f18; color: #f4efe6; padding-block: 40px }
+.rv-nums .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px }
+.rv-nums div { display: grid; gap: 4px; border-left: 1px solid rgba(231,194,122,.4); padding-left: 16px } .rv-nums b { font: 500 clamp(40px, 4.4vw, 60px)/1 var(--display); color: #e7c27a } .rv-nums span { font-size: 15px; color: #d8cbb6 }
+.rv-time { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 900px }
+.rv-time li { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line) }
+.rv-yr { font: 500 34px/1 var(--display); color: var(--bourbon) } .rv-time b { font: 500 26px/1.2 var(--display); display: block; margin-bottom: 4px } .rv-time p { color: var(--ink-2); font-size: 17px; max-width: 60ch }
+.rv-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--ink) }
+.rv-photos figure { margin: 0; position: relative } .rv-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block }
+.rv-photos figcaption { position: absolute; left: 10px; bottom: 8px; font: 600 12px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.7) }
+.rv-press-sect { background: var(--paper-2) }
+.rv-press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px }
+.rv-press blockquote { margin: 0; background: var(--paper); border-radius: 6px; padding: 24px; display: grid; gap: 14px; align-content: space-between }
+.rv-press blockquote p { font: 500 italic 24px/1.25 var(--display) }
+.rv-press footer { display: grid; gap: 2px } .rv-press footer b { font-weight: 600; font-size: 15px } .rv-press footer span { font-size: 13.5px; color: var(--ink-2) }
+.rv-hers { margin-top: 34px; display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 26px }
+.rv-hers p { font: 500 italic clamp(24px, 2.6vw, 34px)/1.25 var(--display) } .rv-hers p span { font: 400 14px var(--body); font-style: normal; color: var(--ink-2); margin-left: 8px }
+.rv-letter-sect { background: #2a1f18 }
+.rv-letter { max-width: 720px; margin: 0 auto; background: #fbf6ec; color: #2a1f18; border-radius: 4px; padding: clamp(28px, 5vw, 60px); display: grid; gap: 16px; box-shadow: 0 30px 70px rgba(0,0,0,.35) }
+.rv-draft { justify-self: start; font: 600 12px var(--body); letter-spacing: .04em; color: #8a5a00; background: #fbecc8; border-radius: 6px; padding: 5px 10px }
+.rv-letter h2 { font-size: clamp(36px, 4.4vw, 54px); font-style: italic } .rv-letter p { font: 400 20px/1.6 var(--display); color: #3b2c22 }
+.rv-sign { font: 500 italic 40px var(--display) !important; color: #2a1f18 !important; margin-top: 4px }
+.rv-honors { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 900px }
+.rv-honors li { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 17px }
+.rv-honors li span { font: 600 14px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--bourbon) }
+.rv-credits { margin-top: 30px; font-size: 13px; color: var(--ink-2); max-width: 90ch }
+@media (max-width: 900px) {
+  .rv-two { grid-template-columns: 1fr } .rv-fig { max-width: 320px } .rv-nums .wrap { grid-template-columns: 1fr 1fr } .rv-press { grid-template-columns: 1fr }
+  .rv-photos { grid-template-columns: 1fr 1fr } .rv-time li, .rv-honors li { grid-template-columns: 1fr; gap: 6px }
+}
+
 /* booking sheet extras */
 .sheet .box { width: min(560px, 100%) }
 .sheet .box.wide { width: min(900px, 100%) }
@@ -792,6 +831,9 @@ body.picking * { cursor: crosshair !important }
 .lnav-links a:hover { background: #221e1b; color: #fff }
 .lnav-links a.on { background: #2a2420; color: #f4efe6; box-shadow: inset 3px 0 0 #b08a3e }
 .lnav-links .gap { height: 14px }
+/* a page that belongs to the one above it: indented, a little smaller */
+.lnav-links a.sub { padding: 7px 12px 7px 44px; font-size: 14px } .lnav-links a.sub svg { width: 16px; height: 16px; margin-left: -28px }
+body.rail .lnav-links a.sub { padding: 10px 0 } body.rail .lnav-links a.sub svg { margin-left: 0 }
 .lnav-links a.tc { color: #a9c6a6 }
 .lnav-links a.tc.on { background: #1f2a24; box-shadow: inset 3px 0 0 #a9c6a6 }
 .lnav-foot { margin-top: auto; font-size: 11px; color: #7d7263; padding: 0 8px; line-height: 1.4 }
@@ -2127,12 +2169,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793488277"></script>
-<script src="stays.data.js?v=1793488277"></script>
-<script src="map.js?v=1793488277"></script>
-<script src="app.js?v=1793488277"></script>
-<script src="brand.js?v=1793488277"></script>
-<script src="shop.js?v=1793488277"></script>
-<script src="center.js?v=1793488277"></script>
-<script src="notes.js?v=1793488277"></script>
+<script src="data.js?v=1793489195"></script>
+<script src="stays.data.js?v=1793489195"></script>
+<script src="map.js?v=1793489195"></script>
+<script src="app.js?v=1793489195"></script>
+<script src="brand.js?v=1793489195"></script>
+<script src="shop.js?v=1793489195"></script>
+<script src="center.js?v=1793489195"></script>
+<script src="notes.js?v=1793489195"></script>
 </body></html>
