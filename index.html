@@ -1903,6 +1903,19 @@ html.cap .nbtn { display: none }
 .doms .dom:hover { transform: translateY(-3px) }
 .doms .dom img { height: 34px; width: auto; max-width: 88%; object-fit: contain }
 .doms .dom small { font: 600 14px var(--sc); letter-spacing: .12em; text-transform: lowercase; color: var(--bi); opacity: .9 }
+
+/* take a look around: the one thing to press */
+.wel-cta { background: linear-gradient(160deg, #6b2a1c, #8a4a24); color: #fff6ea; padding-block: clamp(56px, 9vw, 110px); text-align: center }
+.wel-cta .wrap { display: grid; justify-items: center; gap: 16px }
+.wel-cta .eyebrow { color: #e7c27a }
+.wel-cta h2 { font: 500 clamp(40px, 6vw, 84px)/1.02 var(--display) }
+.wel-cta p { font-size: clamp(17px, 1.6vw, 21px); color: #f3dfc2; max-width: 52ch }
+.cta-big { margin-top: 14px; font: 600 clamp(24px, 2.6vw, 34px)/1 var(--sc); letter-spacing: .1em; text-transform: lowercase; color: #2a1710; background: #e7c27a; border: 0; border-radius: 60px; padding: 26px 50px 28px; cursor: pointer; display: inline-flex; align-items: center; gap: 18px;
+  box-shadow: 0 0 0 0 rgba(231,194,122,.55), 0 20px 44px rgba(0,0,0,.35); animation: ctapulse 2.4s ease-in-out infinite; transition: transform .2s, background .2s }
+.cta-big span { font-family: var(--body); font-size: .9em; transition: transform .2s }
+.cta-big:hover { background: #f0d08c; transform: translateY(-2px) } .cta-big:hover span { transform: translateX(6px) }
+@keyframes ctapulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(231,194,122,.5), 0 20px 44px rgba(0,0,0,.35) } 60% { box-shadow: 0 0 0 18px rgba(231,194,122,0), 0 20px 44px rgba(0,0,0,.35) } }
+@media (prefers-reduced-motion: reduce) { .cta-big { animation: none } }
 </style>
 
 <aside class="lnav" id="lnav" aria-label="Stay in Bloomfield">
@@ -1928,12 +1941,12 @@ html.cap .nbtn { display: none }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js"></script>
-<script src="stays.data.js"></script>
-<script src="map.js"></script>
-<script src="app.js"></script>
-<script src="brand.js"></script>
-<script src="shop.js"></script>
-<script src="center.js"></script>
-<script src="notes.js"></script>
+<script src="data.js?v=1793440387"></script>
+<script src="stays.data.js?v=1793440387"></script>
+<script src="map.js?v=1793440387"></script>
+<script src="app.js?v=1793440387"></script>
+<script src="brand.js?v=1793440387"></script>
+<script src="shop.js?v=1793440387"></script>
+<script src="center.js?v=1793440387"></script>
+<script src="notes.js?v=1793440387"></script>
 </body></html>

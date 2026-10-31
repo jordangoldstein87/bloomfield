@@ -198,6 +198,8 @@
         <button class="wh-skip" data-skip>Skip</button><button class="wh-mute" data-mute aria-label="Mute"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></button>
         <div class="wh-bar"><i></i></div>
       </section>
+      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Your turn</span><h2>Now see the website.</h2><p>Everything in the video is on the site. Press the button and walk through it yourself.</p>
+        <button class="cta-big" data-tour>Take a look around <span aria-hidden="true">→</span></button></div></section>
       <section class="wel-sect"><div class="wrap"><span class="eyebrow">What visitors will see</span><h2>The website, at a glance.</h2>
         <div class="screens">${SCREENS.map(x => `<button class="screen" data-tour-to="${x[0]}"><div class="bar"><i></i><i></i><i></i><span>stayinbloomfield.com</span></div><div class="shot"><img src="${x[2]}" alt=""><b>${esc(x[3])}</b></div><span class="cap">${esc(x[1])}</span></button>`).join("")}</div></div></section>
       <section class="wel-sect domains"><div class="wrap"><span class="eyebrow">One family of websites</span><h2>Every business keeps its own web address.</h2>
@@ -205,8 +207,9 @@
         <div class="doms">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(k => { const pl = pill(k); return `<a class="dom" href="#${k}" style="--bc:${pl.bg};--bi:${k === "pinkhouse" ? B[k].ink : "#fff6ea"}"><img src="${pl.src}" alt="${esc(B[k].name)}"><small>${esc(B[k].url)}</small></a>`; }).join("")}</div></div></section>
       <section class="wel-sect alt"><div class="wrap"><span class="eyebrow">And there's more</span><h2>We'd love to show you what else we can do.</h2>
         <div class="wel-more"><div><b>Town Center</b><p>A back office for every business: one inbox for bookings, one calendar, listings everywhere, emails, texts, press and tickets.</p></div><div><b>Brand</b><p>Logo ideas for the town, palettes, and a brand guide for every business.</p></div></div>
-        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting in the menu on the left.</p>
-        <button class="btn solid gold big" data-tour>Take a look around</button></div></section>
+        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting in the menu on the left.</p></div></section>
+      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Ready?</span><h2>Click in and explore the website.</h2><p>Start on the town site. Brand and Town Center are waiting in the menu on the left when you're done.</p>
+        <button class="cta-big" data-tour>Take a look around <span aria-hidden="true">→</span></button></div></section>
     </div>`;
   }
   // the opening: the hero fly-through with the lines over it, the town logo, then a one-minute look at everything
