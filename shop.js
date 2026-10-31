@@ -10,9 +10,9 @@
     { id: "secretary", n: "Sheraton secretary desk", c: "Furniture", p: 2400, img: P + "sheraton-secretary-9387.jpg", era: "c. 1820s", one: true, ch: ["web", "chairish", "1stdibs"] },
     { id: "settle", n: "Primitive settle bench", c: "Primitives", p: 680, img: P + "settle-bench-12479.jpg", era: "Kentucky, 1800s", one: true, ch: ["web", "ebay", "fb"] },
     { id: "rose", n: "Rose Medallion plates, set of 4", c: "China", p: 420, img: P + "rose-medallion-plates-6891.jpg", era: "Chinese export", one: true, ch: ["web", "ebay", "etsy"] },
-    { id: "tins", n: "Vintage bourbon tins", c: "Bourbon & barware", p: 65, img: "img/nettie/04-vintage-tins.jpg?v=1793462359", era: "Mid-century", qty: 6, ch: ["web", "ebay", "etsy"] },
-    { id: "horse", n: "Bourbon tin horse", c: "Bourbon & barware", p: 145, img: "img/nettie/05-bourbon-tin-horse.jpg?v=1793462359", era: "Folk art", one: true, ch: ["web", "etsy", "ig"] },
-    { id: "jewelry", n: "Costume jewelry, the case", c: "Jewelry", p: 38, img: "img/nettie/02-jewelry-counter.jpg?v=1793462359", era: "From $38", qty: 40, ch: ["web", "ig"] },
+    { id: "tins", n: "Vintage bourbon tins", c: "Bourbon & barware", p: 65, img: "img/nettie/04-vintage-tins.jpg?v=1793462436", era: "Mid-century", qty: 6, ch: ["web", "ebay", "etsy"] },
+    { id: "horse", n: "Bourbon tin horse", c: "Bourbon & barware", p: 145, img: "img/nettie/05-bourbon-tin-horse.jpg?v=1793462436", era: "Folk art", one: true, ch: ["web", "etsy", "ig"] },
+    { id: "jewelry", n: "Costume jewelry, the case", c: "Jewelry", p: 38, img: "img/nettie/02-jewelry-counter.jpg?v=1793462436", era: "From $38", qty: 40, ch: ["web", "ig"] },
     { id: "candles", n: "Berkley green candles", c: "Locally made", p: 24, img: P + "berkley-green-candles.jpg", era: "Made in Kentucky", qty: 22, ch: ["web", "etsy"] },
     { id: "preserves", n: "Spring Valley preserves", c: "Locally made", p: 12, img: P + "spring-valley-preserves.jpg", era: "Made in Kentucky", qty: 48, ch: ["web"] },
     { id: "candy", n: "Mom Blakeman's candy", c: "Locally made", p: 16, img: P + "mom-blakeman-candy.jpg", era: "Made in Kentucky", qty: 30, ch: ["web"] },
@@ -43,7 +43,7 @@
   const BAG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg>`;
   const bagBar = () => cart.length ? `<div class="cartbar"><span>${cart.length} in your cart · ${money(cart.reduce((a, i) => a + i.p, 0))}</span><button id="checkout">Check out</button></div>` : "";
   function header(on) {
-    return `<header class="shead nj-head"><div class="wrap"><a href="#nettie" class="nj-home"><img class="logo logo-nj" src="img/nettie/logo.png?v=1793462359" alt="Nettie Jarvis Antiques"></a>
+    return `<header class="shead nj-head"><div class="wrap"><a href="#nettie" class="nj-home"><img class="logo logo-nj" src="img/nettie/logo.png?v=1793462436" alt="Nettie Jarvis Antiques"></a>
       <nav><a href="#nettie" class="${on === "home" ? "on" : ""}">The shop</a><a href="#shop" class="${on === "shop" ? "on" : ""}">Shop online</a><a href="#nettie" data-jump="menu">Bourbon</a><a href="#nettie" data-jump="visit">Visit</a></nav>
       <button class="btn small" data-book="tasting" data-brand="nettie">Book a bourbon tasting</button>
       <button class="btn small solid nj-bag" id="cartbtn" aria-label="Your cart">${BAG}<span>Cart</span><b>${cart.length}</b></button></div></header>`;
@@ -78,7 +78,7 @@
         <aside class="shop-side">${cats.map(c => `<button class="${c === cat ? "on" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</aside>
         <div class="prods">${ITEMS.filter(i => cat === "All" || i.c === cat).map(card).join("")}</div>
       </div></section>
-      <section class="sect"><div class="wrap two"><div class="prose big"><h2>Local pickup, or shipped with care.</h2><p>Furniture ships white-glove anywhere in the country. Small things go out in two days.</p></div><div class="figure"><img src="img/nettie/01-shop-interior.jpg?v=1793462359" alt=""></div></div></section>
+      <section class="sect"><div class="wrap two"><div class="prose big"><h2>Local pickup, or shipped with care.</h2><p>Furniture ships white-glove anywhere in the country. Small things go out in two days.</p></div><div class="figure"><img src="img/nettie/01-shop-interior.jpg?v=1793462436" alt=""></div></div></section>
       <footer class="sfoot"><div class="wrap">${bubble("nettie", 30)}<span>Nettie Jarvis Antiques · 111 Taylorsville Road, Bloomfield, KY</span><span class="sister"><a href="#nettie">Visit the shop</a><a href="#town">Stay in Bloomfield</a></span></div></footer>
     </div>${bagBar()}`;
     v.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { cat = b.dataset.cat; render(v); });
@@ -131,7 +131,7 @@
       <div class="pane span4"><h3>Email flows</h3>
         <div class="flow">${[["Welcome", "A note from the shop and a first-order gift"], ["Left in the cart", "A reminder an hour later, with the photo"], ["Thank you", "Care tips for the piece they bought"], ["New arrivals", "Every Friday, the week's best finds"], ["Back in town", "Before the Holiday Open House"]].map((f, i) => `<div class="fstep"><span class="n">${i + 1}</span><div><b>${f[0]}</b><div class="s">${f[1]}</div></div></div>`).join("")}</div></div>
       <div class="pane span6"><h3>New arrivals email</h3>
-        <div class="email"><div class="eh" style="background:#0f2318"><img src="img/nettie/logo.png?v=1793462359" alt=""></div><div class="eb"><span class="ek">Fresh off the truck</span><h4>This week at Nettie Jarvis</h4>
+        <div class="email"><div class="eh" style="background:#0f2318"><img src="img/nettie/logo.png?v=1793462436" alt=""></div><div class="eb"><span class="ek">Fresh off the truck</span><h4>This week at Nettie Jarvis</h4>
         <div class="eprods">${ITEMS.slice(0, 6).map(i => `<div><img src="${i.img}" alt=""><span>${esc(i.n)}</span><b>${money(i.p)}</b></div>`).join("")}</div><a class="ecta" style="background:#1f3a2b;color:#faedcd">Shop the new arrivals</a></div></div></div>
       <div class="pane span6"><h3>Campaigns</h3>
         ${[["Holiday Open House", "Email, Instagram, Facebook ads · Nov 20–22", "Scheduled"], ["Bourbon & barware gift guide", "Email + Instagram Shop · Dec 1", "Draft"], ["Furniture sale", "Email past buyers · Jan 2", "Idea"]].map(c => `<div class="hrow">${bubble("nettie", 28)}<div><b>${c[0]}</b><div class="s">${c[1]}</div></div><span class="pill ${c[2] === "Scheduled" ? "ok" : c[2] === "Draft" ? "warn" : "off"}">${c[2]}</span></div>`).join("")}
