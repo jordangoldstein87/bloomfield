@@ -232,8 +232,8 @@
         <div class="doms">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(k => { const pl = pill(k); return `<a class="dom" href="#${k}" style="--bc:${pl.bg};--bi:${k === "pinkhouse" ? B[k].ink : "#fff6ea"}"><img src="${pl.src}" alt="${esc(B[k].name)}"><small>${esc(B[k].url)}</small></a>`; }).join("")}</div></div></section>
       <section class="wel-sect alt"><div class="wrap"><span class="eyebrow">And there's more</span><h2>We'd love to show you what else we can do.</h2>
         <div class="wel-more"><div><b>Town Center</b><p>A back office for every business: one inbox for bookings, one calendar, listings everywhere, emails, texts, press and tickets.</p></div><div><b>Brand</b><p>Logo ideas for the town, palettes, and a brand guide for every business.</p></div></div>
-        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting at the top right, marked just for you.</p></div></section>
-      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Ready?</span><h2>Click in and explore the website.</h2><p>Start on the town site. Brand and Town Center are waiting at the top right when you're done.</p>
+        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting in the menu, marked just for you.</p></div></section>
+      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Ready?</span><h2>Click in and explore the website.</h2><p>Start on the town site. Brand and Town Center are waiting in the menu when you're done.</p>
         <button class="cta-big" data-tour>Take a look around <span aria-hidden="true">→</span></button></div></section>
     </div>`;
   }
@@ -336,12 +336,14 @@
     const t = document.createElement("div"); t.className = "tour";
     t.innerHTML = `<div class="tour-card"><span class="eyebrow">Welcome</span><h3>Take a look around.</h3>
       <p>This is the website visitors will see. Click anything: the map, the calendar, the stays, every business.</p>
-      <p class="tour-hl"><b>When you're done, open Brand and Town Center</b> at the top right (in the menu on a phone) to see what else we can do for you.</p>
+      <p class="tour-hl"><b>When you're done, open Brand and Town Center</b> in the menu to see what else we can do for you.</p>
       <p class="tour-note">Those two won't be in the menu visitors see.</p>
       <button class="btn solid" data-tour-ok>Start exploring</button></div><div class="tour-arrow" aria-hidden="true">←</div>`;
     document.body.appendChild(t);
     const bl = document.querySelector('#hd-right a[href="#brand"]'), cl = document.querySelector('#hd-right a[href="#center"]'), ar = t.querySelector(".tour-arrow");
-    if (bl && cl && ar && bl.offsetParent) { const a = bl.getBoundingClientRect(), c = cl.getBoundingClientRect(); ar.textContent = "↑"; ar.style.left = ((a.left + c.right) / 2 - 16) + "px"; ar.style.top = (c.bottom + 10) + "px"; }
+    const lb = document.querySelector('.lnav-links a[href="#brand"]'), lc = document.querySelector('.lnav-links a[href="#center"]');
+    if (lb && lc && ar && lb.offsetParent) { const a = lb.getBoundingClientRect(), c = lc.getBoundingClientRect(); ar.style.left = (a.right + 14) + "px"; ar.style.top = ((a.top + c.bottom) / 2 - 32) + "px"; }
+    else if (bl && cl && ar && bl.offsetParent) { const a = bl.getBoundingClientRect(), c = cl.getBoundingClientRect(); ar.textContent = "↑"; ar.style.left = ((a.left + c.right) / 2 - 16) + "px"; ar.style.top = (c.bottom + 10) + "px"; }
     else if (ar) ar.style.display = "none";
     const done = () => { t.remove(); document.body.classList.remove("touring"); };
     t.querySelector("[data-tour-ok]").onclick = done;

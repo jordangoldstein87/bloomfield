@@ -1918,8 +1918,6 @@ html.cap .nbtn { display: none }
 @media (prefers-reduced-motion: reduce) { .cta-big { animation: none } }
 
 /* the header: Stay in Bloomfield on top, the town's pages, Our places in a dropdown, Brand and Town Center on the right */
-.lnav, .lnav-scrim { display: none !important }
-.shell, body.rail .shell { margin-left: 0 !important }
 .pbar.hd { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; background: #f6efe3; color: #3a1d14; border-bottom: 1px solid #e3d6bf; backdrop-filter: none }
 .pbar.hd .pbar-in { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); min-height: 68px; padding-inline: clamp(16px, 3vw, 40px) }
 .hd-logo { flex: none; display: block; line-height: 0 } .hd-logo svg { width: 150px; height: auto }
@@ -1969,7 +1967,6 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 .site-ernies .shero img { object-position: center 28% }
 
 /* the old sidebar is gone, so heroes no longer reach under it */
-.shell .hero, .shell .shero, .shell .cal-hero { margin-left: 0 !important; padding-left: 0 !important }
 
 /* phones: the street shot crops too tight for signs on storefronts, so the logos line up in two columns over the dimmed street */
 @media (max-aspect-ratio: 1/1) {
@@ -1981,6 +1978,15 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 
 .wh-signs img.m-only { display: none }
 @media (max-aspect-ratio: 1/1) { .wh-signs img.m-only { display: block } .wh-signs { gap: 26px 16px } .wh-signs img { height: 30px !important } }
+
+/* desktop keeps the side nav and the brand logos across the top; phones get the Bloomfield header and full-screen menu */
+@media (min-width: 901px) { .pbar.hd, .mnav { display: none !important } }
+@media (max-width: 900px) {
+  .pbar.dk, .lnav, .lnav-scrim { display: none !important }
+  .shell, body.rail .shell { margin-left: 0 !important }
+  .shell .hero, .shell .shero, .shell .cal-hero { margin-left: 0 !important; padding-left: 0 !important }
+  .hd-links, .hd-right { display: none } .pbar.hd .menu-btn { display: block }
+}
 </style>
 
 <aside class="lnav" id="lnav" aria-label="Stay in Bloomfield">
@@ -1989,12 +1995,16 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
   <div class="lnav-foot">Preview for Olde Bloomfield Operations</div>
 </aside>
 <div class="shell">
+  <header class="pbar dk"><div class="pbar-in">
+    <span class="pbar-label">Our places</span>
+    <nav class="tabs" id="tabs" aria-label="Business sites"></nav>
+    <a href="#shop" class="shop-link" id="shop-link"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>Shop</a>
+  </div></header>
   <header class="pbar hd"><div class="pbar-in">
     <a class="hd-logo" id="hd-logo" href="#town" aria-label="Stay in Bloomfield home"></a>
     <nav class="hd-links" id="hd-links" aria-label="Stay in Bloomfield"></nav>
     <div class="hd-right" id="hd-right"></div>
     <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <nav class="tabs" id="tabs" hidden></nav><a href="#shop" id="shop-link" hidden></a>
   </div>
   <div class="places-dd" id="places-dd" hidden></div></header>
   <div class="mnav" id="mnav" hidden></div>
@@ -2009,12 +2019,12 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793460908"></script>
-<script src="stays.data.js?v=1793460908"></script>
-<script src="map.js?v=1793460908"></script>
-<script src="app.js?v=1793460908"></script>
-<script src="brand.js?v=1793460908"></script>
-<script src="shop.js?v=1793460908"></script>
-<script src="center.js?v=1793460908"></script>
-<script src="notes.js?v=1793460908"></script>
+<script src="data.js?v=1793461023"></script>
+<script src="stays.data.js?v=1793461023"></script>
+<script src="map.js?v=1793461023"></script>
+<script src="app.js?v=1793461023"></script>
+<script src="brand.js?v=1793461023"></script>
+<script src="shop.js?v=1793461023"></script>
+<script src="center.js?v=1793461023"></script>
+<script src="notes.js?v=1793461023"></script>
 </body></html>
