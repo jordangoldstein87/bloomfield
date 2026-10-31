@@ -78,7 +78,7 @@
         <div class="mock3">
           <div class="mk-sign">${APP.logo("seal", "#efe3c4", "#efe3c4")}<span>Welcome sign on KY 55</span></div>
           <div class="mk-tote">${APP.logo("skyline", "#2a1d18", "#7b3b2c")}<span>Tote bag</span></div>
-          <div class="mk-ig"><img src="img/town/town-2.jpg?v=1793489586" alt=""><div class="mk-ov">${APP.logo("script", "#fff", "#fff")}</div><span>Instagram post</span></div>
+          <div class="mk-ig"><img src="img/town/town-2.jpg?v=1793489629" alt=""><div class="mk-ov">${APP.logo("script", "#fff", "#fff")}</div><span>Instagram post</span></div>
         </div></div></section>
       <section class="slide"><div class="wrap"><div class="sect-head"><span class="eyebrow">Color</span><h2>Three palettes from the town itself.</h2></div>
         <div class="pals">${PALETTES.map(p => `<div class="pal" data-note-target="Palette: ${esc(p[0])}"><div class="sw">${p[1].map(c => `<span style="background:${c}" title="${c}"></span>`).join("")}</div><div class="pal-f"><b>${esc(p[0])}</b><div class="vote"><button data-vote="love" data-what="Palette: ${esc(p[0])}" aria-label="Love this">♥</button><button data-vote="hate" data-what="Palette: ${esc(p[0])}" aria-label="Not this one">✕</button></div></div></div>`).join("")}</div></div></section>
