@@ -617,7 +617,9 @@ body.picking * { cursor: crosshair !important }
 .rv-hero .eyebrow { color: #e7c27a } .rv-hero h1 { font-size: clamp(46px, 7vw, 96px); max-width: 14ch } .rv-hero p { font-size: clamp(18px, 1.7vw, 22px); max-width: 44ch; color: #f3e6d2 }
 .rv-two { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(28px, 5vw, 70px); align-items: center }
 .rv-intro { display: grid; gap: 14px } .rv-intro h2 { font-size: clamp(34px, 4vw, 52px) } .rv-intro p { font-size: 18px; color: var(--ink-2); max-width: 56ch }
-.rv-fig { margin: 0; display: grid; gap: 8px } .rv-fig img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; filter: grayscale(.2) } .rv-fig figcaption { font: 600 13px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--ink-2) }
+.rv-figs { display: grid; gap: 14px; align-content: start }
+.rv-fig { margin: 0; display: grid; gap: 8px } .rv-fig img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 30% 30%; border-radius: 4px }
+.rv-fig.small { width: 72%; justify-self: end; margin-top: -4px; box-shadow: 0 18px 40px rgba(0,0,0,.25); background: var(--paper); padding: 6px 6px 8px; border-radius: 6px } .rv-fig.small img { aspect-ratio: 14 / 15; object-position: 50% 40% } .rv-fig figcaption { font: 600 13px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--ink-2) }
 .rv-nums { background: #2a1f18; color: #f4efe6; padding-block: 40px }
 .rv-nums .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px }
 .rv-nums div { display: grid; gap: 4px; border-left: 1px solid rgba(231,194,122,.4); padding-left: 16px } .rv-nums b { font: 500 clamp(40px, 4.4vw, 60px)/1 var(--display); color: #e7c27a } .rv-nums span { font-size: 15px; color: #d8cbb6 }
@@ -644,7 +646,7 @@ body.picking * { cursor: crosshair !important }
 .rv-honors li span { font: 600 14px var(--sc); letter-spacing: .14em; text-transform: lowercase; color: var(--bourbon) }
 .rv-credits { margin-top: 30px; font-size: 13px; color: var(--ink-2); max-width: 90ch }
 @media (max-width: 900px) {
-  .rv-two { grid-template-columns: 1fr } .rv-fig { max-width: 320px } .rv-nums .wrap { grid-template-columns: 1fr 1fr } .rv-press { grid-template-columns: 1fr }
+  .rv-two { grid-template-columns: 1fr } .rv-figs { max-width: 420px } .rv-nums .wrap { grid-template-columns: 1fr 1fr } .rv-press { grid-template-columns: 1fr }
   .rv-photos { grid-template-columns: 1fr 1fr } .rv-time li, .rv-honors li { grid-template-columns: 1fr; gap: 6px }
 }
 
@@ -2169,12 +2171,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793489195"></script>
-<script src="stays.data.js?v=1793489195"></script>
-<script src="map.js?v=1793489195"></script>
-<script src="app.js?v=1793489195"></script>
-<script src="brand.js?v=1793489195"></script>
-<script src="shop.js?v=1793489195"></script>
-<script src="center.js?v=1793489195"></script>
-<script src="notes.js?v=1793489195"></script>
+<script src="data.js?v=1793489586"></script>
+<script src="stays.data.js?v=1793489586"></script>
+<script src="map.js?v=1793489586"></script>
+<script src="app.js?v=1793489586"></script>
+<script src="brand.js?v=1793489586"></script>
+<script src="shop.js?v=1793489586"></script>
+<script src="center.js?v=1793489586"></script>
+<script src="notes.js?v=1793489586"></script>
 </body></html>
