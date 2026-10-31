@@ -583,7 +583,8 @@ img { display: block; max-width: 100% }
   <form class="who-form rise" id="whoform">
     <h3>Who runs what?</h3>
     <p>Give us a quick picture of who uses which software. Some of it may be replaced by tools built into Town Center, and save you the subscription.</p>
-    <div class="two-f"><label>Your name<input name="person" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
+    <div class="two-f"><label>Your name<input name="person" autocomplete="name"></label><label>Your email<input name="email" type="email" autocomplete="email" inputmode="email"></label></div>
+    <label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label>
     <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb: Shelia"></textarea></label>
     <button class="send" type="submit">Send to Jordan</button>
     <p class="quote1">The more you tell us, the better we can quote you.</p>
@@ -665,7 +666,7 @@ img { display: block; max-width: 100% }
   whoform.addEventListener("submit", e => {
     e.preventDefault();
     const picked = [...uses.querySelectorAll('[aria-pressed="true"]')].map(b => b.textContent).join(", ") || "(none tapped)";
-    const body = [`Name: ${whoform.person.value.trim()}`, `Role: ${whoform.role.value.trim()}`, `Tools we use: ${picked}`, "", "Who runs what:", whoform.who.value.trim()].join("\n");
+    const body = [`Name: ${whoform.person.value.trim()}`, `Email: ${whoform.email.value.trim()}`, `Role: ${whoform.role.value.trim()}`, `Tools we use: ${picked}`, "", "Who runs what:", whoform.who.value.trim()].join("\n");
     location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
     whosent.textContent = "Your email opens with the note ready. Press send there."; whosent.hidden = false;
   });
