@@ -2045,6 +2045,17 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 
 @media (max-width: 900px) { .doms { grid-template-columns: repeat(2, minmax(0, 1fr)) !important } .doms .dom { min-width: 0; padding: 18px 10px; min-height: 110px } .doms .dom small { font-size: 11px; letter-spacing: .06em; overflow-wrap: anywhere; text-align: center } .doms .dom img { height: 26px } }
 html, body { overflow-x: hidden }
+
+/* Town Center on phones: its menu is one slim row that scrolls sideways and stays under the header */
+@media (max-width: 900px) {
+  .hub-shell { display: block !important }
+  .hub-nav { position: sticky !important; top: 60px !important; z-index: 20; height: auto !important; display: flex !important; flex-wrap: nowrap; align-items: center; gap: 4px; overflow-x: auto; overflow-y: hidden; padding: 8px 12px !important; background: var(--hub); border-right: 0 !important; border-bottom: 1px solid var(--hub-line); scrollbar-width: none; -webkit-overflow-scrolling: touch }
+  .hub-nav::-webkit-scrollbar { display: none }
+  .hub-nav .grp, .hub-nav .logo { display: none !important }
+  .hub-nav button { flex: none; white-space: nowrap; padding: 9px 12px; border-radius: 20px; font-size: 14px }
+  .hub-nav button.on { box-shadow: none; background: #a9c6a6; color: #13201a }
+  .hub-main { padding-inline: 16px !important }
+}
 </style>
 
 <aside class="lnav" id="lnav" aria-label="Stay in Bloomfield">
@@ -2077,12 +2088,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793461834"></script>
-<script src="stays.data.js?v=1793461834"></script>
-<script src="map.js?v=1793461834"></script>
-<script src="app.js?v=1793461834"></script>
-<script src="brand.js?v=1793461834"></script>
-<script src="shop.js?v=1793461834"></script>
-<script src="center.js?v=1793461834"></script>
-<script src="notes.js?v=1793461834"></script>
+<script src="data.js?v=1793461941"></script>
+<script src="stays.data.js?v=1793461941"></script>
+<script src="map.js?v=1793461941"></script>
+<script src="app.js?v=1793461941"></script>
+<script src="brand.js?v=1793461941"></script>
+<script src="shop.js?v=1793461941"></script>
+<script src="center.js?v=1793461941"></script>
+<script src="notes.js?v=1793461941"></script>
 </body></html>
