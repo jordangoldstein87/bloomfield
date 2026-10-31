@@ -94,7 +94,7 @@
   /* ---------- router ---------- */
   // the town's own pages down the left; the businesses' sites across the top
   const LEFT = [
-    ["town", "Town", "M3 11l9-7 9 7v9H3z"], ["calendar", "Calendar", "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4"], ["plan", "Plan a weekend", "M12 3l2.6 5.6 6 .8-4.4 4.2 1 6L12 16.8 6.8 19.6l1-6L3.4 9.4l6-.8z"],
+    ["town", "Town", "M3 11l9-7 9 7v9H3z"], ["calendar", "Calendar", "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4"], ["music", "Live music", "M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"], ["plan", "Plan a weekend", "M12 3l2.6 5.6 6 .8-4.4 4.2 1 6L12 16.8 6.8 19.6l1-6L3.4 9.4l6-.8z"],
     ["stays", "Stay", "M3 18V8M3 14h18v4M21 18v-6a3 3 0 0 0-3-3h-7v5"], ["gap"], ["brand", "Brand", "M12 3a9 9 0 1 0 0 18c1 0 1.5-.6 1.5-1.4 0-1.2-1-1.6-1-2.6 0-.9.7-1.5 1.6-1.5H17a4 4 0 0 0 4-4c0-4.7-4-8.5-9-8.5zM7.5 11.5h.01M10 7.5h.01M15 7.5h.01"],
     ["center", "Town Center", "M4 9l1-5h14l1 5M4 9v11h16V9M4 9h16M9 20v-6h6v6", "tc"],
   ];
@@ -107,7 +107,7 @@
     return { v: h, key: h };
   }
   // the header: logo, the town's pages, Our places (a dropdown of every business), Shop, and Brand / Town Center for the owner
-  const HD_LINKS = [["town", "Town"], ["calendar", "Calendar"], ["plan", "Plan a weekend"], ["stays", "Stay"]];
+  const HD_LINKS = [["town", "Town"], ["calendar", "Calendar"], ["music", "Live music"], ["plan", "Plan a weekend"], ["stays", "Stay"]];
   const HD_FOR = [["brand", "Brand"], ["center", "Town Center"]];
   const CHEV = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>`;
   function placeTiles() {
@@ -186,6 +186,7 @@
     if (r.v === "welcome") { addr(""); v.innerHTML = welcomeView(); afterWelcome(); }
     else if (r.v === "town") { addr("stayinbloomfield.com", "The town's home"); v.innerHTML = townView(); afterTown(); if (tourNext) { tourNext = false; showTour(); } }
     else if (r.v === "calendar") { addr("stayinbloomfield.com/calendar", "One calendar for the whole town"); v.innerHTML = calendarView(); afterCalendar(); }
+    else if (r.v === "music") { addr(""); v.innerHTML = musicView(); afterMusic(); }
     else if (r.v === "plan") { addr("stayinbloomfield.com/plan", "Special feature"); v.innerHTML = planView(); afterPlan(); }
     else if (r.v === "stays") { addr("stayinbloomfield.com/stay", "Booked right on the site"); v.innerHTML = staysView(); }
     else if (r.v === "stay") { addr("stayinbloomfield.com/stay/" + r.id, "Booked right on the site"); v.innerHTML = stayView(r.id); afterStay(r.id); }
@@ -353,6 +354,53 @@
   /* ---------- town ---------- */
   function upcoming(n, brand) {
     return allEvents().filter(e => e.d >= D.today && (!brand || e.b === brand)).slice(0, n);
+  }
+  // live music: how often, who has played, and Ernie's own show calendar
+  const MUSIC_BANDS = [
+    { n: "Big Black Cadillac", at: "ernies", shows: 3, note: "Halloween night headliners", img: "img/insta/erniestavern/06.jpg" },
+    { n: "The Bourbon Barrel Boys", at: "ernies", shows: 8, note: "Bluegrass, the house favorite", img: "img/ernies/05-neon-bar.jpg" },
+    { n: "Kentucky Ramblers", at: "ernies", shows: 4, note: "Classic country and covers", img: "img/ernies/07-interior-bw.jpg" },
+    { n: "Hannah Wheeler & The Heartaches", at: "rowdys", shows: 5, note: "Saturday dance night", img: "img/rowdys/02-crowd-at-bar.jpg" },
+    { n: "Copper Creek String Band", at: "rowdys", shows: 2, note: "Front-porch strings", img: "img/rowdys/03-porch.jpg" },
+  ];
+  let musicMonth = null;
+  function musicView() {
+    const shows = allEvents().filter(e => e.b === "ernies" && e.d >= D.today);
+    return `<section class="mu-hero"><img src="img/ernies/05-neon-bar.jpg" alt=""><div class="wrap"><span class="eyebrow light">Live music</span>
+        <h1>The music starts at eight.</h1><p>Bands at Ernie's four nights a week, and Saturday dance nights down the road at Rowdy's.</p>
+        <div class="row"><a class="btn solid" href="#mu-cal" data-mu-jump>See who's playing</a><button class="btn light" data-book="table" data-brand="ernies">Reserve a table</button></div></div></section>
+      <section class="sect mu-often"><div class="wrap"><div class="mu-stats">
+        <div><b>4</b><span>nights a week of live music at Ernie's</span></div>
+        <div><b>8 PM</b><span>first set, most nights</span></div>
+        <div><b>Sat</b><span>dance night and line dancing at Rowdy's</span></div>
+        <div><b>${MUSIC_BANDS.reduce((a, x) => a + x.shows, 0)}</b><span>shows from these bands this year</span></div></div></div></section>
+      <section class="sect mu-bands"><div class="wrap"><div class="sect-head"><h2>Who's played here</h2></div>
+        <div class="mu-grid">${MUSIC_BANDS.map(x => `<article class="mu-band"><div class="im"><img src="${x.img}" alt="" loading="lazy"></div><div class="tx">${markLogo(x.at, 16)}<h3>${esc(x.n)}</h3><p>${esc(x.note)}</p><small>${x.shows} shows</small></div></article>`).join("")}</div></div></section>
+      <section class="sect mu-cal" id="mu-cal"><div class="wrap"><div class="sect-head"><div><span class="eyebrow">Ernie's calendar</span><h2>Coming up at Ernie's.</h2></div></div>
+        <div class="cal"><div class="month" id="mu-month"></div><div class="evs">${shows.length ? shows.map(evRow).join("") : `<div class="empty">New dates soon.</div>`}</div></div></div></section>
+      <section class="mu-book"><div class="wrap"><div><span class="eyebrow">Play at Ernie's</span><h2>Book your band.</h2>
+        <p>Ernie's books local and regional bands four nights a week. Send your name, your sound and a link to your music, and we'll get back to you with open dates.</p>
+        <ol class="mu-steps"><li><b>Send your band</b><span>A link to a video or your music, and the nights that work.</span></li><li><b>We listen</b><span>We reply within a week with open dates.</span></li><li><b>Play the night</b><span>We put you on the town calendar, the website and our posts.</span></li></ol>
+        <button class="btn solid mu-bookbtn" data-book="band" data-brand="ernies">Book your band</button></div>
+        <img src="img/insta/erniestavern/06.jpg" alt="" loading="lazy"></div></section>
+      <section class="sect mu-insta"><div class="wrap"><div class="sect-head"><h2>From Ernie's posts</h2></div>
+        <div class="mu-flyers">${[6, 5, 4].map(i => `<img src="img/insta/erniestavern/0${i}.jpg" alt="" loading="lazy">`).join("")}</div></div></section>`;
+  }
+  function afterMusic() {
+    const jump = document.querySelector("[data-mu-jump]"); if (jump) jump.onclick = e => { e.preventDefault(); document.getElementById("mu-cal").scrollIntoView({ behavior: "smooth" }); };
+    if (!musicMonth) musicMonth = D.today.slice(0, 7);
+    const draw = () => {
+      const [y, m] = musicMonth.split("-").map(Number), first = new Date(y, m - 1, 1), days = new Date(y, m, 0).getDate();
+      const byDay = {}; allEvents().filter(e => e.b === "ernies").forEach(e => (byDay[e.d] = byDay[e.d] || []).push(e));
+      let cells = DOW.map(d => `<div class="dow">${d.slice(0, 2)}</div>`).join("");
+      for (let i = 0; i < first.getDay(); i++) cells += "<span></span>";
+      for (let d = 1; d <= days; d++) { const k = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`; const has = byDay[k];
+        cells += `<button class="${k === D.today ? "today" : ""} ${has ? "has-ev mu-on" : ""}" title="${has ? esc(has.map(e => e.t).join(", ")) : ""}"><span>${d}</span>${has ? `<em><i class="bdot" style="--bc:#003f21"></i></em>` : ""}</button>`; }
+      const el = document.getElementById("mu-month"); if (!el) return;
+      el.innerHTML = `<div class="mh"><button data-mv="-1" aria-label="Previous month">‹</button><span>${MON[m - 1]} ${y}</span><button data-mv="1" aria-label="Next month">›</button></div><div class="grid7 cal7">${cells}</div>`;
+      el.querySelectorAll("[data-mv]").forEach(b => b.onclick = () => { const dt = new Date(y, m - 1 + Number(b.dataset.mv), 1); musicMonth = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`; draw(); });
+    };
+    draw();
   }
   function evRow(e) {
     const d = day(e.d);
@@ -926,16 +974,17 @@
     tickets: { h: "Get tickets", f: ["date:Sat, Nov 7 · Dance Night|Sat, Nov 14 · Hannah Wheeler & The Heartaches", "tier:General · $15|VIP · $35", "qty", "name", "email"] },
     stay: { h: "Confirm your stay", f: ["name", "email", "card"] },
     plan: { h: "Send us your weekend", f: ["name", "email", "phone", "note"] },
+    band: { h: "Book your band at Ernie's", f: ["band", "genre:Bluegrass|Country|Rock & covers|Something else", "nights:Fridays|Saturdays|Any night", "link", "name", "email", "phone", "note"] },
   };
   function field(f, ctx) {
     const [k, opts] = f.split(":");
     const id = "f-" + k;
-    if (opts) return `<label>${{ date: "Date", time: "Time", kind: "What is it", tier: "Ticket" }[k]}<div class="slots" data-slot="${k}">${opts.split("|").map((o, i) => `<button type="button" class="${i === 0 ? "on" : ""}">${esc(o)}</button>`).join("")}</div></label>`;
+    if (opts) return `<label>${{ date: "Date", time: "Time", kind: "What is it", tier: "Ticket", genre: "Your sound", nights: "Best nights" }[k]}<div class="slots" data-slot="${k}">${opts.split("|").map((o, i) => `<button type="button" class="${i === 0 ? "on" : ""}">${esc(o)}</button>`).join("")}</div></label>`;
     if (k === "day") return `<label>Date<input id="${id}" type="date" min="${D.today}" value="${ctx.date || "2026-11-13"}"></label>`;
     if (k === "guests" || k === "qty") return `<label>${k === "qty" ? "Tickets" : "Guests"}<select id="${id}">${Array.from({ length: k === "qty" ? 8 : 12 }, (_, i) => `<option ${i === 1 ? "selected" : ""}>${i + 1}${k === "guests" && i === 11 ? "+" : ""}</option>`).join("")}</select></label>`;
     if (k === "note") return `<label>Anything we should know<textarea id="${id}" rows="3"></textarea></label>`;
     if (k === "card") return `<label>Card<input id="${id}" placeholder="Secure checkout opens here" disabled></label>`;
-    return `<label>${{ name: "Name", email: "Email", phone: "Phone" }[k]}<input id="${id}" type="${k === "email" ? "email" : k === "phone" ? "tel" : "text"}" autocomplete="${k === "name" ? "name" : k}"></label>`;
+    return `<label>${{ name: "Name", email: "Email", phone: "Phone", band: "Band name", link: "Link to your music" }[k]}<input id="${id}" type="${k === "email" ? "email" : k === "phone" ? "tel" : "text"}" autocomplete="${k === "name" ? "name" : k}"></label>`;
   }
   function sheet(type, brand, ctx) {
     ctx = ctx || {};

@@ -1987,6 +1987,37 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
   .shell .hero, .shell .shero, .shell .cal-hero { margin-left: 0 !important; padding-left: 0 !important }
   .hd-links, .hd-right { display: none } .pbar.hd .menu-btn { display: block }
 }
+
+/* live music */
+.mu-hero { position: relative; min-height: 520px; display: grid; align-items: end; color: #fff; overflow: hidden; background: #111 }
+.mu-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.55) saturate(1.1) }
+.mu-hero .wrap { position: relative; padding-block: 60px; display: grid; gap: 14px; justify-items: start }
+.mu-hero h1 { font: 500 clamp(44px, 6.4vw, 92px)/1 var(--display) } .mu-hero p { font-size: 19px; max-width: 46ch; color: #f1e6d6 }
+.mu-hero .row { display: flex; gap: 10px; flex-wrap: wrap }
+.mu-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px }
+.mu-stats div { background: #fffaf2; border: 1px solid #e3d6bf; border-radius: 12px; padding: 20px; display: grid; gap: 6px }
+.mu-stats b { font: 500 46px/1 var(--display); color: #003f21 } .mu-stats span { color: #5a5249; font-size: 15px }
+.mu-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px }
+.mu-band { background: #fffaf2; border: 1px solid #e3d6bf; border-radius: 12px; overflow: hidden; display: grid }
+.mu-band .im { aspect-ratio: 1; overflow: hidden } .mu-band .im img { width: 100%; height: 100%; object-fit: cover }
+.mu-band .tx { padding: 14px; display: grid; gap: 6px; justify-items: start } .mu-band h3 { font: 500 21px/1.1 var(--display) } .mu-band p { color: #5a5249; font-size: 14px } .mu-band small { font: 600 12px var(--sc); letter-spacing: .12em; text-transform: lowercase; color: #9c5a26 }
+.mu-cal { background: linear-gradient(180deg, #efe5d3, #e8dcc6) }
+.mu-cal .month { background: #fffaf2; border-radius: 14px; border-color: #e0d2b8 }
+.mu-cal .month button.mu-on { background: #dcebe0 }
+.mu-cal .ev { background: #fffaf2; border-radius: 12px; padding: 14px 16px; border: 1px solid #e6d9c2 }
+.mu-flyers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px } .mu-flyers img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 10px }
+@media (max-width: 900px) { .mu-stats { grid-template-columns: 1fr 1fr } .mu-grid { grid-template-columns: 1fr 1fr } .mu-hero { min-height: 460px } }
+
+.mu-book { background: #0f2a1d; color: #fff6ea; padding-block: clamp(56px, 8vw, 96px) }
+.mu-book .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 60px); align-items: center }
+.mu-book .eyebrow { color: #e7c27a } .mu-book h2 { font: 500 clamp(40px, 5vw, 68px)/1 var(--display); margin: 8px 0 14px } .mu-book p { font-size: 18px; color: #e2dccf; max-width: 48ch }
+.mu-steps { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; gap: 12px; counter-reset: s }
+.mu-steps li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; gap: 2px 14px; align-items: start }
+.mu-steps li::before { content: counter(s); grid-row: span 2; width: 34px; height: 34px; border-radius: 50%; background: #e7c27a; color: #0f2a1d; display: grid; place-items: center; font: 600 15px var(--body) }
+.mu-steps b { font: 500 22px/1.1 var(--display) } .mu-steps span { color: #cfc8ba; font-size: 15px }
+.mu-bookbtn { font-size: 17px !important; padding: 15px 28px !important; background: #e7c27a !important; border-color: #e7c27a !important; color: #0f2a1d !important; border-radius: 40px }
+.mu-book img { width: 100%; border-radius: 12px; box-shadow: 0 24px 60px rgba(0,0,0,.45) }
+@media (max-width: 900px) { .mu-book .wrap { grid-template-columns: 1fr } }
 </style>
 
 <aside class="lnav" id="lnav" aria-label="Stay in Bloomfield">
@@ -2019,12 +2050,12 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793461101"></script>
-<script src="stays.data.js?v=1793461101"></script>
-<script src="map.js?v=1793461101"></script>
-<script src="app.js?v=1793461101"></script>
-<script src="brand.js?v=1793461101"></script>
-<script src="shop.js?v=1793461101"></script>
-<script src="center.js?v=1793461101"></script>
-<script src="notes.js?v=1793461101"></script>
+<script src="data.js?v=1793461264"></script>
+<script src="stays.data.js?v=1793461264"></script>
+<script src="map.js?v=1793461264"></script>
+<script src="app.js?v=1793461264"></script>
+<script src="brand.js?v=1793461264"></script>
+<script src="shop.js?v=1793461264"></script>
+<script src="center.js?v=1793461264"></script>
+<script src="notes.js?v=1793461264"></script>
 </body></html>
