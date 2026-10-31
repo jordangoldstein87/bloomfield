@@ -213,7 +213,7 @@
       <section class="wh" id="wh">
         <video class="wh-vid" muted playsinline preload="auto" aria-hidden="true"></video>
         <div class="wh-stage" aria-hidden="true"></div><div class="wh-shade"></div>
-        <div class="wh-signs">${HERO_SIGNS.map(([k, x, y, h], i) => `<img src="${SIGN[k] === "img/doubledip/logo-sign-red.png" ? pill(k).src : SIGN[k] || pill(k).src}" alt="" style="left:${x}%;top:${y}%;height:${h}%;--d:${i * .22}s">`).join("")}</div>
+        <div class="wh-signs">${HERO_SIGNS.map(([k, x, y, h], i) => `<img src="${SIGN[k] === "img/doubledip/logo-sign-red.png" ? pill(k).src : SIGN[k] || pill(k).src}" alt="" style="left:${x}%;top:${y}%;height:${h}%;--d:${i * .22}s">`).join("")}${["pinkhouse", "revival"].map((k, i) => `<img class="m-only" src="${SIGN[k] || pill(k).src}" alt="" style="--d:${(6 + i) * .22}s">`).join("")}</div>
         <div class="wh-lines">${HERO_LINES.map(l => `<p>${l[1]}</p>`).join("")}</div>
         <div class="wh-logo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div>
         <div class="wh-cap"><span class="eyebrow"></span><h2></h2><img alt=""></div>
