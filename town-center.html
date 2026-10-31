@@ -562,8 +562,7 @@ img { display: block; max-width: 100% }
     <h3>Who runs what?</h3>
     <p>Give us a quick picture of who uses which software. Some of it may be replaced by tools built into Town Center, and save you the subscription.</p>
     <div class="two-f"><label>Your name<input name="person" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
-    <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb messages: Jamie"></textarea></label>
-    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+    <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb: Shelia"></textarea></label>
     <button class="send" type="submit">Send to Jordan</button>
     <span class="sent" id="whosent" hidden></span>
   </form>
@@ -623,25 +622,14 @@ img { display: block; max-width: 100% }
     usesk.textContent = n ? `${n} connected. We'll plug ${n === 1 ? "it" : "them"} into Town Center.` : "Tap what you use today.";
   });
 
-  // who runs what: sent straight to Jordan through FormSubmit; if that fails, their email app opens with the note ready
-  const whoform = document.getElementById("whoform"), whosent = document.getElementById("whosent"), sendb = whoform.querySelector(".send");
-  whoform.addEventListener("submit", async e => {
+  // who runs what: opens their own email app with a note to Jordan ready to send (works on phones too)
+  const whoform = document.getElementById("whoform"), whosent = document.getElementById("whosent");
+  whoform.addEventListener("submit", e => {
     e.preventDefault();
-    if (whoform._honey.value) return;
     const picked = [...uses.querySelectorAll('[aria-pressed="true"]')].map(b => b.textContent).join(", ") || "(none tapped)";
-    const msg = { Name: whoform.person.value.trim(), Role: whoform.role.value.trim(), "Tools we use": picked, "Who runs what": whoform.who.value.trim() };
-    if (!msg["Who runs what"] && !msg.Name) { whoform.who.focus(); return; }
-    sendb.disabled = true; sendb.textContent = "Sending…";
-    try {
-      const r = await fetch("https://formsubmit.co/ajax/jordan@jgoco.me", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...msg, _subject: "Town Center: who runs what", _template: "table" }) });
-      if (!r.ok) throw new Error(r.status);
-      whosent.textContent = "Sent. Jordan will be in touch."; whosent.hidden = false; sendb.textContent = "Sent"; whoform.reset();
-    } catch {
-      const body = Object.entries(msg).map(([k, v]) => `${k}: ${v}`).join("\n");
-      location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
-      whosent.textContent = "Your email app should open with the note ready. Press send there."; whosent.hidden = false;
-      sendb.disabled = false; sendb.textContent = "Send to Jordan";
-    }
+    const body = [`Name: ${whoform.person.value.trim()}`, `Role: ${whoform.role.value.trim()}`, `Tools we use: ${picked}`, "", "Who runs what:", whoform.who.value.trim()].join("\n");
+    location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
+    whosent.textContent = "Your email opens with the note ready. Press send there."; whosent.hidden = false;
   });
 
   // a staff member typing an update
