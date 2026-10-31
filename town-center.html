@@ -216,6 +216,8 @@ img { display: block; max-width: 100% }
 .who-form input:focus, .who-form textarea:focus { border-color: #e7c27a }
 .who-form textarea { min-height: 130px; resize: vertical }
 .who-form ::placeholder { color: #7f9286 }
+.who-form { position: relative }
+.who-form .send:disabled { opacity: .7; cursor: default }
 .who-form .send { justify-self: start; border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; font: 600 16px var(--body); padding: 13px 22px; cursor: pointer }
 .who-form .sent { font-size: 14px; color: #cfe3c8 }
 @media (max-width: 560px) { .who-form .two-f { grid-template-columns: 1fr } }
@@ -559,10 +561,11 @@ img { display: block; max-width: 100% }
   <form class="who-form rise" id="whoform">
     <h3>Who runs what?</h3>
     <p>Give us a quick picture of who uses which software. Some of it may be replaced by tools built into Town Center, and save you the subscription.</p>
-    <div class="two-f"><label>Your name<input name="name" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
+    <div class="two-f"><label>Your name<input name="person" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
     <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb messages: Jamie"></textarea></label>
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
     <button class="send" type="submit">Send to Jordan</button>
-    <span class="sent" id="whosent" hidden>Your email app should open with the note ready. Press send there.</span>
+    <span class="sent" id="whosent" hidden></span>
   </form>
 </div></section>
 <footer class="foot">Stay in Bloomfield · Town Center · A preview for Olde Bloomfield Operations</footer>
@@ -620,13 +623,25 @@ img { display: block; max-width: 100% }
     usesk.textContent = n ? `${n} connected. We'll plug ${n === 1 ? "it" : "them"} into Town Center.` : "Tap what you use today.";
   });
 
-  // who runs what: builds an email to Jordan with the tapped tools and their notes; nothing sends until they press send in their own app
-  document.getElementById("whoform").addEventListener("submit", e => {
+  // who runs what: sent straight to Jordan through FormSubmit; if that fails, their email app opens with the note ready
+  const whoform = document.getElementById("whoform"), whosent = document.getElementById("whosent"), sendb = whoform.querySelector(".send");
+  whoform.addEventListener("submit", async e => {
     e.preventDefault();
-    const f = e.target, picked = [...uses.querySelectorAll('[aria-pressed="true"]')].map(b => b.textContent);
-    const body = [`Name: ${f.name.value.trim()}`, `Role: ${f.role.value.trim()}`, `Tools we use: ${picked.join(", ") || "(none tapped)"}`, "", "Who runs what:", f.who.value.trim()].join("\n");
-    location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
-    document.getElementById("whosent").hidden = false;
+    if (whoform._honey.value) return;
+    const picked = [...uses.querySelectorAll('[aria-pressed="true"]')].map(b => b.textContent).join(", ") || "(none tapped)";
+    const msg = { Name: whoform.person.value.trim(), Role: whoform.role.value.trim(), "Tools we use": picked, "Who runs what": whoform.who.value.trim() };
+    if (!msg["Who runs what"] && !msg.Name) { whoform.who.focus(); return; }
+    sendb.disabled = true; sendb.textContent = "Sending…";
+    try {
+      const r = await fetch("https://formsubmit.co/ajax/jordan@jgoco.me", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ ...msg, _subject: "Town Center: who runs what", _template: "table" }) });
+      if (!r.ok) throw new Error(r.status);
+      whosent.textContent = "Sent. Jordan will be in touch."; whosent.hidden = false; sendb.textContent = "Sent"; whoform.reset();
+    } catch {
+      const body = Object.entries(msg).map(([k, v]) => `${k}: ${v}`).join("\n");
+      location.href = `mailto:jordan@jgoco.me?subject=${encodeURIComponent("Town Center: who runs what")}&body=${encodeURIComponent(body)}`;
+      whosent.textContent = "Your email app should open with the note ready. Press send there."; whosent.hidden = false;
+      sendb.disabled = false; sendb.textContent = "Send to Jordan";
+    }
   });
 
   // a staff member typing an update
