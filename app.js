@@ -638,7 +638,7 @@
   function themeStyle(t) { return `--s-bg:${t.bg};--s-ink:${t.ink};--s-accent:${t.accent};--s-soft:${t.soft};--s-display:${t.display};--s-head:${t.head};--s-headink:${t.headInk}`; }
   function siteView(id) {
     const b = D.biz[id], br = B[id], t = b.theme;
-    const nav = ["About", b.menu || b.flavors || b.bourbon ? "Menu" : null, "Events", "Visit"].filter(Boolean);
+    const nav = ["About", b.bowling ? "Bowling" : null, b.menu || b.flavors || b.bourbon ? "Menu" : null, "Events", "Visit"].filter(Boolean);
     const evs = upcoming(4, id), nj = id === "nettie" && window.NJ;
     const actBtn = (a, cls) => a ? (a.go ? `<a class="btn ${cls}" href="#${a.go}">${esc(a.label)}</a>` : `<button class="btn ${cls}" data-book="${a.type}" data-brand="${id}">${esc(a.label)}</button>`) : "";
     return `<div class="site site-${id} ${id === "velvet" ? "dark" : ""}" style="${themeStyle(t)}">
@@ -654,6 +654,10 @@
       </div></section>
       ${nj ? window.NJ.strip() : ""}
       <section class="sect" data-sec="about"><div class="wrap"><div class="offer">${b.offers.map(o => `<div><h3>${esc(o.t)}</h3><p>${esc(o.p)}</p></div>`).join("")}</div></div></section>
+      ${b.bowling ? `<section class="bowl" data-sec="bowling"><img class="bowl-bg" src="${b.bowling.img}" alt=""><div class="wrap">
+        <img class="bowl-logo" src="${b.bowling.logo}" alt="Bowl at Ernie's Tavern">
+        <div class="bowl-txt"><h2>${esc(b.bowling.h)}</h2><p>${esc(b.bowling.p)}</p><span class="bowl-price">${esc(b.bowling.price)}</span>
+          <button class="btn solid bowl-btn" data-book="lane" data-brand="${id}">Reserve a lane</button></div></div></section>` : ""}
       ${b.menu ? `<section class="sect" data-sec="menu"><div class="wrap"><div class="sect-head"><h2>The menu</h2><span class="livepill">Updated from Town Center</span></div><div class="menu">${b.menu.map(s => `<h3>${esc(s.s)}</h3>${s.items.map(i => `<div class="mi"><b>${esc(i[0])}</b><span class="p">${esc(i[1])}</span>${i[2] ? `<span class="ds">${esc(i[2])}</span>` : ""}</div>`).join("")}`).join("")}</div></div></section>` : ""}
       ${b.flavors ? `<section class="sect" data-sec="menu"><div class="wrap"><div class="sect-head"><h2>Today's flavors</h2><span class="livepill">Updated from Town Center</span></div><div class="flavors">${b.flavors.map(f => `<span>${esc(f)}</span>`).join("")}</div></div></section>` : ""}
       ${b.bourbon ? `<section class="sect" data-sec="menu"><div class="wrap two"><div><div class="sect-head"><h2>From the bourbon bar</h2></div><div class="menu one">${b.bourbon.map(i => `<div class="mi"><b>${esc(i[0])}</b><span class="p">${esc(i[2])}</span><span class="ds">${esc(i[1])} proof</span></div>`).join("")}</div></div><div class="tasting-card"><img src="img/nettie/07-lucky-seven-tasting.jpg" alt=""><h3>Bourbon tastings</h3><p>A guided flight from a different distillery each month. Private tastings for groups.</p><button class="btn solid" data-book="tasting" data-brand="nettie">Book a tasting</button></div></div></section>` : ""}
@@ -835,7 +839,7 @@
     const venue = o === "wedding" || o === "holiday" || big ? "revival" : o === "bach" ? "merrifield" : o === "retreat" ? (mid ? "revival" : "velvet") : o === "birthday" ? "pinkhouse" : o === "girls" ? "merrifield" : null;
     const D1 = [], D2 = [], D3 = [];
     D1.push(["stays", "Check in", "Settle into your homes", "3 PM"]);
-    D1.push(["ernies", "Supper at Ernie's", "Table for " + n, "6:30 PM"]); D1.push(["doubledip", "A lane at the Double Dip", mid ? "Lanes held for the group" : "Lane held", "8 PM"]);
+    D1.push(["ernies", "Supper and a lane at Ernie's", mid ? "Lanes held for the group" : "Table for " + n, "6:30 PM"]);
     if (o === "wedding") { D1.splice(1, 1, ["velvet", "Rehearsal dinner at The Velvet Room", "Private bar and kitchen", "6:30 PM"]); D1.push(["doubledip", "Late sundaes at the Double Dip", "", "9 PM"]); }
     if (o === "retreat") D1.splice(1, 0, ["revival", "Welcome session at Revival Hall", "", "4 PM"]);
     if (o === "bach") D1.splice(1, 1, ["merrifield", "Private tea party at Miss Merrifield's", "The parlor to yourselves", "7 PM"]);
@@ -843,8 +847,8 @@
     if (days >= 2) {
       D2.push(["shortcrust", "Coffee and pastries at Shortcrust", "", "9 AM"]);
       if (o === "wedding") { D2.push(["pinkhouse", "Bridal tea at The Old Pink House", "", "11 AM"]); D2.push(["revival", "Ceremony and reception at Revival Hall", n + " guests", "4 PM"]); D2.push(["rowdys", "After-party at Rowdy's", "", "10 PM"]); }
-      else if (o === "bach") { D2.push(["nettie", "Bourbon tasting with her name on the flight", "", "2 PM"]); D2.push(["ernies", "Ernie's with your own DJ or band", "Back room held", "7 PM"]); D2.push(["rowdys", "Line-dance lesson at Rowdy's", "", "10 PM"]); }
-      else if (o === "holiday") { D2.push(["revival", "Holiday dinner at Revival Hall", n + " guests", "6 PM"]); D2.push(["doubledip", "Bowling at the Double Dip", "", "8 PM"]); D2.push(["ernies", "A band at Ernie's", "", "9:30 PM"]); }
+      else if (o === "bach") { D2.push(["nettie", "Bourbon tasting with her name on the flight", "", "2 PM"]); D2.push(["ernies", "Ernie's with your own DJ or band", "Lanes held", "7 PM"]); D2.push(["rowdys", "Line-dance lesson at Rowdy's", "", "10 PM"]); }
+      else if (o === "holiday") { D2.push(["revival", "Holiday dinner at Revival Hall", n + " guests", "6 PM"]); D2.push(["ernies", "Bowling and a band", "", "9 PM"]); }
       else if (o === "retreat") { D2.push(["revival", "Meeting day at Revival Hall", n + " seats", "9 AM–4 PM"]); D2.push(["nettie", "Bourbon flight at Nettie Jarvis", "", "4:30 PM"]); D2.push(["velvet", "Team dinner in The Velvet Room", "", "7 PM"]); }
       else {
         D2.push(["merrifield", o === "girls" || o === "birthday" ? "Private tea at Miss Merrifield's" : "Afternoon tea at Miss Merrifield's", "", "12 PM"]);

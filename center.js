@@ -197,7 +197,7 @@
     },
 
     tickets() {
-      const T = [["Saturday Dance Night", "rowdys", "Sat, Nov 7", 15, 35, 142, 200], ["Hannah Wheeler & The Heartaches", "rowdys", "Sat, Nov 14", 20, 45, 188, 200], ["Fall Bourbon Flight", "nettie", "Sat, Nov 14", 45, 0, 22, 24], ["Christmas Tea", "merrifield", "Sat, Dec 12", 48, 0, 31, 40], ["Ugly Sweater Bowling", "doubledip", "Sat, Dec 19", 12, 0, 46, 80]];
+      const T = [["Saturday Dance Night", "rowdys", "Sat, Nov 7", 15, 35, 142, 200], ["Hannah Wheeler & The Heartaches", "rowdys", "Sat, Nov 14", 20, 45, 188, 200], ["Fall Bourbon Flight", "nettie", "Sat, Nov 14", 45, 0, 22, 24], ["Christmas Tea", "merrifield", "Sat, Dec 12", 48, 0, 31, 40], ["Ugly Sweater Bowling", "ernies", "Sat, Dec 19", 12, 0, 46, 80]];
       return `<div class="hub-hero"><h1>Tickets & check-in</h1><p class="sub">Sell tickets to any event. Money goes straight to your own Square or Stripe account. Every ticket gets a QR code, and the door staff check people in from a phone.</p></div>
       <div class="hgrid">
         <div class="pane span3 kpi"><b>429</b><span>Tickets sold this month</span></div>
@@ -224,7 +224,7 @@
           <button class="scanbtn" id="scanbtn">Scan next ticket</button></div></div>
         <div class="pane span12"><h3>Texts to every guest, sent for you</h3>
           <div class="tx-row">
-            <div class="tx-list">${[["Right after they buy", "Your tickets for Dance Night at Rowdy's. Show this QR code at the door: rowdys.co/t/0142", "On"], ["The day before", "See you tomorrow! Doors at 7, line-dance lesson at 7:30, band at 8. Free parking behind the saloon.", "On"], ["When doors open", "Doors are open at Rowdy's. Tonight: Hannah Wheeler & The Heartaches.", "On"], ["If anything changes", "One tap texts every ticket holder. Rain, a new start time, a sold-out show.", "Ready"], ["The morning after", "Thanks for coming out! Next up: Ugly Sweater Bowling at the Double Dip, Dec 19. Tickets: stayinbloomfield.com", "On"]].map(t => `<div class="hrow">${icon("chat")}<div><b>${t[0]}</b><div class="s">${esc(t[1])}</div></div><span class="pill ${t[2] === "On" ? "ok" : "warn"}">${t[2]}</span></div>`).join("")}
+            <div class="tx-list">${[["Right after they buy", "Your tickets for Dance Night at Rowdy's. Show this QR code at the door: rowdys.co/t/0142", "On"], ["The day before", "See you tomorrow! Doors at 7, line-dance lesson at 7:30, band at 8. Free parking behind the saloon.", "On"], ["When doors open", "Doors are open at Rowdy's. Tonight: Hannah Wheeler & The Heartaches.", "On"], ["If anything changes", "One tap texts every ticket holder. Rain, a new start time, a sold-out show.", "Ready"], ["The morning after", "Thanks for coming out! Next up: Ugly Sweater Bowling at Ernie's, Dec 19. Tickets: stayinbloomfield.com", "On"]].map(t => `<div class="hrow">${icon("chat")}<div><b>${t[0]}</b><div class="s">${esc(t[1])}</div></div><span class="pill ${t[2] === "On" ? "ok" : "warn"}">${t[2]}</span></div>`).join("")}
               <div class="row" style="margin-top:8px"><input class="hinput" id="blast" value="Heads up: tonight's show starts at 8:30 instead of 8. See you there!" style="flex:1;min-width:0"><button class="hbtn go" id="blastgo">Text all 142 guests</button></div></div>
             <div class="phone sm tx-phone"><div class="ph-top">Messages · Rowdy's</div><div class="sms tx-thread">
               <div class="b">Your tickets for Dance Night at Rowdy's, Sat Nov 7. Show this at the door:</div>
@@ -394,7 +394,7 @@
       return `<div class="hub-hero"><h1>Yelp & reviews</h1><p class="sub">Every review from Google, Yelp, Airbnb and Tripadvisor in one feed. Reply in a click. Push photos and events to Yelp from the same place.</p></div>
       <div class="hgrid">
         <div class="pane span7"><h3>New reviews</h3>
-          ${[["ernies", "Google", "★★★★★", "Best burger in Nelson County, and the neon alone is worth the drive."], ["stays", "Airbnb", "★★★★★", "We loved this cabin. Cozy vibes and retro touches galore!"], ["merrifield", "Yelp", "★★★★☆", "Lovely tea. Wish they were open Saturdays!"]].map(r => `<div class="hrow">${bubble(r[0], 28)}<div><b>${r[2]} · ${r[1]}</b><div class="s">${esc(r[3])}</div></div><button class="hbtn ai">Reply</button></div>`).join("")}</div>
+          ${[["ernies", "Google", "★★★★★", "Best burger in Nelson County and the bowling lanes are a hoot."], ["stays", "Airbnb", "★★★★★", "We loved this cabin. Cozy vibes and retro touches galore!"], ["merrifield", "Yelp", "★★★★☆", "Lovely tea. Wish they were open Saturdays!"]].map(r => `<div class="hrow">${bubble(r[0], 28)}<div><b>${r[2]} · ${r[1]}</b><div class="s">${esc(r[3])}</div></div><button class="hbtn ai">Reply</button></div>`).join("")}</div>
         <div class="pane span5"><h3>Yelp, from here</h3>
           ${[["Push new photos", "Pick from the shop's best shots"], ["Post this weekend's events", "Shows on each Yelp page"], ["Turn on reservations", "Yelp guests book into this inbox"], ["Boost an event", "Yelp ads for Christmas on Taylorsville Road"]].map(y => `<div class="hrow">${icon("star")}<div><b>${y[0]}</b><div class="s">${y[1]}</div></div><button class="hbtn">Go</button></div>`).join("")}</div>
       </div>`;
@@ -492,8 +492,8 @@
   const TODAY_REVIEWS = [
     { src: "Yelp", c: "#d32323", n: 4, when: "2 hr ago", b: "merrifield", who: "Amanda K., Louisville", t: "The scones and the pink parlor are a dream. Only wish they were open on Saturdays too!",
       reply: "Thank you, Amanda! We're so glad you loved the parlor. Good news: we're adding Saturday seatings for Christmas Tea on December 12. We'd love to save you a table." },
-    { src: "Google", c: "#4285f4", n: 5, when: "Yesterday", b: "ernies", who: "Travis M.", t: "Best burger in Nelson County, cold beer, and the neon alone is worth the drive.",
-      reply: "Thanks, Travis! The neon says hello. Come back Friday for live music at eight; we'll save you a seat at the bar." },
+    { src: "Google", c: "#4285f4", n: 5, when: "Yesterday", b: "ernies", who: "Travis M.", t: "Best burger in Nelson County, cold beer, and the old bowling lanes are a hoot. The neon alone is worth the drive.",
+      reply: "Thanks, Travis! The lanes and the neon say hello. Come back Friday for live music at eight; we'll hold a lane for you." },
     { src: "Airbnb", c: "#ff5a5f", n: 5, when: "Yesterday", b: "stays", who: "Carrie, Cincinnati", t: "We loved this cabin. The charm and attention to detail was amazing. Cozy vibes, great amenities and retro touches galore!",
       reply: "Carrie, thank you for taking such good care of Boone's Cabin. Come back in the spring when the pond is at its prettiest." },
   ];
@@ -790,7 +790,7 @@
   function printedMenu(k) {
     k = k || "ernies";
     const z = D.biz[k], M = MENU_DATA[k]();
-    const foot = { ernies: ["Burgers, bourbon and bands", "Live music four nights a week"], doubledip: ["Look for the big neon cone", "Vintage bowling · $6.50 a game"], merrifield: ["Wednesdays & Thursdays, 12 to 4", "Reservations (502) 252-9647"] }[k];
+    const foot = { ernies: ["Vintage bowling · $6.50 a game", "Live music four nights a week"], doubledip: ["Look for the big neon cone", "Parties welcome"], merrifield: ["Wednesdays & Thursdays, 12 to 4", "Reservations (502) 252-9647"] }[k];
     return `<div class="pm-head" style="background:${z.theme.head}"><img src="${z.logo}" alt="${esc(B[k].name)}"><span>${esc(z.addr)} · Bloomfield, Kentucky</span></div>
       <div class="pm-body">${M.map(s => `<section><h5>${esc(s.s)}</h5>${s.items.map(i => `<div class="pm-i"><b>${esc(i[0])}</b><i></i><span>${i[1] ? "$" + esc(i[1]) : ""}</span>${i[2] ? `<em>${esc(i[2])}</em>` : ""}</div>`).join("")}</section>`).join("")}</div>
       <div class="pm-foot" style="background:${z.theme.accent}"><span>${foot[0]}</span><span>${foot[1]}</span></div>`;
