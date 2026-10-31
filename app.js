@@ -157,6 +157,7 @@
     const y = soft ? scrollY : 0;
     mapApi = null; clearInterval(heroTimer);
     document.body.classList.toggle("welcome", r.v === "welcome");
+    if (r.v !== "welcome") fadeAudio(0.8);
     if (r.v === "welcome") { addr(""); v.innerHTML = welcomeView(); afterWelcome(); }
     else if (r.v === "town") { addr("stayinbloomfield.com", "The town's home"); v.innerHTML = townView(); afterTown(); if (tourNext) { tourNext = false; showTour(); } }
     else if (r.v === "calendar") { addr("stayinbloomfield.com/calendar", "One calendar for the whole town"); v.innerHTML = calendarView(); afterCalendar(); }
@@ -192,14 +193,16 @@
         <div class="wh-logo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div>
         <div class="wh-cap"><span class="eyebrow"></span><h2></h2><img alt=""></div>
         <div class="wh-end"><div class="wh-endlogo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div><div class="wh-endtext"><h1>A new home for the town.</h1></div></div>
-        <button class="wh-skip" data-skip>Skip</button>
+        <div class="wh-start"><div class="wh-startlogo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div>
+          <button class="wh-play" data-play aria-label="Play with sound"><svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button><span class="wh-playhint">Press play · sound on</span></div>
+        <button class="wh-skip" data-skip>Skip</button><button class="wh-mute" data-mute aria-label="Mute"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></button>
         <div class="wh-bar"><i></i></div>
       </section>
       <section class="wel-sect"><div class="wrap"><span class="eyebrow">What visitors will see</span><h2>The website, at a glance.</h2>
         <div class="screens">${SCREENS.map(x => `<button class="screen" data-tour-to="${x[0]}"><div class="bar"><i></i><i></i><i></i><span>stayinbloomfield.com</span></div><div class="shot"><img src="${x[2]}" alt=""><b>${esc(x[3])}</b></div><span class="cap">${esc(x[1])}</span></button>`).join("")}</div></div></section>
       <section class="wel-sect domains"><div class="wrap"><span class="eyebrow">One family of websites</span><h2>Every business keeps its own web address.</h2>
         <p class="wel-p">Each one lives inside the Stay in Bloomfield site, so visitors move from one to the next without noticing a seam.</p>
-        <div class="doms">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(k => `<div class="dom-logo">${markLogo(k, 20)}<small>${esc(B[k].url)}</small></div>`).join("")}</div></div></section>
+        <div class="doms">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(k => { const pl = pill(k); return `<a class="dom" href="#${k}" style="--bc:${pl.bg};--bi:${k === "pinkhouse" ? B[k].ink : "#fff6ea"}"><img src="${pl.src}" alt="${esc(B[k].name)}"><small>${esc(B[k].url)}</small></a>`; }).join("")}</div></div></section>
       <section class="wel-sect alt"><div class="wrap"><span class="eyebrow">And there's more</span><h2>We'd love to show you what else we can do.</h2>
         <div class="wel-more"><div><b>Town Center</b><p>A back office for every business: one inbox for bookings, one calendar, listings everywhere, emails, texts, press and tickets.</p></div><div><b>Brand</b><p>Logo ideas for the town, palettes, and a brand guide for every business.</p></div></div>
         <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting in the menu on the left.</p>
@@ -223,6 +226,18 @@
     ];
   }
   let heroRun = 0;
+  // the pitch's music: Kentucky Waltz, light under the opening (pitch link only, not for the live site)
+  let heroAudio = null, audioTick = null;
+  function rampAudio(to, secs, after) {
+    clearInterval(audioTick); if (!heroAudio) return;
+    const from = heroAudio.volume, steps = Math.max(1, Math.round(secs * 20)); let i = 0;
+    audioTick = setInterval(() => { i++; heroAudio.volume = Math.max(0, Math.min(1, from + (to - from) * i / steps)); if (i >= steps) { clearInterval(audioTick); after && after(); } }, 50);
+  }
+  function startAudio() {
+    if (!heroAudio) heroAudio = new Audio("img/audio/kentucky-waltz.mp3");
+    heroAudio.currentTime = 0; heroAudio.volume = 0; heroAudio.play().then(() => rampAudio(0.32, 1)).catch(() => {});
+  }
+  function fadeAudio(secs) { if (heroAudio && !heroAudio.paused) rampAudio(0, secs, () => heroAudio.pause()); }
   // the closing card sits on the painting, nothing else behind it
   // every place on the painting for the closing shot: brand logos on their buildings, the stays marked with a house
   function endSigns() {
@@ -245,7 +260,7 @@
     const run = ++heroRun, alive = () => run === heroRun && document.body.contains(wh);
     const vid = wh.querySelector(".wh-vid"), stage = wh.querySelector(".wh-stage"), cap = wh.querySelector(".wh-cap"), lines = [...wh.querySelectorAll(".wh-lines p")], bar = wh.querySelector(".wh-bar i");
     const scenes = heroScenes(), total = 14 + 3.4 + 3 + scenes.reduce((a, x) => a + x.t, 0);
-    const end = () => { if (!alive()) return; heroEnd(wh); bar.style.transition = "none"; bar.style.width = "100%"; };
+    const end = () => { if (!alive()) return; heroEnd(wh); fadeAudio(5); bar.style.transition = "none"; bar.style.width = "100%"; };
     wh.className = "wh at-video"; stage.innerHTML = ""; lines.forEach(l => l.classList.remove("on"));
     bar.style.transition = "none"; bar.style.width = "0"; requestAnimationFrame(() => { bar.style.transition = `width ${total}s linear`; bar.style.width = "100%"; });
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return end();
@@ -278,8 +293,12 @@
   function afterWelcome() {
     const wh = $("#wh");
     if (wh) {
-      wh.querySelector("[data-skip]").onclick = () => { heroRun++; heroEnd(wh); };
-      playHero();
+      wh.querySelector("[data-skip]").onclick = () => { heroRun++; heroEnd(wh); fadeAudio(1.5); };
+      // the pitch opens on a play button so the music can play (browsers only allow sound after a press)
+      wh.className = "wh at-start";
+      wh.querySelector(".wh-stage").innerHTML = `<div class="wh-scene on"><img class="kb" src="img/town/painted-dusk.jpg" alt=""></div>`;
+      wh.querySelector("[data-play]").onclick = () => { startAudio(); playHero(); };
+      wh.querySelector("[data-mute]").onclick = e => { if (!heroAudio) return; heroAudio.muted = !heroAudio.muted; e.currentTarget.classList.toggle("off", heroAudio.muted); };
     }
     document.querySelectorAll("[data-tour]").forEach(b => b.onclick = () => { tourNext = true; go("town"); });
     document.querySelectorAll("[data-tour-to]").forEach(b => b.onclick = () => { if (b.dataset.tourTo === "town") tourNext = true; go(b.dataset.tourTo); });
