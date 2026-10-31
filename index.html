@@ -2029,6 +2029,8 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 .wh-mweb { display: none }
 @media (max-aspect-ratio: 1/1) {
   .wh-scene.web .wh-browser, .wh-scene.web .wh-webcap, .wh-dhead { display: none }
+  /* stays: three wide photos stacked, not three thin strips */
+  .wh-collage { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr }
   /* packages: one card at a time, the full width of the phone */
   .wh-scene.web:has(.wh-cards) .wh-webcap { display: grid; top: calc(76px + env(safe-area-inset-top, 0px)); padding: 0 22px }
   .wh-scene.web:has(.wh-cards) .wh-webcap h2 { font-size: 28px }
@@ -2113,12 +2115,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793463128"></script>
-<script src="stays.data.js?v=1793463128"></script>
-<script src="map.js?v=1793463128"></script>
-<script src="app.js?v=1793463128"></script>
-<script src="brand.js?v=1793463128"></script>
-<script src="shop.js?v=1793463128"></script>
-<script src="center.js?v=1793463128"></script>
-<script src="notes.js?v=1793463128"></script>
+<script src="data.js?v=1793463249"></script>
+<script src="stays.data.js?v=1793463249"></script>
+<script src="map.js?v=1793463249"></script>
+<script src="app.js?v=1793463249"></script>
+<script src="brand.js?v=1793463249"></script>
+<script src="shop.js?v=1793463249"></script>
+<script src="center.js?v=1793463249"></script>
+<script src="notes.js?v=1793463249"></script>
 </body></html>
