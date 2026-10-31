@@ -1818,7 +1818,13 @@ body.rail .justyou { display: none }
 
 .wh-scene.title { align-content: center; gap: 34px }
 .wh-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 22px 38px; max-width: min(1100px, 90vw) }
-.wh-logos img { height: clamp(26px, 3.4vw, 44px); width: auto; max-width: 240px; opacity: 0; animation: rise .6s ease both; animation-delay: calc(.4s + var(--i) * .12s); filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)) }
+.wh-logos > span { position: relative; display: block; opacity: 0; animation: rise .6s ease both; animation-delay: calc(.4s + var(--i) * .12s) }
+.wh-logos img { display: block; height: clamp(26px, 3.4vw, 44px); width: auto; max-width: 240px }
+/* the logo's shape, filled with its brand color */
+.wh-logos .tint img { visibility: hidden }
+.wh-logos .tint::after { content: ""; position: absolute; inset: 0; background: var(--c); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat }
+.wh-scene.title:has(.wh-logos) { background: radial-gradient(circle at 50% 40%, #fbf7ef, #ece3d2) }
+.wh-scene.title:has(.wh-logos) h2 { color: #2a1710 }
 .doms .dom-logo { display: grid; justify-items: start; gap: 8px } .doms .dom-logo small { color: #8a7a66; font-size: 13px }
 
 /* closing shot: the whole painted town, every logo on its building, the stays marked */
@@ -1895,6 +1901,12 @@ html.cap .nbtn { display: none }
 .wh-mute { position: absolute; right: 86px; top: 18px; width: 34px; height: 32px; display: grid; place-items: center; background: rgba(20,10,5,.45); color: #fff6ea; border: 1px solid rgba(255,246,234,.35); border-radius: 20px; backdrop-filter: blur(6px); cursor: pointer; z-index: 5 }
 .wh-mute.off .wave { display: none } .wh-mute.off { opacity: .7 }
 .wh.at-end .wh-mute { opacity: 0; pointer-events: none }
+/* the end frame: a quiet cue to keep going, with a slow drifting arrow */
+.wh-more { position: absolute; left: 50%; bottom: clamp(26px, 6vh, 56px); transform: translateX(-50%); display: grid; justify-items: center; gap: 12px; border: 0; background: none; cursor: pointer; font: 600 clamp(14px, 1.25vw, 17px) var(--sc); letter-spacing: .24em; text-transform: lowercase; color: #e7c27a; opacity: 0; transition: opacity 1s 1.6s }
+.wh.at-end .wh-more { opacity: 1 }
+.wh-more svg { width: 46px; height: 46px; padding: 11px; box-sizing: border-box; border: 1px solid rgba(231,194,122,.6); border-radius: 50%; fill: none; stroke: #f4efe6; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; animation: moredrift 2.2s ease-in-out infinite }
+.wh-more:hover svg { stroke: #e7c27a; border-color: #e7c27a }
+@keyframes moredrift { 0%, 100% { transform: translateY(0); opacity: .55 } 50% { transform: translateY(7px); opacity: 1 } }
 
 /* what visitors will see: bigger captions, titles and address bars */
 .screens { gap: 26px }
@@ -2115,12 +2127,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793463249"></script>
-<script src="stays.data.js?v=1793463249"></script>
-<script src="map.js?v=1793463249"></script>
-<script src="app.js?v=1793463249"></script>
-<script src="brand.js?v=1793463249"></script>
-<script src="shop.js?v=1793463249"></script>
-<script src="center.js?v=1793463249"></script>
-<script src="notes.js?v=1793463249"></script>
+<script src="data.js?v=1793463440"></script>
+<script src="stays.data.js?v=1793463440"></script>
+<script src="map.js?v=1793463440"></script>
+<script src="app.js?v=1793463440"></script>
+<script src="brand.js?v=1793463440"></script>
+<script src="shop.js?v=1793463440"></script>
+<script src="center.js?v=1793463440"></script>
+<script src="notes.js?v=1793463440"></script>
 </body></html>
