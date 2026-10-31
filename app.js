@@ -106,11 +106,35 @@
     if (D.biz[h]) return { v: "site", id: h, key: h };
     return { v: h, key: h };
   }
+  // the header: logo, the town's pages, Our places (a dropdown of every business), Shop, and Brand / Town Center for the owner
+  const HD_LINKS = [["town", "Town"], ["calendar", "Calendar"], ["plan", "Plan a weekend"], ["stays", "Stay"]];
+  const HD_FOR = [["brand", "Brand"], ["center", "Town Center"]];
+  const CHEV = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>`;
+  function placeTiles() {
+    return `<div class="pd-grid">${TOP.map(([k]) => { const pl = pill(k), z = D.biz[k]; return `<a class="pd-item" href="#${k}" style="--bc:${pl.bg};--bi:${k === "pinkhouse" ? B[k].ink : "#fff6ea"}"><img src="${pl.src}" alt="${esc(B[k].name)}"><span>${esc(z ? z.kind : "")}</span></a>`; }).join("")}</div>`;
+  }
+  function renderHeader(cur) {
+    const logo = $("#hd-logo"); if (logo && !logo.innerHTML && APP.logo) logo.innerHTML = APP.logo("site", "#3a1d14", "#9c5a26");
+    const isPlace = !!D.biz[cur];
+    $("#hd-links").innerHTML = HD_LINKS.map(([k, t]) => `<a href="#${k}" class="${cur === k ? "on" : ""}">${t}</a>`).join("")
+      + `<button type="button" id="places-btn" class="${isPlace ? "on" : ""}" aria-expanded="false">Our places ${CHEV}</button><a href="#shop" class="${cur === "shop" ? "on" : ""}">Shop</a>`;
+    $("#hd-right").innerHTML = HD_FOR.map(([k, t]) => `<a href="#${k}" class="${cur === k ? "on" : ""}">${t}<em>Just for you</em></a>`).join("");
+    const dd = $("#places-dd"); dd.innerHTML = placeTiles(); dd.hidden = true;
+    $("#places-btn").onclick = e => { e.stopPropagation(); dd.hidden = !dd.hidden; e.currentTarget.setAttribute("aria-expanded", String(!dd.hidden)); };
+    const m = $("#mnav"); m.hidden = true;
+    m.innerHTML = `<div class="mnav-top">${APP.logo ? APP.logo("site", "#3a1d14", "#9c5a26") : ""}<button type="button" data-mclose aria-label="Close menu">×</button></div>
+      <div class="mnav-links">${HD_LINKS.concat([["shop", "Shop"]]).map(([k, t]) => `<a href="#${k}" class="${cur === k ? "on" : ""}">${t}</a>`).join("")}</div>
+      <h4>Our places</h4>${placeTiles()}<h4>Just for you</h4><div class="mnav-for">${HD_FOR.map(([k, t]) => `<a href="#${k}">${t}<em>Just for you</em></a>`).join("")}</div>`;
+    m.querySelector("[data-mclose]").onclick = () => { m.hidden = true; document.body.style.overflow = ""; };
+    m.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { m.hidden = true; document.body.style.overflow = ""; }));
+  }
+  document.addEventListener("click", e => { const dd = $("#places-dd"); if (dd && !dd.hidden && !e.target.closest("#places-dd, #places-btn")) { dd.hidden = true; const b = $("#places-btn"); b && b.setAttribute("aria-expanded", "false"); } });
   function go(h) { if (location.hash.slice(1) === h) render(); else location.hash = h; }
   function tabs() {
     const r = route(), cur = r.v === "site" ? r.id : r.v === "stay" ? "stays" : r.v;
     const logo = $("#lnav-logo");
     if (logo && !logo.innerHTML && APP.logo) logo.innerHTML = `<span class="full">${APP.logo("site", "#f4efe6", "#e7c27a")}</span><span class="mini">${bubble("town", 46)}</span>`;
+    renderHeader(cur);
     $("#lnav-links").innerHTML = LEFT.map(t => t[0] === "gap" ? `<span class="gap"></span>` : `<a href="#${t[0]}" class="${t[3] || ""} ${cur === t[0] ? "on" : ""}" title="${t[1]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${t[2]}"/></svg><span>${t[1]}${t[0] === "brand" || t[0] === "center" ? `<em class="justyou">Just for you</em>` : ""}</span></a>`).join("");
     $("#tabs").innerHTML = TOP.map(t => t[2] ? `<a href="#${t[0]}" class="${t[2]} ${cur === t[0] ? "on" : ""}">${t[1]}</a>` : `<a href="#${t[0]}" class="logo-tab ${cur === t[0] ? "on" : ""}" data-nk="${t[0]}" aria-label="${esc(t[1])}">${markLogo(t[0], 16)}</a>`).join("");
     $("#shop-link").classList.toggle("on", cur === "shop");
@@ -142,6 +166,7 @@
 
   document.addEventListener("click", e => {
     if (e.target.closest("#menu-btn")) {
+      const m = $("#mnav"); if (m) { m.hidden = false; document.body.style.overflow = "hidden"; return; }
       document.body.classList.add("lnav-open");
       const sc = document.createElement("div"); sc.className = "lnav-scrim"; sc.onclick = () => { document.body.classList.remove("lnav-open"); sc.remove(); }; document.body.appendChild(sc);
     }
@@ -207,8 +232,8 @@
         <div class="doms">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(k => { const pl = pill(k); return `<a class="dom" href="#${k}" style="--bc:${pl.bg};--bi:${k === "pinkhouse" ? B[k].ink : "#fff6ea"}"><img src="${pl.src}" alt="${esc(B[k].name)}"><small>${esc(B[k].url)}</small></a>`; }).join("")}</div></div></section>
       <section class="wel-sect alt"><div class="wrap"><span class="eyebrow">And there's more</span><h2>We'd love to show you what else we can do.</h2>
         <div class="wel-more"><div><b>Town Center</b><p>A back office for every business: one inbox for bookings, one calendar, listings everywhere, emails, texts, press and tickets.</p></div><div><b>Brand</b><p>Logo ideas for the town, palettes, and a brand guide for every business.</p></div></div>
-        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting in the menu on the left.</p></div></section>
-      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Ready?</span><h2>Click in and explore the website.</h2><p>Start on the town site. Brand and Town Center are waiting in the menu on the left when you're done.</p>
+        <p class="wel-p">Take a look around the website first. When you're done, Brand and Town Center are waiting at the top right, marked just for you.</p></div></section>
+      <section class="wel-cta"><div class="wrap"><span class="eyebrow">Ready?</span><h2>Click in and explore the website.</h2><p>Start on the town site. Brand and Town Center are waiting at the top right when you're done.</p>
         <button class="cta-big" data-tour>Take a look around <span aria-hidden="true">→</span></button></div></section>
     </div>`;
   }
@@ -311,12 +336,13 @@
     const t = document.createElement("div"); t.className = "tour";
     t.innerHTML = `<div class="tour-card"><span class="eyebrow">Welcome</span><h3>Take a look around.</h3>
       <p>This is the website visitors will see. Click anything: the map, the calendar, the stays, every business.</p>
-      <p class="tour-hl"><b>When you're done, open Brand and Town Center</b> in the menu on the left to see what else we can do for you.</p>
+      <p class="tour-hl"><b>When you're done, open Brand and Town Center</b> at the top right (in the menu on a phone) to see what else we can do for you.</p>
       <p class="tour-note">Those two won't be in the menu visitors see.</p>
       <button class="btn solid" data-tour-ok>Start exploring</button></div><div class="tour-arrow" aria-hidden="true">←</div>`;
     document.body.appendChild(t);
-    const bl = document.querySelector('.lnav-links a[href="#brand"]'), cl = document.querySelector('.lnav-links a[href="#center"]'), ar = t.querySelector(".tour-arrow");
-    if (bl && cl && ar) { const a = bl.getBoundingClientRect(), c = cl.getBoundingClientRect(); ar.style.left = (a.right + 14) + "px"; ar.style.top = ((a.top + c.bottom) / 2 - 32) + "px"; }
+    const bl = document.querySelector('#hd-right a[href="#brand"]'), cl = document.querySelector('#hd-right a[href="#center"]'), ar = t.querySelector(".tour-arrow");
+    if (bl && cl && ar && bl.offsetParent) { const a = bl.getBoundingClientRect(), c = cl.getBoundingClientRect(); ar.textContent = "↑"; ar.style.left = ((a.left + c.right) / 2 - 16) + "px"; ar.style.top = (c.bottom + 10) + "px"; }
+    else if (ar) ar.style.display = "none";
     const done = () => { t.remove(); document.body.classList.remove("touring"); };
     t.querySelector("[data-tour-ok]").onclick = done;
     t.onclick = e => { if (e.target === t) done(); };

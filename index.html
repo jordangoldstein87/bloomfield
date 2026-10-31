@@ -1916,6 +1916,43 @@ html.cap .nbtn { display: none }
 .cta-big:hover { background: #f0d08c; transform: translateY(-2px) } .cta-big:hover span { transform: translateX(6px) }
 @keyframes ctapulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(231,194,122,.5), 0 20px 44px rgba(0,0,0,.35) } 60% { box-shadow: 0 0 0 18px rgba(231,194,122,0), 0 20px 44px rgba(0,0,0,.35) } }
 @media (prefers-reduced-motion: reduce) { .cta-big { animation: none } }
+
+/* the header: Stay in Bloomfield on top, the town's pages, Our places in a dropdown, Brand and Town Center on the right */
+.lnav, .lnav-scrim { display: none !important }
+.shell, body.rail .shell { margin-left: 0 !important }
+.pbar.hd { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; background: #f6efe3; color: #3a1d14; border-bottom: 1px solid #e3d6bf; backdrop-filter: none }
+.pbar.hd .pbar-in { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); min-height: 68px; padding-inline: clamp(16px, 3vw, 40px) }
+.hd-logo { flex: none; display: block; line-height: 0 } .hd-logo svg { width: 150px; height: auto }
+.hd-links { display: flex; align-items: center; gap: clamp(12px, 1.8vw, 26px); margin-left: auto }
+.hd-links a, .hd-links button, .hd-right a { font: 600 15px/1 var(--sc); letter-spacing: .14em; text-transform: lowercase; color: #3a1d14; text-decoration: none; background: none; border: 0; padding: 8px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap }
+.hd-links a:hover, .hd-links button:hover, .hd-right a:hover { color: #9c5a26 }
+.hd-links a.on, .hd-right a.on { color: #9c5a26; box-shadow: inset 0 -2px 0 #c9a96a }
+.hd-links button svg { transition: transform .2s } .hd-links button[aria-expanded="true"] svg { transform: rotate(180deg) }
+.hd-right { display: flex; align-items: center; gap: 18px; padding-left: clamp(12px, 1.6vw, 22px); border-left: 1px solid #e3d6bf }
+.hd-right a { flex-direction: column; align-items: flex-start; gap: 4px }
+.hd-right em { font: 700 9px/1 var(--body); font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: #2a1710; background: #e7c27a; padding: 3px 6px; border-radius: 10px }
+.pbar.hd .menu-btn { display: none; margin-left: auto; color: #3a1d14; background: none; border: 0; padding: 8px }
+.places-dd { position: absolute; left: 0; right: 0; top: 100%; background: #fffaf2; border-bottom: 1px solid #e3d6bf; box-shadow: 0 24px 50px rgba(40,24,12,.18); padding: 26px clamp(16px, 3vw, 40px) 30px }
+.places-dd[hidden] { display: none }
+.places-dd .pd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1200px; margin: 0 auto }
+.pd-item { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: 12px; background: var(--bc); text-decoration: none; transition: transform .2s; min-height: 108px }
+.pd-item:hover { transform: translateY(-3px) }
+.pd-item img { height: 26px; width: auto; max-width: 90%; object-fit: contain }
+.pd-item span { font: 600 12px/1.3 var(--sc); letter-spacing: .1em; text-transform: lowercase; color: var(--bi); opacity: .9 }
+/* phones: the logo and a menu button; the menu opens full screen */
+.mnav { position: fixed; inset: 0; z-index: 70; background: #f6efe3; overflow-y: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) 20px calc(30px + env(safe-area-inset-bottom, 0px)) }
+.mnav[hidden] { display: none }
+.mnav-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px } .mnav-top svg { width: 140px; height: auto } .mnav-top button { background: none; border: 0; font-size: 30px; line-height: 1; color: #3a1d14; padding: 4px 8px }
+.mnav-links { display: grid; gap: 2px; margin-bottom: 26px } .mnav-links a { font: 500 34px/1.2 var(--display); color: #2a1710; text-decoration: none; padding: 6px 0 } .mnav-links a.on { color: #9c5a26 }
+.mnav h4 { font: 600 13px var(--sc); letter-spacing: .18em; text-transform: lowercase; color: #9c5a26; margin: 0 0 12px }
+.mnav .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 26px } .mnav .pd-item { min-height: 92px; padding: 14px } .mnav .pd-item img { height: 22px }
+.mnav-for { display: grid; gap: 10px } .mnav-for a { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-radius: 12px; background: #2a1710; color: #fff6ea; text-decoration: none; font: 500 24px var(--display) } .mnav-for em { font: 700 10px var(--body); font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: #2a1710; background: #e7c27a; padding: 4px 8px; border-radius: 10px }
+@media (max-width: 1100px) { .hd-links, .hd-right { display: none } .pbar.hd .menu-btn { display: block } .pbar.hd .pbar-in { min-height: 60px } .hd-logo svg { width: 130px } }
+
+body.touring .pbar.hd { z-index: 80 }
+body.touring #hd-right a { background: rgba(231,194,122,.3); box-shadow: 0 0 0 2px #e7c27a, 0 0 22px rgba(231,194,122,.6); border-radius: 8px; padding: 8px 10px }
+body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
+@keyframes nudgeup { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
 </style>
 
 <aside class="lnav" id="lnav" aria-label="Stay in Bloomfield">
@@ -1924,12 +1961,15 @@ html.cap .nbtn { display: none }
   <div class="lnav-foot">Preview for Olde Bloomfield Operations</div>
 </aside>
 <div class="shell">
-  <header class="pbar"><div class="pbar-in">
-    <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <span class="pbar-label">Our places</span>
-    <nav class="tabs" id="tabs" aria-label="Business sites"></nav>
-    <a href="#shop" class="shop-link" id="shop-link"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>Shop</a>
-  </div></header>
+  <header class="pbar hd"><div class="pbar-in">
+    <a class="hd-logo" id="hd-logo" href="#town" aria-label="Stay in Bloomfield home"></a>
+    <nav class="hd-links" id="hd-links" aria-label="Stay in Bloomfield"></nav>
+    <div class="hd-right" id="hd-right"></div>
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="tabs" id="tabs" hidden></nav><a href="#shop" id="shop-link" hidden></a>
+  </div>
+  <div class="places-dd" id="places-dd" hidden></div></header>
+  <div class="mnav" id="mnav" hidden></div>
   <div id="addr"></div>
   <main id="view"></main>
 </div>
@@ -1941,12 +1981,12 @@ html.cap .nbtn { display: none }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793440748"></script>
-<script src="stays.data.js?v=1793440748"></script>
-<script src="map.js?v=1793440748"></script>
-<script src="app.js?v=1793440748"></script>
-<script src="brand.js?v=1793440748"></script>
-<script src="shop.js?v=1793440748"></script>
-<script src="center.js?v=1793440748"></script>
-<script src="notes.js?v=1793440748"></script>
+<script src="data.js?v=1793460494"></script>
+<script src="stays.data.js?v=1793460494"></script>
+<script src="map.js?v=1793460494"></script>
+<script src="app.js?v=1793460494"></script>
+<script src="brand.js?v=1793460494"></script>
+<script src="shop.js?v=1793460494"></script>
+<script src="center.js?v=1793460494"></script>
+<script src="notes.js?v=1793460494"></script>
 </body></html>
