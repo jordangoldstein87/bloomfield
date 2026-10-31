@@ -220,6 +220,7 @@ img { display: block; max-width: 100% }
 .who-form .send:disabled { opacity: .7; cursor: default }
 .who-form .send { justify-self: start; border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; font: 600 16px var(--body); padding: 13px 22px; cursor: pointer }
 .who-form .sent { font-size: 14px; color: #cfe3c8 }
+.who-form .quote { font-size: 15.5px; line-height: 1.55; color: #cfdccb; border-top: 1px solid #3e4d43; padding-top: 14px }
 @media (max-width: 560px) { .who-form .two-f { grid-template-columns: 1fr } }
 .foot { background: #161d19; color: #8fa596; text-align: center; padding: 30px 20px; font-size: 13px }
 
@@ -564,6 +565,7 @@ img { display: block; max-width: 100% }
     <div class="two-f"><label>Your name<input name="person" autocomplete="name"></label><label>Your role<input name="role" placeholder="Business management, HR, Ernie's manager"></label></div>
     <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb: Shelia"></textarea></label>
     <button class="send" type="submit">Send to Jordan</button>
+    <p class="quote">The more you tell us here, the better we can quote you. Town Center is a small upfront cost and hourly development, plus a couple of subscriptions for the AI that powers the analysis.</p>
     <span class="sent" id="whosent" hidden></span>
   </form>
 </div></section>
