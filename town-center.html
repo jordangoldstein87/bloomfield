@@ -21,7 +21,7 @@
 :root[data-theme="dark"] { --paper: #181613; --paper-2: #211e1a; --card: #24211d; --ink: #ece6da; --ink-2: #b4ab9b; --line: #3a352f; --gold: #d2ae63; --brick: #d0806c; --bourbon: #d39556; color-scheme: dark }
 
 * { box-sizing: border-box }
-html { scroll-behavior: smooth } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+html { scroll-behavior: smooth; overflow-x: clip } body { overflow-x: clip } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.05; margin: 0; text-wrap: balance }
 p { margin: 0 }
@@ -275,9 +275,10 @@ img { display: block; max-width: 100% }
 .domains { display: flex; flex-wrap: wrap; gap: 8px }
 .domains button { border: 1px solid var(--line); background: var(--card); border-radius: 20px; padding: 6px 12px; font: 500 13px var(--body); color: var(--ink-2); cursor: pointer }
 .domains button[aria-current="true"] { border-color: var(--bourbon); color: var(--ink) }
-.begin { text-align: center; display: grid; gap: 12px; justify-items: center; padding-top: 10px }
-.begin b { font: 500 clamp(30px, 3.4vw, 46px)/1.1 var(--display); max-width: 22ch }
-.begin span { color: var(--ink-2); font-size: 18px; max-width: 46ch }
+.begin { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 40px; align-items: end; border-top: 1px solid var(--line); padding-top: 28px; margin-bottom: clamp(-60px, -6vh, -30px) }
+.begin b { font: 500 clamp(28px, 3vw, 40px)/1.12 var(--display); max-width: 24ch }
+.begin span { color: var(--ink-2); font-size: 18px; max-width: 42ch; justify-self: end }
+@media (max-width: 860px) { .begin { grid-template-columns: 1fr } .begin span { justify-self: start } }
 @media (max-width: 980px) { .feat, .feat.rev { grid-template-columns: 1fr } .feat.rev .feat-t { order: 0 } }
 @media (max-width: 560px) { .slide .tag { left: 8px; bottom: 8px; padding: 6px 10px; gap: 8px } .slide .tag .lg img { --h: 18px } .slide .tag span { font-size: 11px } .slide img.shot { aspect-ratio: 4 / 3 } }
 
