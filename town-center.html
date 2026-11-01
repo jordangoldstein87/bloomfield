@@ -375,10 +375,18 @@ img { display: block; max-width: 100% }
 .who-form .call-pick input, .call-pick select { width: 100%; min-width: 0; font: 400 14px var(--body); color: var(--hub-ink); background: #12190f; border: 1px solid #44554a; border-radius: 8px; padding: 7px 8px; color-scheme: dark }
 .call-cta button { justify-self: start; border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; font: 600 14.5px var(--body); padding: 10px 16px; cursor: pointer }
 @media (max-width: 560px) { .call-pick { grid-template-columns: 1fr 1fr } }
-.voice-cta { border-color: #7b3b2c; background: linear-gradient(120deg, #2a1a14, #1a231e 70%) }
+.voice-cta { border: 1px solid #7b3b2c; background: linear-gradient(140deg, #2a1a14, #1a231e 70%); border-radius: 14px; padding: 20px; display: grid; gap: 14px }
+.vc-top { display: flex; align-items: center; gap: 14px }
+.vc-top div { display: grid; gap: 2px } .vc-top b { font: 500 26px/1.15 var(--display); color: var(--hub-ink) } .vc-top span:not(.vbloom) { font-size: 15px; color: #e7c27a }
 .vbloom { flex: none; width: 52px; height: 52px; border-radius: 50%; background: #7b3b2c; display: grid; place-items: center }
 .vbloom svg { width: 60%; height: 60% }
-.vbtn { border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; padding: 11px 18px; font: 600 15px var(--body); text-decoration: none }
+.who-form .vc-why { font: 400 16px/1.55 var(--body); color: #dfe6da; max-width: 62ch; margin: 0 }
+.vc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px }
+.vc-k { font: 600 12.5px var(--sc); letter-spacing: .16em; text-transform: lowercase; color: var(--hub-soft) }
+.voice-cta ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 7px }
+.voice-cta li { position: relative; padding-left: 16px; font-size: 14.5px; color: #cfdccb } .voice-cta li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #e7c27a }
+.vbtn { justify-self: start; border: 0; border-radius: 10px; background: #e7c27a; color: #1f2a24; padding: 12px 20px; font: 600 15px var(--body); text-decoration: none }
+@media (max-width: 640px) { .vc-cols { grid-template-columns: 1fr } }
 .vbtn:hover { background: #f0d394 }
 .team-cta { border-color: #4f7a52 } .team-cta button { background: #e7c27a; color: #1f2a24 }
 .deep { width: min(720px, calc(100vw - 24px)); max-height: calc(100svh - 24px); overflow-y: auto; overscroll-behavior: contain; border: 0; border-radius: 22px; padding: clamp(24px, 3.6vw, 40px); background: #f4efe6; color: #221e1a; box-shadow: 0 40px 100px rgba(0,0,0,.45); text-align: left }
@@ -683,7 +691,15 @@ img { display: block; max-width: 100% }
     <label>Who runs what<textarea name="who" placeholder="QuickBooks: our bookkeeper, for every business&#10;Register at Ernie's and the Double Dip: the bar managers&#10;Airbnb: Shelia"></textarea></label>
     <button class="send" type="submit">Send to Jordan</button>
     <p class="quote1">The more you tell us, the better we can quote you.</p>
-    <div class="deep-cta voice-cta"><span class="vbloom" aria-hidden="true"><svg viewBox="0 0 68 68"><g fill="none" stroke="#f4efe6" stroke-width="3"><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(0 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(72 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(144 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(216 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(288 34 36)"/></g><circle cx="34" cy="36" r="6" fill="#e7c27a"/></svg></span><div><b>Rather talk than type?</b><span>Skip the form and tell Hollis how the businesses run, out loud. It's the easiest way to give us the full picture. Only Jordan reads it.</span></div><a class="vbtn" href="interview.html" target="_blank" rel="noopener">Start a voice interview</a></div>
+    <div class="voice-cta">
+      <div class="vc-top"><span class="vbloom" aria-hidden="true"><svg viewBox="0 0 68 68"><g fill="none" stroke="#f4efe6" stroke-width="3"><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(0 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(72 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(144 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(216 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(288 34 36)"/></g><circle cx="34" cy="36" r="6" fill="#e7c27a"/></svg></span><div><b>Rather talk it through?</b><span>A 15-minute voice interview with Hollis, instead of the form.</span></div></div>
+      <p class="vc-why">You know how Bloomfield runs better than any form can ask. Talk it through with Hollis from your phone or computer, and we'll have the full picture to shape Town Center around your team and sharpen the quote.</p>
+      <div class="vc-cols">
+        <div><span class="vc-k">What Hollis asks</span><ul><li>Who runs what across the shops, venues and stays</li><li>The software, registers and vendors you use today</li><li>What eats your week, and what gets typed in twice</li><li>The numbers you wish you could see at a glance</li></ul></div>
+        <div><span class="vc-k">Quicker than a form</span><ul><li>No typing and no blank boxes. Just answer out loud.</li><li>He asks one question at a time and follows up where it matters.</li><li>Skip anything, stop anytime, pick up later from the same link.</li><li>You get a short summary at the end. Only Jordan reads the rest.</li></ul></div>
+      </div>
+      <a class="vbtn" href="interview.html" target="_blank" rel="noopener">Start a voice interview</a>
+    </div>
     <div class="deep-cta"><div><b>Want to go deeper?</b><span>Share your departments, pay, overhead and software, and we'll show you the hours Town Center gives back.</span></div><button type="button" id="deepopen">See how it works</button></div>
     <div class="deep-cta team-cta"><div><b>Ask your team</b><span>Send a survey to each team member to start understanding their daily tasks, the software they use and where their time goes.</span></div><button type="button" id="teamopen">Send surveys</button></div>
     <div class="call-cta"><div class="call-top"><b>Schedule a call</b><span>30 to 60 minutes on how the business runs and who's on the team. It sharpens the quote.</span></div>
