@@ -2090,6 +2090,15 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 .mu-book img { width: 100%; border-radius: 12px; box-shadow: 0 24px 60px rgba(0,0,0,.45) }
 @media (max-width: 900px) { .mu-book .wrap { grid-template-columns: 1fr } }
 
+/* the run of shops: one steady window; the page, logo and address change inside it */
+.wh-scene .mw-logo, .wh-scene .u { transition: opacity .28s ease }
+.wh-scene .mw-logo.swap, .wh-scene .u.swap { opacity: 0 }
+.wh-browser { isolation: isolate }
+.wh-browser > .pg, .wh-mweb .ms > .pg { position: absolute; inset: 0; overflow: hidden; background: #f4efe6; animation: pageslide .6s cubic-bezier(.2, .7, .2, 1) both }
+.wh-browser > .pg img { display: block; width: 100%; height: auto }
+@keyframes pageslide { from { transform: translateX(100%) } to { transform: none } }
+.wh-scene .kb.soft.next { position: absolute; inset: 0; animation: bgin .9s ease both }
+@keyframes bgin { from { opacity: 0 } to { opacity: 1 } }
 /* phones: each site as its own logo, its address, and a tall view of the site that scrolls slowly; no browser bar */
 .wh-mweb { display: none }
 @media (max-aspect-ratio: 1/1) {
@@ -2100,16 +2109,18 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
   .wh-scene.web:has(.wh-cards) .wh-webcap { display: grid; top: calc(76px + env(safe-area-inset-top, 0px)); padding: 0 22px }
   .wh-scene.web:has(.wh-cards) .wh-webcap h2 { font-size: 28px }
   .wh-cards { top: calc(184px + env(safe-area-inset-top, 0px)); bottom: 28px; display: block }
-  .wh-cards img { position: absolute; left: 50%; top: 0; width: min(86vw, 420px); max-height: 100%; object-fit: cover; object-position: top; transform: translateX(-50%); animation: pkthru 2.3s ease both; animation-delay: calc(.2s + var(--i) * 2.1s) }
-  .wh-cards img:last-child { animation-name: pklast; animation-duration: .7s }
-  @keyframes pkthru { 0% { opacity: 0; transform: translate(-40%, 0) } 15%, 85% { opacity: 1; transform: translate(-50%, 0) } 100% { opacity: 0; transform: translate(-60%, 0) } }
-  @keyframes pklast { from { opacity: 0; transform: translate(-40%, 0) } to { opacity: 1; transform: translate(-50%, 0) } }
+  .wh-cards img { position: absolute; left: 50%; top: 0; width: min(86vw, 420px); max-height: 100%; object-fit: cover; object-position: top; transform: translateX(-50%); opacity: 1; animation: pkthru 2.3s cubic-bezier(.4, 0, .2, 1) both; animation-delay: calc(.2s + var(--i) * 2.1s) }
+  .wh-cards img:last-child { animation-name: pklast; animation-duration: .6s }
+  .wh-cards { overflow: hidden }
+  @keyframes pkthru { 0% { transform: translate(60%, 0) } 12%, 88% { transform: translate(-50%, 0) } 100% { transform: translate(-160%, 0) } }
+  @keyframes pklast { from { transform: translate(60%, 0) } to { transform: translate(-50%, 0) } }
   .wh-mweb { display: grid; position: absolute; inset: 0; z-index: 2; grid-template-rows: auto auto 1fr; justify-items: center; gap: 10px; padding: calc(70px + env(safe-area-inset-top, 0px)) 22px 28px; animation: rise .7s ease both }
   .wh-mweb .mw-logo img { height: 46px; width: auto; max-width: 78vw; filter: drop-shadow(0 2px 10px rgba(0,0,0,.6)) }
   .wh-mweb .mw-logo h3 { font: 500 30px/1.1 var(--display); color: #fff6ea; text-align: center; max-width: 14ch }
   .wh-mweb .u { font: 600 13px var(--sc); letter-spacing: .18em; text-transform: lowercase; color: #e7c27a }
   .wh-mweb .ms { width: min(86vw, 420px); height: 100%; min-height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,246,234,.15); background: #f4efe6 }
-  .wh-mweb .ms img { width: 100%; height: auto; display: block; animation: mscroll 2.9s ease-in-out .3s both }
+  .wh-mweb .ms { position: relative }
+  .wh-mweb .ms img { width: 100%; height: auto; display: block; animation: mscroll 3.3s ease-in-out .3s both }
   @keyframes mscroll { from { transform: translateY(0) } to { transform: translateY(-22%) } }
   /* Town Center: four logos above the circle, four below, nothing off screen */
   .tc-ring { width: 100% !important; aspect-ratio: auto; transform: none; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 14px; justify-items: center; align-items: center; padding: 0 18px; position: static }
@@ -2180,12 +2191,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793571592"></script>
-<script src="stays.data.js?v=1793571592"></script>
-<script src="map.js?v=1793571592"></script>
-<script src="app.js?v=1793571592"></script>
-<script src="brand.js?v=1793571592"></script>
-<script src="shop.js?v=1793571592"></script>
-<script src="center.js?v=1793571592"></script>
-<script src="notes.js?v=1793571592"></script>
+<script src="data.js?v=1793573207"></script>
+<script src="stays.data.js?v=1793573207"></script>
+<script src="map.js?v=1793573207"></script>
+<script src="app.js?v=1793573207"></script>
+<script src="brand.js?v=1793573207"></script>
+<script src="shop.js?v=1793573207"></script>
+<script src="center.js?v=1793573207"></script>
+<script src="notes.js?v=1793573207"></script>
 </body></html>

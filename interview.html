@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head><meta name="robots" content="noindex, nofollow"><meta property="og:type" content="website"><meta property="og:url" content="https://jordangoldstein87.github.io/bloomfield/interview.html"><meta property="og:title" content="Town Center: talk with Hollis"><meta property="og:description" content="A short voice interview about how Olde Bloomfield runs."><meta property="og:image" content="https://jordangoldstein87.github.io/bloomfield/img/og-tc.jpg?v=2"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://jordangoldstein87.github.io/bloomfield/img/og-tc.jpg?v=2">
+<head><meta name="robots" content="noindex, nofollow"><meta property="og:type" content="website"><meta property="og:url" content="https://jordangoldstein87.github.io/bloomfield/interview.html"><meta property="og:title" content="Town Center: talk with Harlan"><meta property="og:description" content="A short voice interview about how Olde Bloomfield runs."><meta property="og:image" content="https://jordangoldstein87.github.io/bloomfield/img/og-tc.jpg?v=2"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://jordangoldstein87.github.io/bloomfield/img/og-tc.jpg?v=2">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Talk with Hollis</title>
+<title>Talk with Harlan</title>
 <meta name="description" content="A short voice interview about how Olde Bloomfield runs, for Town Center.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=Libre+Franklin:wght@400;500;600;700&display=swap">
 <style>
-/* The voice interview: Hollis, Town Center's interviewer, asks the owners how Olde Bloomfield runs.
+/* The voice interview: Harlan, Town Center's interviewer, asks the owners how Olde Bloomfield runs.
    The call runs through Jordan's onboarding script (jgoco tools/onboarding-sheet.gs), which keeps the
    ElevenLabs key; this page only holds the link token and shows the person their own short summary. */
 :root {
@@ -61,12 +61,12 @@ main { max-width: 640px; margin: 0 auto; padding: 34px 20px 70px; display: grid;
 <main>
   <section class="intro">
     <h1 id="hi">Tell us how <em>Bloomfield</em> runs.</h1>
-    <p>About 15 minutes, out loud, instead of a form. Hollis asks one question at a time, so Town Center fits how your team really works.</p>
+    <p>About 15 minutes, out loud, instead of a form. <span class="host">Harlan</span> asks one question at a time, so Town Center fits how your team really works.</p>
   </section>
 
   <section class="talk">
     <div class="face" id="face"><svg viewBox="0 0 68 68" aria-hidden="true"><g fill="none" stroke="#f4efe6" stroke-width="2.6"><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(0 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(72 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(144 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(216 34 36)"/><ellipse cx="34" cy="20" rx="9" ry="17" transform="rotate(288 34 36)"/></g><circle cx="34" cy="36" r="6" fill="#e7c27a"/></svg></div>
-    <h2 id="title">Talk with Hollis</h2>
+    <h2 id="title">Talk with Harlan</h2>
     <p id="say">He asks one question at a time. Skip anything you're not sure about.</p>
     <button class="go" id="go" type="button">Start the interview</button>
     <button class="stop" id="stop" type="button" hidden>End the call</button>
@@ -79,18 +79,18 @@ main { max-width: 640px; margin: 0 auto; padding: 34px 20px 70px; display: grid;
     <li><b>3</b>What eats your week, and what gets typed in twice</li>
     <li><b>4</b>The numbers you wish you could see at a glance</li>
   </ol>
-  <p class="private">Only Jordan reads your answers. You'll see a short summary at the end, and you can pick up where you left off from this same link.</p>
+  <p class="private">Your answers are only used to learn how the business operates. Only Jordan reads them. You'll see a short summary at the end, and you can pick up where you left off from this same link.</p>
 </main>
 
 <script type="module">
   // Same calls as jgoco.me/start.html: hello, start, summary. The link token picks the Bloomfield
-  // agent (Hollis, his voice and his questions); K is the owners' link once Jordan makes it.
+  // agent (its host's name comes back from hello, with its voice and questions); K is the owners' shared link.
   const SCRIPT = "https://script.google.com/macros/s/AKfycbyR6DNkxGjEpLr56VBQMB_9HDKmVgr3YnFGhqguR9_KTmnniUDI3KuyMF65BJBMWxmG/exec";
-  const K = "";
+  const K = "489aec02adda41d09416dd061c6d973eae1ba1cc";
   const k = new URLSearchParams(location.search).get("k") || K;
   const $ = (id) => document.getElementById(id);
   const go = $("go"), stop = $("stop"), face = $("face"), title = $("title"), say = $("say"), summary = $("summary");
-  let host = "Hollis", call = null, callId = null;
+  let host = "Harlan", call = null, callId = null;
 
   const ask = (action, extra = "") =>
     fetch(`${SCRIPT}?action=${action}&k=${encodeURIComponent(k)}${extra}`).then((r) => r.json());
@@ -101,7 +101,8 @@ main { max-width: 640px; margin: 0 auto; padding: 34px 20px 70px; display: grid;
   else ask("hello").then((r) => {
     if (!r.ok) return waiting();
     host = String(r.host || host).replace(/[<>&"]/g, "");
-    title.textContent = `Talk with ${host}`;
+    title.textContent = `Talk with ${host}`; document.title = `Talk with ${host}`;
+    document.querySelectorAll(".host").forEach(e => e.textContent = host);
     const first = String(r.name || "").trim().split(/\s+/)[0];
     if (first) $("hi").innerHTML = `Hi ${first.replace(/[<>&"]/g, "")}. Tell us how <em>Bloomfield</em> runs.`;
     if (r.returning) { go.textContent = "Pick up where we left off"; say.textContent = `${host} remembers what you covered last time.`; }
@@ -119,7 +120,7 @@ main { max-width: 640px; margin: 0 auto; padding: 34px 20px 70px; display: grid;
     const r = await ask("start").catch(() => ({ ok: false }));
     if (!r.ok) {
       go.disabled = false;
-      if (r.why === "setup" || r.why === "link") return waiting();
+      if (["setup", "link", "eleven"].includes(r.why)) return waiting();
       return show("We couldn't connect", r.why === "busy" ? "Too many tries for now. Try again in an hour." : "Try again in a minute.");
     }
     callId = r.conversationId;
