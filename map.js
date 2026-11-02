@@ -656,7 +656,7 @@
       }
     }
 
-    // Revival Hall: the 1880s Gothic church at 126 Taylorsville Rd
+    // Revival Hall: the 1880s church at 126 Taylorsville Rd
     {
       const p = SPECIAL.church, gr = new T.Group();
       const brick = new T.MeshStandardMaterial({ map: sideTex("#a2442c", false, 19), roughness: 0.95 });
