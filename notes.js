@@ -1,10 +1,11 @@
 /* Notes: one small button in the corner. Tap it, tap anything on the page, then
    "I love this", "Not this" or "Change this" with a note. Notes are shared and
-   come back to us; without the shared store they stay in this browser. */
+   come back to us; on the public site they go to Jordan through the onboarding script. */
 (function () {
   const APP = window.APP, esc = APP.esc;
   const $ = s => document.querySelector(s);
   let notes = [], open = false, picking = false, hl = null;
+  const NOTE_SCRIPT = "https://script.google.com/macros/s/AKfycbyR6DNkxGjEpLr56VBQMB_9HDKmVgr3YnFGhqguR9_KTmnniUDI3KuyMF65BJBMWxmG/exec", NOTE_KEY = "489aec02adda41d09416dd061c6d973eae1ba1cc";
   const VERD = { love: ["I love this", "love"], hate: ["Not this", "hate"], edit: ["Change this", "edit"] };
 
   function local() { try { return JSON.parse(localStorage.getItem("bf-notes") || "[]"); } catch (e) { return []; } }
@@ -28,6 +29,12 @@
       try { if (APP.user) { const id = await APP.user.id(); if (id) rec.by = id; } await APP.db.collection("notes").add(rec); APP.toast("Saved. Thank you."); return; }
       catch (e) { /* keep it locally instead */ }
     }
+    // on the public site there is no shared store, so the note goes to Jordan through the onboarding script
+    try {
+      const q = new URLSearchParams({ action: "note", k: NOTE_KEY, v: rec.verdict || "", t: (rec.target || "").slice(0, 90), n: (rec.note || "").slice(0, 1000), view: rec.view, u: location.href.slice(0, 300) });
+      const r = await fetch(NOTE_SCRIPT + "?" + q).then(x => x.json());
+      if (r && r.ok) { rec.sent = true; notes.unshift(rec); saveLocal(); count(); if (open) panel(); APP.toast("Sent to Jordan. Thank you."); return; }
+    } catch (e) { /* keep it locally instead */ }
     notes.unshift(rec); saveLocal(); count(); if (open) panel(); APP.toast("Saved in this browser.");
   }
 

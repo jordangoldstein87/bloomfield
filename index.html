@@ -1835,7 +1835,9 @@ body.rail .justyou { display: none }
 .wh.at-video .wh-lines { opacity: 1 }
 .wh:not(.at-video) .wh-lines { opacity: 0 }
 .wh.at-logo .wh-logo { opacity: 1 }
-.wh-shade { transition: background .9s } .wh.at-logo .wh-shade { background: radial-gradient(ellipse at 50% 50%, rgba(20,10,5,.55), rgba(20,10,5,.82)) }
+/* the dim behind the logo and the wash behind the signs are layers that fade, so nothing snaps between parts */
+.wh-shade::before, .wh-shade::after { content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity .9s }
+.wh-shade::after { background: radial-gradient(ellipse at 50% 50%, rgba(20,10,5,.55), rgba(20,10,5,.82)) } .wh.at-logo .wh-shade::after { opacity: 1 }
 .wh-logo svg { width: min(620px, 82vw) }
 .wh.at-end .wh-end { opacity: 1; pointer-events: auto }
 .wh.at-end .wh-cap, .wh.at-end .wh-skip { opacity: 0; pointer-events: none }
@@ -1871,7 +1873,7 @@ body.rail .justyou { display: none }
 .wh-signs .sg { position: absolute; display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: calc(var(--h) * 1cqh); padding: 0 calc(var(--h) * .55cqh); border-radius: 999px; background: var(--bc); box-shadow: 0 0 0 1px rgba(255,246,234,.22), 0 6px 20px rgba(10,5,2,.55), 0 0 26px rgba(255,200,120,.3); transform: translate(-50%, -50%) scale(.92); opacity: 0; transition: opacity .6s, transform .6s }
 .wh-signs .sg img { display: block; height: 58%; width: auto; max-width: none } .wh-signs .sg img.own { display: none }
 .wh.at-signs .wh-signs .sg { opacity: 1; transform: translate(-50%, -50%) scale(1); transition-delay: var(--d) }
-.wh.at-signs .wh-shade { background: radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(20,10,5,.35) 100%) }
+
 
 /* one grade over every shot: warm, a little faded, darker at the edges like the closing card */
 .wh-scene .kb { filter: contrast(1.1) saturate(1.2) brightness(1.03) sepia(.06) }
@@ -2074,7 +2076,7 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
   .wh-signs .sg { position: relative !important; left: auto !important; top: auto !important }
   .wh.at-signs .wh-signs .sg { transform: none !important }
   /* the logos in their own inks read on a cream wash, like the brand page */
-  .wh.at-signs .wh-shade { background: rgba(244,239,230,.88) }
+  .wh-shade::before { background: rgba(244,239,230,.88) } .wh.at-signs .wh-shade::before { opacity: 1 }
 }
 
 .wh-signs .sg.m-only { display: none }
@@ -2131,6 +2133,17 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 @keyframes bgin { from { opacity: 0 } to { opacity: 1 } }
 /* phones: each site as its own logo, its address, and a tall view of the site that scrolls slowly; no browser bar */
 .wh-mweb { display: none }
+/* desktop: the same site on a phone, standing beside the browser window */
+@media (min-aspect-ratio: 1001/1000) {
+  .wh-scene.web:has(.wh-mweb) .wh-browser.low { left: 45% }
+  .wh-mweb { display: block; position: absolute; left: calc(45% + min(64vw, 98vh) / 2 + 100px); top: 60%; height: 64vh; aspect-ratio: 9 / 19.5; transform: translate(-50%, -50%); z-index: 3; padding: 7px; box-sizing: border-box; background: #16100c; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(255,246,234,.18); animation: phonein .8s cubic-bezier(.2, .7, .2, 1) .25s both }
+  .wh-mweb .mw-logo, .wh-mweb .u { display: none }
+  .wh-mweb .ms { position: relative; height: 100%; overflow: hidden; border-radius: 27px; background: #f4efe6 }
+  .wh-mweb .ms img { width: 100%; height: auto; display: block; animation: dscroll 3.3s ease-in-out .5s both }
+  .wh-mweb .ms > .pg img { animation: none }
+  @keyframes dscroll { from { transform: translateY(0) } to { transform: translateY(-18%) } }
+  @keyframes phonein { from { opacity: 0; transform: translate(-30%, -46%) } to { opacity: 1; transform: translate(-50%, -50%) } }
+}
 @media (max-aspect-ratio: 1/1) {
   .wh-scene.web .wh-browser, .wh-scene.web .wh-webcap, .wh-dhead { display: none }
   /* stays: three wide photos stacked, not three thin strips */
@@ -2221,12 +2234,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793592241"></script>
-<script src="stays.data.js?v=1793592241"></script>
-<script src="map.js?v=1793592241"></script>
-<script src="app.js?v=1793592241"></script>
-<script src="brand.js?v=1793592241"></script>
-<script src="shop.js?v=1793592241"></script>
-<script src="center.js?v=1793592241"></script>
-<script src="notes.js?v=1793592241"></script>
+<script src="data.js?v=1793592888"></script>
+<script src="stays.data.js?v=1793592888"></script>
+<script src="map.js?v=1793592888"></script>
+<script src="app.js?v=1793592888"></script>
+<script src="brand.js?v=1793592888"></script>
+<script src="shop.js?v=1793592888"></script>
+<script src="center.js?v=1793592888"></script>
+<script src="notes.js?v=1793592888"></script>
 </body></html>
