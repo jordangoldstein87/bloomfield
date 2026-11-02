@@ -1951,6 +1951,16 @@ html.cap .nbtn { display: none }
 .wh-play { width: 104px; height: 104px; border-radius: 50%; border: 0; background: #e7c27a; color: #2a1710; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 0 10px rgba(231,194,122,.22), 0 18px 40px rgba(0,0,0,.45); transition: transform .2s, box-shadow .2s }
 .wh-play svg { margin-left: 6px } .wh-play:hover { transform: scale(1.06); box-shadow: 0 0 0 16px rgba(231,194,122,.2), 0 18px 40px rgba(0,0,0,.45) }
 .wh-playhint { font: 600 14px var(--sc); letter-spacing: .2em; text-transform: lowercase; color: #f3dfc2 }
+/* the pitch's controls, top right: back, pause, forward, sound, skip */
+.wh-ctls { position: absolute; right: 18px; top: 18px; z-index: 5; display: flex; gap: 8px; align-items: center }
+.wh-ctls .wh-skip, .wh-ctls .wh-mute { position: static }
+.wh-ctl { width: 34px; height: 32px; padding: 0; display: grid; place-items: center; background: rgba(20,10,5,.45); color: #fff6ea; border: 1px solid rgba(255,246,234,.35); border-radius: 20px; backdrop-filter: blur(6px); cursor: pointer; transition: background .2s }
+.wh-ctl:hover, .wh-mute:hover { background: rgba(20,10,5,.7) }
+.wh-pp .i-play, .wh-pp .i-replay { display: none }
+.wh[data-paused] .wh-pp .i-pause { display: none } .wh[data-paused] .wh-pp .i-play { display: block }
+.wh.at-end .wh-pp .i-play, .wh.at-end .wh-pp .i-pause { display: none } .wh.at-end .wh-pp .i-replay { display: block }
+.wh.at-start .wh-ctls, .wh.at-end .wh-fwd, .wh.at-end .wh-ctls .wh-mute, .wh.at-end .wh-ctls .wh-skip { display: none }
+.wh[data-paused] * { animation-play-state: paused !important }
 .wh-mute { position: absolute; right: 86px; top: 18px; width: 34px; height: 32px; display: grid; place-items: center; background: rgba(20,10,5,.45); color: #fff6ea; border: 1px solid rgba(255,246,234,.35); border-radius: 20px; backdrop-filter: blur(6px); cursor: pointer; z-index: 5 }
 .wh-mute.off .wave { display: none } .wh-mute.off { opacity: .7 }
 .wh.at-end .wh-mute { opacity: 0; pointer-events: none }
@@ -2191,12 +2201,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793573207"></script>
-<script src="stays.data.js?v=1793573207"></script>
-<script src="map.js?v=1793573207"></script>
-<script src="app.js?v=1793573207"></script>
-<script src="brand.js?v=1793573207"></script>
-<script src="shop.js?v=1793573207"></script>
-<script src="center.js?v=1793573207"></script>
-<script src="notes.js?v=1793573207"></script>
+<script src="data.js?v=1793591124"></script>
+<script src="stays.data.js?v=1793591124"></script>
+<script src="map.js?v=1793591124"></script>
+<script src="app.js?v=1793591124"></script>
+<script src="brand.js?v=1793591124"></script>
+<script src="shop.js?v=1793591124"></script>
+<script src="center.js?v=1793591124"></script>
+<script src="notes.js?v=1793591124"></script>
 </body></html>
