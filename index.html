@@ -1869,7 +1869,7 @@ body.rail .justyou { display: none }
 /* each logo sits in its brand color, the same pill as the menu bar */
 .wh-signs { container-type: size }
 .wh-signs .sg { position: absolute; display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: calc(var(--h) * 1cqh); padding: 0 calc(var(--h) * .55cqh); border-radius: 999px; background: var(--bc); box-shadow: 0 0 0 1px rgba(255,246,234,.22), 0 6px 20px rgba(10,5,2,.55), 0 0 26px rgba(255,200,120,.3); transform: translate(-50%, -50%) scale(.92); opacity: 0; transition: opacity .6s, transform .6s }
-.wh-signs .sg img { display: block; height: 58%; width: auto; max-width: none }
+.wh-signs .sg img { display: block; height: 58%; width: auto; max-width: none } .wh-signs .sg img.own { display: none }
 .wh.at-signs .wh-signs .sg { opacity: 1; transform: translate(-50%, -50%) scale(1); transition-delay: var(--d) }
 .wh.at-signs .wh-shade { background: radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(20,10,5,.35) 100%) }
 
@@ -2067,9 +2067,14 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 /* phones: the street shot crops too tight for signs on storefronts, so the logos line up in two columns over the dimmed street */
 @media (max-aspect-ratio: 1/1) {
   .wh-signs { left: 0; top: 0; width: 100%; height: 100%; transform: none; aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; align-content: center; justify-items: center; gap: 30px 16px; padding: 0 22px }
-  .wh-signs .sg { position: static !important; height: 50px; padding: 0 20px; max-width: 100%; transform: translateY(12px) !important }
+  .wh-signs .sg { position: static !important; height: 40px; padding: 0; max-width: 100%; background: none; box-shadow: none; transform: translateY(12px) !important }
+  .wh-signs .sg img { height: 100%; max-width: 100%; visibility: hidden }
+  .wh-signs .sg::after { content: ""; position: absolute; inset: 0; background: var(--c); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat }
+  .wh-signs .sg:has(.own) img:not(.own) { display: none } .wh-signs .sg:has(.own) img.own { display: block; visibility: visible } .wh-signs .sg:has(.own)::after { content: none }
+  .wh-signs .sg { position: relative !important; left: auto !important; top: auto !important }
   .wh.at-signs .wh-signs .sg { transform: none !important }
-  .wh.at-signs .wh-shade { background: rgba(20,10,5,.6) }
+  /* the logos in their own inks read on a cream wash, like the brand page */
+  .wh.at-signs .wh-shade { background: rgba(244,239,230,.88) }
 }
 
 .wh-signs .sg.m-only { display: none }
@@ -2216,12 +2221,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793592073"></script>
-<script src="stays.data.js?v=1793592073"></script>
-<script src="map.js?v=1793592073"></script>
-<script src="app.js?v=1793592073"></script>
-<script src="brand.js?v=1793592073"></script>
-<script src="shop.js?v=1793592073"></script>
-<script src="center.js?v=1793592073"></script>
-<script src="notes.js?v=1793592073"></script>
+<script src="data.js?v=1793592241"></script>
+<script src="stays.data.js?v=1793592241"></script>
+<script src="map.js?v=1793592241"></script>
+<script src="app.js?v=1793592241"></script>
+<script src="brand.js?v=1793592241"></script>
+<script src="shop.js?v=1793592241"></script>
+<script src="center.js?v=1793592241"></script>
+<script src="notes.js?v=1793592241"></script>
 </body></html>
