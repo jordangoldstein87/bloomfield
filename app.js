@@ -32,7 +32,7 @@
   }
   // the icon: each business's logo, simplified to a monogram in its own lettering (Velvet Room's real
   // monogram, Merrifield's teapot); the stays, the town and Revival Hall get simple drawn icons
-  const MARK_IMG = { revival: "img/revival/mark.png?v=1793591691", velvet: "img/velvet/logo-monogram-clear.png?v=1793591691", merrifield: "img/merryfield/teapot.png?v=1793591691" };
+  const MARK_IMG = { revival: "img/revival/mark.png?v=1793592073", velvet: "img/velvet/logo-monogram-clear.png?v=1793592073", merrifield: "img/merryfield/teapot.png?v=1793592073" };
   function markIcon(key, sz) {
     const b = B[key] || B.town;
     // the town's icon is the brand deck's bloom: cream petals, gold center, on brick
@@ -42,12 +42,12 @@
     return `<span class="bicon mono b-${key}" style="--bc:${b.c};--bi:${b.ink};--bs:${sz}px" title="${esc(b.name)}"><i style="font:${b.fst || "normal"} ${b.fw || 400} calc(${sz}px * ${b.scale || .46})/1 '${b.font}', Georgia, serif">${esc(b.mono)}</i></span>`;
   }
   // logo pill: the name-only logo on the brand's own color
-  const PILL = { nettie: ["img/nettie/logo-name.png?v=1793591691", "#1f3a2b"], ernies: ["img/ernies/logo-name.png?v=1793591691", "#003f21"], doubledip: ["img/doubledip/logo-pill.png?v=1793591691"], merrifield: ["img/merryfield/logo-name.png?v=1793591691", "#823f49"], pinkhouse: ["img/pinkhouse/logo-rose.png?v=1793591691", "#f0c2c8"], velvet: ["img/velvet/logo-pill.png?v=1793591691", "#5a1f2a"], rowdys: ["img/rowdys/logo-name.png?v=1793591691", "#4a2c17"], revival: ["img/revival/logo-pill.png?v=1793591691", "#a2442c"] };
+  const PILL = { nettie: ["img/nettie/logo-name.png?v=1793592073", "#1f3a2b"], ernies: ["img/ernies/logo-name.png?v=1793592073", "#003f21"], doubledip: ["img/doubledip/logo-pill.png?v=1793592073"], merrifield: ["img/merryfield/logo-name.png?v=1793592073", "#823f49"], pinkhouse: ["img/pinkhouse/logo-rose.png?v=1793592073", "#f0c2c8"], velvet: ["img/velvet/logo-pill.png?v=1793592073", "#5a1f2a"], rowdys: ["img/rowdys/logo-name.png?v=1793592073", "#4a2c17"], revival: ["img/revival/logo-pill.png?v=1793592073", "#a2442c"] };
   // each logo in its own brand color, for light backgrounds
   const LOGO_INK = { nettie: "#1f3a2b", ernies: "#003f21", merrifield: "#823f49", pinkhouse: "#b25466", velvet: "#5a1f2a", rowdys: "#4a2c17", revival: "#a2442c" };
-  const SIGN = { pinkhouse: "img/pinkhouse/logo-sign-pink.png?v=1793591691", doubledip: "img/doubledip/logo-sign-red.png?v=1793591691" };
+  const SIGN = { pinkhouse: "img/pinkhouse/logo-sign-pink.png?v=1793592073", doubledip: "img/doubledip/logo-sign-red.png?v=1793592073" };
   // town partners with a real logo of their own
-  const PLACE_SIGN = { pizza: "img/pizza/logo.png?v=1793591691" };
+  const PLACE_SIGN = { pizza: "img/pizza/logo.png?v=1793592073" };
   // plain labels on the map: shorter names, and a little house for the homes
   const PIN_NAME = { clayborn: "Clayborn House" }, PIN_HOME = ["clayborn", "depot", "boones", "allies"], PIN_AWAY = { boones: "5 min", allies: "5 min" };
   const HOME_SVG = `<svg class="pn-home" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>`;
@@ -208,27 +208,27 @@
   /* ---------- welcome: the short deck she lands on ---------- */
   let tourNext = false;
   const SCREENS = [
-    ["town", "The town's home", "img/town/town-2.jpg?v=1793591691", "Stay in Bloomfield", "stayinbloomfield.com"],
-    ["town", "A painted map of Taylorsville Road", "img/town/painted-dusk.jpg?v=1793591691", "Walk Taylorsville Road", "stayinbloomfield.com/map"],
-    ["calendar", "One calendar for the whole town", "img/ernies/06-lanes-and-dining.jpg?v=1793591691", "There's always something going on", "stayinbloomfield.com/calendar"],
-    ["plan", "Plan a weekend in three questions", "img/stays/50441349/05.jpg?v=1793591691", "Plan your Bloomfield weekend", "stayinbloomfield.com/plan"],
-    ["nettie", "A site for every business", "img/nettie/01-shop-interior.jpg?v=1793591691", "Nettie Jarvis Antiques", "nettie-jarvis.com"],
-    ["stay-boones", "Book the stays right on the site", "img/stays/49386618/01.jpg?v=1793591691", "Boone's Cabin", "stayinbloomfield.com/stay/boones-cabin"],
+    ["town", "The town's home", "img/town/town-2.jpg?v=1793592073", "Stay in Bloomfield", "stayinbloomfield.com"],
+    ["town", "A painted map of Taylorsville Road", "img/town/painted-dusk.jpg?v=1793592073", "Walk Taylorsville Road", "stayinbloomfield.com/map"],
+    ["calendar", "One calendar for the whole town", "img/ernies/06-lanes-and-dining.jpg?v=1793592073", "There's always something going on", "stayinbloomfield.com/calendar"],
+    ["plan", "Plan a weekend in three questions", "img/stays/50441349/05.jpg?v=1793592073", "Plan your Bloomfield weekend", "stayinbloomfield.com/plan"],
+    ["nettie", "A site for every business", "img/nettie/01-shop-interior.jpg?v=1793592073", "Nettie Jarvis Antiques", "nettie-jarvis.com"],
+    ["stay-boones", "Book the stays right on the site", "img/stays/49386618/01.jpg?v=1793592073", "Boone's Cabin", "stayinbloomfield.com/stay/boones-cabin"],
   ];
   function welcomeView() {
     return `<div class="wel">
       <section class="wh" id="wh">
         <video class="wh-vid" muted playsinline preload="auto" aria-hidden="true"></video>
         <div class="wh-stage" aria-hidden="true"></div><div class="wh-shade"></div>
-        <div class="wh-signs">${HERO_SIGNS.map(([k, x, y, h], i) => `<img src="${SIGN[k] === "img/doubledip/logo-sign-red.png?v=1793591691" ? pill(k).src : SIGN[k] || pill(k).src}" alt="" style="left:${x}%;top:${y}%;height:${h}%;--d:${i * .22}s">`).join("")}${["pinkhouse", "revival"].map((k, i) => `<img class="m-only" src="${SIGN[k] || pill(k).src}" alt="" style="--d:${(6 + i) * .22}s">`).join("")}</div>
+        <div class="wh-signs">${HERO_SIGNS.map(([k, x, y, h], i) => `<span class="sg" style="left:${x}%;top:${y}%;--h:${h * 1.25};--bc:${pill(k).bg};--d:${i * .22}s"><img src="${pill(k).src}" alt=""></span>`).join("")}${["pinkhouse", "revival"].map((k, i) => `<span class="sg m-only" style="--bc:${pill(k).bg};--d:${(6 + i) * .22}s"><img src="${pill(k).src}" alt=""></span>`).join("")}</div>
         <div class="wh-lines">${HERO_LINES.map(l => `<p>${l[1]}</p>`).join("")}</div>
         <div class="wh-logo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div>
         <div class="wh-cap"><span class="eyebrow"></span><h2></h2><img alt=""></div>
         <div class="wh-end"><div class="wh-endlogo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div><div class="wh-endtext"><h1>A new home for the town.</h1></div><button type="button" class="wh-more" data-more>Scroll down for more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
         <div class="wh-start"><div class="wh-startlogo">${APP.logo ? APP.logo("site", "#f4efe6", "#e7c27a") : ""}</div>
           <button class="wh-play" data-play aria-label="Play with sound"><svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button><span class="wh-playhint">Press play · sound on</span></div>
-        <div class="wh-ctls"><button class="wh-ctl wh-back" data-back aria-label="Back"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M6 5h2.2v14H6zM19 5v14L9 12z"/></svg></button><button class="wh-ctl wh-pp" data-pp aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-replay" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4v4h4"/></svg></button><button class="wh-ctl wh-fwd" data-fwd aria-label="Forward"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M15.8 5H18v14h-2.2zM5 5v14l10-7z"/></svg></button><button class="wh-mute" data-mute aria-label="Mute"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></button><button class="wh-skip" data-skip>Skip</button></div>
-        <div class="wh-bar"><i></i></div>
+        <div class="wh-ctls"><button class="wh-skip" data-skip>Skip</button></div>
+        <div class="wh-dock"><button class="wh-ctl wh-back" data-back aria-label="Back"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M6 5h2.2v14H6zM19 5v14L9 12z"/></svg></button><button class="wh-ctl wh-pp" data-pp aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-replay" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4v4h4"/></svg></button><button class="wh-ctl wh-fwd" data-fwd aria-label="Forward"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M15.8 5H18v14h-2.2zM5 5v14l10-7z"/></svg></button><div class="wh-track" data-track role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0"><div class="wh-bar"><i><b></b></i></div><span class="wh-tip"></span></div><span class="wh-time">0:00</span><button class="wh-mute" data-mute aria-label="Mute"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></button></div>
       </section>
       <section class="wel-cta"><div class="wrap"><span class="eyebrow">Your turn</span><h2>Now see the website.</h2><p>Everything in the video is on the site. Press the button and walk through it yourself.</p>
         <button class="cta-big" data-tour>Take a look around <span aria-hidden="true">→</span></button></div></section>
@@ -246,17 +246,17 @@
   }
   // the opening: the hero fly-through with the lines over it, the town logo, then a one-minute look at everything
   const HERO_LINES = [[1, "A small town with a big vision"], [4.6, "needs a modern website."], [8.2, "And modern back office tools."]];
-  // the store logos, lit up on their storefronts in the last frame of the fly-through: [key, x%, y%, height in vh]
+  // the store logos on their storefronts, each in its brand pill in the last frame of the fly-through: [key, x%, y%, height in vh]
   const HERO_SIGNS = [["nettie", 15, 50.5, 4.6], ["ernies", 33, 63.5, 4.4], ["doubledip", 48.5, 56.5, 3.9], ["merrifield", 62.5, 46.5, 3.6], ["velvet", 73.5, 39.5, 3.4], ["rowdys", 87, 18.5, 3]];
   function heroScenes() {
     const shop = k => ({ img: D.biz[k].hero, site: `img/shots/${k}.jpg`, mshot: `img/shots/m-${k}.jpg`, mlogo: `<img class="lg-${k}" src="${SIGN[k] || pill(k).src}" alt="">`, url: B[k].url, t: 3.2 });
     return [
-      { img: D.town.hero, site: "img/shots/town.jpg?v=1793591691", mshot: "img/shots/m-town.jpg?v=1793591691", mlogo: `<h3>One home for the whole town.</h3>`, url: "stayinbloomfield.com", k: "stayinbloomfield.com", h: "One home for the whole town.", t: 5.5 },
+      { img: D.town.hero, site: "img/shots/town.jpg?v=1793592073", mshot: "img/shots/m-town.jpg?v=1793592073", mlogo: `<h3>One home for the whole town.</h3>`, url: "stayinbloomfield.com", k: "stayinbloomfield.com", h: "One home for the whole town.", t: 5.5 },
       { title: "Every business keeps its own website.", logos: ["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"], t: 4.5 },
       ...["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map(shop),
-      { img: "img/ernies/06-lanes-and-dining.jpg?v=1793591691", k: "The calendar", h: "One calendar for everything going on.", t: 5 },
-      { img: "img/velvet/06-room-wide.jpg?v=1793591691", cards: ["img/shots/pk-1.jpg?v=1793591691", "img/shots/pk-2.jpg?v=1793591691", "img/shots/pk-3.jpg?v=1793591691"], k: "Plan a weekend", h: "Pick a package. Book it all at once.", t: 6.5 },
-      { collage: ["img/stays/collage-cabin.jpg?v=1793591691", "img/stays/collage-parlor.jpg?v=1793591691", "img/stays/50441349/10.jpg?v=1793591691"], k: "Stays", h: "Book the stays right on the site.", t: 5.5 },
+      { img: "img/ernies/06-lanes-and-dining.jpg?v=1793592073", k: "The calendar", h: "One calendar for everything going on.", t: 5 },
+      { img: "img/velvet/06-room-wide.jpg?v=1793592073", cards: ["img/shots/pk-1.jpg?v=1793592073", "img/shots/pk-2.jpg?v=1793592073", "img/shots/pk-3.jpg?v=1793592073"], k: "Plan a weekend", h: "Pick a package. Book it all at once.", t: 6.5 },
+      { collage: ["img/stays/collage-cabin.jpg?v=1793592073", "img/stays/collage-parlor.jpg?v=1793592073", "img/stays/50441349/10.jpg?v=1793592073"], k: "Stays", h: "Book the stays right on the site.", t: 5.5 },
       { center: true, t: 7.5 },
     ];
   }
@@ -269,7 +269,7 @@
     audioTick = setInterval(() => { i++; heroAudio.volume = Math.max(0, Math.min(1, from + (to - from) * i / steps)); if (i >= steps) { clearInterval(audioTick); after && after(); } }, 50);
   }
   function startAudio() {
-    if (!heroAudio) heroAudio = new Audio("img/audio/kentucky-waltz.mp3?v=1793591691");
+    if (!heroAudio) heroAudio = new Audio("img/audio/kentucky-waltz.mp3?v=1793592073");
     heroAudio.currentTime = 0; heroAudio.volume = 0; heroAudio.play().then(() => rampAudio(0.32, 1)).catch(() => {});
   }
   function fadeAudio(secs) { if (heroAudio && !heroAudio.paused) rampAudio(0, secs, () => heroAudio.pause()); }
@@ -320,15 +320,17 @@
   // the pitch runs on its own clock, so it can pause and step back or forward a part at a time
   let heroClock = null, heroPaused = false;
   function heroChapters() { return [{ open: "video", t: 14 }, { open: "signs", t: 3.4 }, { open: "logo", t: 3 }, ...heroScenes()]; }
-  function playHero(from = 0, seek = false) {
+  const clock = t => Math.floor(t / 60) + ":" + String(Math.floor(t % 60)).padStart(2, "0");
+  function heroTimeline() { const ch = heroChapters(), starts = []; let total = 0; ch.forEach(c => { starts.push(total); total += c.t; }); return { ch, starts, total }; }
+  function playHero(from = 0, seek = false, at = null) {
     const wh = $("#wh"); if (!wh) return;
     const run = ++heroRun, alive = () => run === heroRun && document.body.contains(wh);
-    const vid = wh.querySelector(".wh-vid"), stage = wh.querySelector(".wh-stage"), cap = wh.querySelector(".wh-cap"), lines = [...wh.querySelectorAll(".wh-lines p")], bar = wh.querySelector(".wh-bar i");
+    const vid = wh.querySelector(".wh-vid"), stage = wh.querySelector(".wh-stage"), cap = wh.querySelector(".wh-cap"), lines = [...wh.querySelectorAll(".wh-lines p")], bar = wh.querySelector(".wh-bar i"), time = wh.querySelector(".wh-time");
     const ch = heroChapters(), scenes = ch.filter(c => !c.open), starts = []; let total = 0;
     ch.forEach(c => { starts.push(total); total += c.t; });
     from = Math.max(0, Math.min(ch.length - 1, from));
-    const clk = heroClock = { t: starts[from], at: from, starts, alive, hold: false, waits: [] };
-    const end = () => { if (!alive()) return; heroEnd(wh); fadeAudio(5); bar.style.width = "100%"; };
+    const clk = heroClock = { t: at == null ? starts[from] : Math.max(starts[from], Math.min(total - .05, at)), at: from, starts, alive, hold: false, waits: [] };
+    const end = () => { if (!alive()) return; heroEnd(wh); fadeAudio(5); bar.style.width = "100%"; time.textContent = clock(total) + " / " + clock(total); };
     wh.toggleAttribute("data-paused", heroPaused);
     bar.style.transition = "none";
     if (!seek && matchMedia("(prefers-reduced-motion: reduce)").matches) return end();
@@ -339,20 +341,21 @@
       if (!alive()) return;
       if (!heroPaused && !clk.hold) clk.t = Math.min(total, clk.t + (now - last) / 1000);
       last = now;
-      bar.style.width = (clk.t / total * 100).toFixed(2) + "%";
+      if (!heroDrag) bar.style.width = (clk.t / total * 100).toFixed(2) + "%";
+      time.textContent = clock(clk.t) + " / " + clock(total);
       if (clk.t < 14) { let n = -1; HERO_LINES.forEach(([t], j) => { if (clk.t >= t) n = j; }); lines.forEach((l, j) => l.classList.toggle("on", j === n)); }
       clk.waits = clk.waits.filter(w => clk.t >= w.at ? (w.r(), false) : true);
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
     // the hero clip, falling back to the map fly-in until the hero is ready
-    vid.onerror = () => { if (!vid.src.endsWith("fly-in.mp4")) { vid.src = "img/town/fly-in.mp4?v=1793591691"; vid.play().catch(() => {}); } };
+    vid.onerror = () => { if (!vid.src.endsWith("fly-in.mp4")) { vid.src = "img/town/fly-in.mp4?v=1793592073"; vid.play().catch(() => {}); } };
     // load every picture the scenes use while the opening plays, so nothing pops in late
     const pics = scenes.flatMap(sc => [sc.img, sc.site, sc.mshot, ...(sc.cards || []), ...(sc.collage || []), sc.mlogo && (sc.mlogo.match(/src="([^"]+)"/) || [])[1]]).filter(Boolean);
     const ready = Promise.all(pics.map(src => { const im = new Image(); im.src = src; return im.decode().catch(() => {}); }));
-    if (!vid.src.endsWith(".mp4")) vid.src = "img/town/hero.mp4?v=1793591691";
+    if (!vid.src.endsWith(".mp4")) vid.src = "img/town/hero.mp4?v=1793592073";
     // a jump keeps the music in step with the picture
-    if (seek && heroAudio) { heroAudio.currentTime = Math.min(starts[from], 88); if (!heroPaused) { heroAudio.play().catch(() => {}); rampAudio(0.32, .6); } }
+    if (seek && heroAudio) { heroAudio.currentTime = Math.min(clk.t, 88); if (!heroPaused) { heroAudio.play().catch(() => {}); rampAudio(0.32, .6); } }
     (async () => {
       let prev = null;
       for (let i = from; i < ch.length; i++) {
@@ -375,7 +378,7 @@
         const cont = prev && prev.site && !prev.h && sc.site && !sc.h; prev = sc;
         if (cont && stage.lastElementChild) { swapSite(stage.lastElementChild, sc); await until(starts[i] + sc.t); continue; }
         el.className = "wh-scene" + (sc.title ? " title" : "") + (sc.center ? " center" : "") + (sc.site || sc.cards ? " web" : "");
-        el.innerHTML = sc.title ? `<h2>${esc(sc.title)}</h2>${sc.logos ? `<div class="wh-logos">${sc.logos.map((k, i) => k === "doubledip" ? `<span style="--i:${i}"><img src="${SIGN[k]}" alt=""></span>` : `<span class="tint" style="--i:${i};--c:${LOGO_INK[k]};--m:url(${pill(k).src})"><img src="${pill(k).src}" alt=""></span>`).join("")}</div>` : ""}` : sc.center ? `<div class="tc-ring">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map((k, i) => `<span style="--i:${i};left:${(50 + 41 * Math.sin(i * Math.PI / 4)).toFixed(1)}%;top:${(50 - 41 * Math.cos(i * Math.PI / 4)).toFixed(1)}%"><img src="${SIGN[k] === "img/doubledip/logo-sign-red.png?v=1793591691" ? pill(k).src : SIGN[k] || pill(k).src}" alt=""></span>`).join("")}<div class="tc-core"><span class="tc-k">Stay in Bloomfield</span><b>Town Center</b><i class="tc-rule"></i></div></div><div class="tc-cap"><span class="eyebrow">Behind it all</span><h2>One back office runs every website.</h2></div>` : sc.cards ? `<img class="kb soft" src="${sc.img}" alt=""><div class="wh-webcap"><span class="eyebrow">${esc(sc.k)}</span><h2>${esc(sc.h)}</h2></div><div class="wh-cards">${sc.cards.map((src, i) => `<img src="${src}" alt="" style="--i:${i}">`).join("")}</div>` : sc.site ? `<img class="kb soft" src="${sc.img}" alt="">${sc.h ? `<div class="wh-webcap"><span class="eyebrow">${esc(sc.k)}</span><h2>${esc(sc.h)}</h2></div>` : ""}${sc.mshot ? `<div class="wh-mweb"><div class="mw-logo">${sc.mlogo || ""}</div><span class="u">${esc(sc.url)}</span><div class="ms"><img src="${sc.mshot}" alt=""></div></div>` : ""}${!sc.h && sc.mlogo ? `<div class="wh-dhead"><div class="mw-logo">${sc.mlogo}</div><span class="u">${esc(sc.url)}</span></div>` : ""}<div class="wh-browser low"><img src="${sc.site}" alt=""></div>` : sc.collage ? `<div class="wh-collage">${sc.collage.map((src, i) => `<div style="--i:${i}"><img class="kb" src="${src}" alt=""></div>`).join("")}</div>` : `<img class="kb" src="${sc.img}" alt="">`;
+        el.innerHTML = sc.title ? `<h2>${esc(sc.title)}</h2>${sc.logos ? `<div class="wh-logos">${sc.logos.map((k, i) => k === "doubledip" ? `<span style="--i:${i}"><img src="${SIGN[k]}" alt=""></span>` : `<span class="tint" style="--i:${i};--c:${LOGO_INK[k]};--m:url(${pill(k).src})"><img src="${pill(k).src}" alt=""></span>`).join("")}</div>` : ""}` : sc.center ? `<div class="tc-ring">${["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"].map((k, i) => `<span style="--i:${i};left:${(50 + 41 * Math.sin(i * Math.PI / 4)).toFixed(1)}%;top:${(50 - 41 * Math.cos(i * Math.PI / 4)).toFixed(1)}%"><img src="${SIGN[k] === "img/doubledip/logo-sign-red.png?v=1793592073" ? pill(k).src : SIGN[k] || pill(k).src}" alt=""></span>`).join("")}<div class="tc-core"><span class="tc-k">Stay in Bloomfield</span><b>Town Center</b><i class="tc-rule"></i></div></div><div class="tc-cap"><span class="eyebrow">Behind it all</span><h2>One back office runs every website.</h2></div>` : sc.cards ? `<img class="kb soft" src="${sc.img}" alt=""><div class="wh-webcap"><span class="eyebrow">${esc(sc.k)}</span><h2>${esc(sc.h)}</h2></div><div class="wh-cards">${sc.cards.map((src, i) => `<img src="${src}" alt="" style="--i:${i}">`).join("")}</div>` : sc.site ? `<img class="kb soft" src="${sc.img}" alt="">${sc.h ? `<div class="wh-webcap"><span class="eyebrow">${esc(sc.k)}</span><h2>${esc(sc.h)}</h2></div>` : ""}${sc.mshot ? `<div class="wh-mweb"><div class="mw-logo">${sc.mlogo || ""}</div><span class="u">${esc(sc.url)}</span><div class="ms"><img src="${sc.mshot}" alt=""></div></div>` : ""}${!sc.h && sc.mlogo ? `<div class="wh-dhead"><div class="mw-logo">${sc.mlogo}</div><span class="u">${esc(sc.url)}</span></div>` : ""}<div class="wh-browser low"><img src="${sc.site}" alt=""></div>` : sc.collage ? `<div class="wh-collage">${sc.collage.map((src, i) => `<div style="--i:${i}"><img class="kb" src="${src}" alt=""></div>`).join("")}</div>` : `<img class="kb" src="${sc.img}" alt="">`;
         stage.appendChild(el);
         requestAnimationFrame(() => el.classList.add("on"));
         const old = [...stage.children].slice(0, -1); setTimeout(() => old.forEach(o => o.remove()), 900);
@@ -420,7 +423,29 @@
     else if (e.key === "ArrowRight" && heroLive()) heroStep(1);
   });
   document.addEventListener("visibilitychange", () => { if (document.hidden && heroLive() && !heroPaused) heroPause(true); });
-  function heroSkip() { const wh = $("#wh"); if (!wh) return; heroRun++; heroEnd(wh); fadeAudio(1.5); wh.querySelector(".wh-bar i").style.width = "100%"; }
+  // drag or tap anywhere on the bar, like a video player: the picture follows the finger, the music catches up on release
+  let heroDrag = false;
+  function heroSeekTo(at) {
+    const { ch, starts, total } = heroTimeline();
+    at = Math.max(0, Math.min(total - .05, at));
+    let i = 0; while (i < ch.length - 1 && starts[i + 1] <= at) i++;
+    playHero(i, true, at);
+  }
+  function heroTrack(wh) {
+    const tr = wh.querySelector("[data-track]"), fill = tr.querySelector("i"), tip = tr.querySelector(".wh-tip");
+    const at = e => { const r = tr.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); };
+    let last = -1;
+    const show = f => { const { ch, starts, total } = heroTimeline(); fill.style.width = (f * 100) + "%"; tip.textContent = clock(f * total); tip.style.left = (f * 100) + "%"; let i = 0; while (i < ch.length - 1 && starts[i + 1] <= f * total) i++; if (i !== last) { last = i; heroSeekTo(f * total); } };
+    tr.onpointerdown = e => {
+      if (wh.classList.contains("at-start")) return;
+      e.preventDefault(); tr.setPointerCapture(e.pointerId); heroDrag = true; last = -1; tr.classList.add("drag"); show(at(e));
+    };
+    tr.onpointermove = e => { if (heroDrag) show(at(e)); else { const f = at(e); tip.textContent = clock(f * heroTimeline().total); tip.style.left = (f * 100) + "%"; } };
+    const up = e => { if (!heroDrag) return; heroDrag = false; tr.classList.remove("drag"); heroSeekTo(at(e) * heroTimeline().total); };
+    tr.onpointerup = up; tr.onpointercancel = up;
+    tr.onkeydown = e => { const c = heroClock; if (!c) return; if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); heroSeekTo(c.t + (e.key === "ArrowLeft" ? -5 : 5)); } };
+  }
+  function heroSkip() { const wh = $("#wh"); if (!wh) return; heroRun++; heroEnd(wh); fadeAudio(1.5); wh.querySelector(".wh-bar i").style.width = "100%"; const T = heroTimeline().total; wh.querySelector(".wh-time").textContent = clock(T) + " / " + clock(T); }
   function afterWelcome() {
     const wh = $("#wh");
     if (wh) {
@@ -428,10 +453,11 @@
       wh.querySelector("[data-skip]").onclick = heroSkip;
       wh.querySelector("[data-back]").onclick = () => heroStep(-1);
       wh.querySelector("[data-fwd]").onclick = () => heroStep(1);
+      heroTrack(wh);
       wh.querySelector("[data-pp]").onclick = () => { if (wh.classList.contains("at-end")) { heroPaused = false; startAudio(); playHero(); } else heroPause(!heroPaused); };
       // the pitch opens on a play button so the music can play (browsers only allow sound after a press)
       wh.className = "wh at-start";
-      wh.querySelector(".wh-stage").innerHTML = `<div class="wh-scene on"><img class="kb" src="img/town/painted-dusk.jpg?v=1793591691" alt=""></div>`;
+      wh.querySelector(".wh-stage").innerHTML = `<div class="wh-scene on"><img class="kb" src="img/town/painted-dusk.jpg?v=1793592073" alt=""></div>`;
       wh.querySelector("[data-play]").onclick = () => { heroPaused = false; startAudio(); playHero(); };
       wh.querySelector("[data-mute]").onclick = e => { if (!heroAudio) return; heroAudio.muted = !heroAudio.muted; e.currentTarget.classList.toggle("off", heroAudio.muted); };
     }
@@ -463,16 +489,16 @@
   }
   // live music: how often, who has played, and Ernie's own show calendar
   const MUSIC_BANDS = [
-    { n: "Big Black Cadillac", at: "ernies", shows: 3, note: "Halloween night headliners", img: "img/insta/erniestavern/06.jpg?v=1793591691" },
-    { n: "The Bourbon Barrel Boys", at: "ernies", shows: 8, note: "Bluegrass, the house favorite", img: "img/ernies/05-neon-bar.jpg?v=1793591691" },
-    { n: "Kentucky Ramblers", at: "ernies", shows: 4, note: "Classic country and covers", img: "img/ernies/07-interior-bw.jpg?v=1793591691" },
-    { n: "Hannah Wheeler & The Heartaches", at: "rowdys", shows: 5, note: "Saturday dance night", img: "img/rowdys/02-crowd-at-bar.jpg?v=1793591691" },
-    { n: "Copper Creek String Band", at: "rowdys", shows: 2, note: "Front-porch strings", img: "img/rowdys/03-porch.jpg?v=1793591691" },
+    { n: "Big Black Cadillac", at: "ernies", shows: 3, note: "Halloween night headliners", img: "img/insta/erniestavern/06.jpg?v=1793592073" },
+    { n: "The Bourbon Barrel Boys", at: "ernies", shows: 8, note: "Bluegrass, the house favorite", img: "img/ernies/05-neon-bar.jpg?v=1793592073" },
+    { n: "Kentucky Ramblers", at: "ernies", shows: 4, note: "Classic country and covers", img: "img/ernies/07-interior-bw.jpg?v=1793592073" },
+    { n: "Hannah Wheeler & The Heartaches", at: "rowdys", shows: 5, note: "Saturday dance night", img: "img/rowdys/02-crowd-at-bar.jpg?v=1793592073" },
+    { n: "Copper Creek String Band", at: "rowdys", shows: 2, note: "Front-porch strings", img: "img/rowdys/03-porch.jpg?v=1793592073" },
   ];
   let musicMonth = null;
   function musicView() {
     const shows = allEvents().filter(e => e.b === "ernies" && e.d >= D.today);
-    return `<section class="mu-hero"><img src="img/ernies/05-neon-bar.jpg?v=1793591691" alt=""><div class="wrap"><span class="eyebrow light">Live music</span>
+    return `<section class="mu-hero"><img src="img/ernies/05-neon-bar.jpg?v=1793592073" alt=""><div class="wrap"><span class="eyebrow light">Live music</span>
         <h1>The music starts at eight.</h1><p>Bands at Ernie's four nights a week, and Saturday dance nights down the road at Rowdy's.</p>
         <div class="row"><a class="btn solid" href="#mu-cal" data-mu-jump>See who's playing</a><button class="btn light" data-book="table" data-brand="ernies">Reserve a table</button></div></div></section>
       <section class="sect mu-often"><div class="wrap"><div class="mu-stats">
@@ -488,7 +514,7 @@
         <p>Ernie's books local and regional bands four nights a week. Send your name, your sound and a link to your music, and we'll get back to you with open dates.</p>
         <ol class="mu-steps"><li><b>Send your band</b><span>A link to a video or your music, and the nights that work.</span></li><li><b>We listen</b><span>We reply within a week with open dates.</span></li><li><b>Play the night</b><span>We put you on the town calendar, the website and our posts.</span></li></ol>
         <button class="btn solid mu-bookbtn" data-book="band" data-brand="ernies">Book your band</button></div>
-        <img src="img/insta/erniestavern/06.jpg?v=1793591691" alt="" loading="lazy"></div></section>
+        <img src="img/insta/erniestavern/06.jpg?v=1793592073" alt="" loading="lazy"></div></section>
       <section class="sect mu-insta"><div class="wrap"><div class="sect-head"><h2>From Ernie's posts</h2></div>
         <div class="mu-flyers">${[6, 5, 4].map(i => `<img src="img/insta/erniestavern/0${i}.jpg" alt="" loading="lazy">`).join("")}</div></div></section>`;
   }
@@ -518,23 +544,23 @@
   }
   // the town photo first, then each business's own hero
   // the homepage hero: inside each place, opening on the antiques floor at Nettie Jarvis
-  const HERO_INSIDE = [["nettie", "img/nettie/01-shop-interior.jpg?v=1793591691"], ["ernies", "img/ernies/05-neon-bar.jpg?v=1793591691"], ["merrifield", "img/merryfield/01-parlor-seating.jpg?v=1793591691"],
-    ["velvet", "img/velvet/01-bar-hero.jpg?v=1793591691"], ["doubledip", "img/doubledip/04-fountain-counter-wide.jpg?v=1793591691"], ["pinkhouse", "img/pinkhouse/03-dining-room.jpg?v=1793591691"]];
+  const HERO_INSIDE = [["nettie", "img/nettie/01-shop-interior.jpg?v=1793592073"], ["ernies", "img/ernies/05-neon-bar.jpg?v=1793592073"], ["merrifield", "img/merryfield/01-parlor-seating.jpg?v=1793592073"],
+    ["velvet", "img/velvet/01-bar-hero.jpg?v=1793592073"], ["doubledip", "img/doubledip/04-fountain-counter-wide.jpg?v=1793592073"], ["pinkhouse", "img/pinkhouse/03-dining-room.jpg?v=1793592073"]];
   const HEROES = HERO_INSIDE.map(([id, img]) => ({ img, go: id, cap: `${bubble(id, 22)}<span>${esc(B[id].name)}</span>` }));
   let heroTimer = null;
   // the editorial spread: the best photos in town, one shared film grade over all of them
   const SPREAD = [
-    { img: "img/town/town-2.jpg?v=1793591691", cap: "Saturday morning on Taylorsville", where: "Taylorsville Road", go: "map" },
-    { img: "img/ernies/05-neon-bar.jpg?v=1793591691", cap: "The neon comes on at five", where: "Ernie's Tavern", go: "ernies" },
-    { img: "img/merryfield/02-tea-service.jpg?v=1793591691", cap: "Scones on Lady Carlyle china", where: "Miss Merrifield's", go: "merrifield" },
-    { img: "img/velvet/01-bar-hero.jpg?v=1793591691", cap: "Al Capone's back bar", where: "The Velvet Room", go: "velvet" },
-    { img: "img/town/town-1.jpg?v=1793591691", cap: "Under the sycamores", where: "East Fork of Simpson Creek", go: "map" },
-    { img: "img/nettie/03-iw-harper-display.jpg?v=1793591691", cap: "Rare pours between the antiques", where: "Nettie Jarvis", go: "nettie" },
-    { img: "img/pinkhouse/04-long-table.jpg?v=1793591691", cap: "Dinner for twelve by candlelight", where: "The Old Pink House", go: "pinkhouse" },
-    { img: "img/stays/49386618/01.jpg?v=1793591691", cap: "Bourbon by the stone fireplace", where: "Boone's Cabin", go: "stay-boones" },
-    { img: "img/doubledip/03-soda-fountain-counter.jpg?v=1793591691", cap: "A malt at the marble counter", where: "The Double Dip", go: "doubledip" },
-    { img: "img/town/town-5.jpg?v=1793591691", cap: "Weddings under the spire, soon", where: "Revival Hall", go: "revival" },
-    { img: "img/stays/50441349/05.jpg?v=1793591691", cap: "Toile and a four-poster upstairs", where: "Miss Allie's Homestead", go: "stay-allies" },
+    { img: "img/town/town-2.jpg?v=1793592073", cap: "Saturday morning on Taylorsville", where: "Taylorsville Road", go: "map" },
+    { img: "img/ernies/05-neon-bar.jpg?v=1793592073", cap: "The neon comes on at five", where: "Ernie's Tavern", go: "ernies" },
+    { img: "img/merryfield/02-tea-service.jpg?v=1793592073", cap: "Scones on Lady Carlyle china", where: "Miss Merrifield's", go: "merrifield" },
+    { img: "img/velvet/01-bar-hero.jpg?v=1793592073", cap: "Al Capone's back bar", where: "The Velvet Room", go: "velvet" },
+    { img: "img/town/town-1.jpg?v=1793592073", cap: "Under the sycamores", where: "East Fork of Simpson Creek", go: "map" },
+    { img: "img/nettie/03-iw-harper-display.jpg?v=1793592073", cap: "Rare pours between the antiques", where: "Nettie Jarvis", go: "nettie" },
+    { img: "img/pinkhouse/04-long-table.jpg?v=1793592073", cap: "Dinner for twelve by candlelight", where: "The Old Pink House", go: "pinkhouse" },
+    { img: "img/stays/49386618/01.jpg?v=1793592073", cap: "Bourbon by the stone fireplace", where: "Boone's Cabin", go: "stay-boones" },
+    { img: "img/doubledip/03-soda-fountain-counter.jpg?v=1793592073", cap: "A malt at the marble counter", where: "The Double Dip", go: "doubledip" },
+    { img: "img/town/town-5.jpg?v=1793592073", cap: "Weddings under the spire, soon", where: "Revival Hall", go: "revival" },
+    { img: "img/stays/50441349/05.jpg?v=1793592073", cap: "Toile and a four-poster upstairs", where: "Miss Allie's Homestead", go: "stay-allies" },
   ];
   function townView() {
     const T = D.town, sites = ["nettie", "ernies", "doubledip", "merrifield", "pinkhouse", "velvet", "rowdys", "revival"];
@@ -573,7 +599,7 @@
       <div class="wrap">
         <div class="sect-head"><span class="eyebrow">The town in fall</span><h2>Walk Taylorsville Road.</h2><p class="big-p">Tap a pin. Visit the shop, reserve a table or book a tasting right there.</p></div>
         <div class="mapbox painted-on" id="mapbox">
-          <div class="pmap-wrap"><img class="pmap day" src="img/town/painted-dusk.jpg?v=1793591691" alt="A painting of Bloomfield at dusk in the fall"><video class="pmap-vid" src="img/town/fly-in.mp4?v=1793591691" muted playsinline preload="auto" aria-hidden="true"></video><div class="ppins">${Object.entries(D.paintedPins).map(([id, xy]) => { const p = D.places.find(x => x.id === id); if (!p) return ""; const bz = D.biz[p.brand]; const stay = p.kind === "stay" && STAYS.find(x => x.id === id); const nm = p.name || (stay ? stay.title : p.kind === "other" ? (D.others.find(o => o.id === id) || {}).name : B[p.brand] ? B[p.brand].name : id); const sg = bz && bz.logo ? SIGN[p.brand] || pill(p.brand).src : PLACE_SIGN[id]; return `<button class="ppin ${sg ? "has-logo" : ""}" data-ppin="${id}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${esc(nm)}">${sg ? `<span class="pl sign"><img src="${sg}" alt=""></span>` : `<span class="pn">${PIN_HOME.includes(id) ? HOME_SVG : ""}${esc(PIN_NAME[id] || nm)}${PIN_AWAY[id] ? `<small class="pn-away">${PIN_AWAY[id]}</small>` : ""}</span>`}</button>`; }).join("")}</div></div>
+          <div class="pmap-wrap"><img class="pmap day" src="img/town/painted-dusk.jpg?v=1793592073" alt="A painting of Bloomfield at dusk in the fall"><video class="pmap-vid" src="img/town/fly-in.mp4?v=1793592073" muted playsinline preload="auto" aria-hidden="true"></video><div class="ppins">${Object.entries(D.paintedPins).map(([id, xy]) => { const p = D.places.find(x => x.id === id); if (!p) return ""; const bz = D.biz[p.brand]; const stay = p.kind === "stay" && STAYS.find(x => x.id === id); const nm = p.name || (stay ? stay.title : p.kind === "other" ? (D.others.find(o => o.id === id) || {}).name : B[p.brand] ? B[p.brand].name : id); const sg = bz && bz.logo ? SIGN[p.brand] || pill(p.brand).src : PLACE_SIGN[id]; return `<button class="ppin ${sg ? "has-logo" : ""}" data-ppin="${id}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${esc(nm)}">${sg ? `<span class="pl sign"><img src="${sg}" alt=""></span>` : `<span class="pn">${PIN_HOME.includes(id) ? HOME_SVG : ""}${esc(PIN_NAME[id] || nm)}${PIN_AWAY[id] ? `<small class="pn-away">${PIN_AWAY[id]}</small>` : ""}</span>`}</button>`; }).join("")}</div></div>
 
           <div class="map-cart"><b>Bloomfield</b><span>Nelson County · Kentucky</span><span class="est">Est. 1817</span></div>
           <div class="map-key"><span><i style="background:#c9a24a;width:18px;height:3px;border-radius:0"></i>Taylorsville Road</span><span><i style="background:#4f6670"></i>East Fork of Simpson Creek</span></div>
@@ -591,7 +617,7 @@
 
     <section class="sect revival-band">
       <div class="wrap two">
-        <div class="figure"><img src="img/town/town-5.jpg?v=1793591691" alt="The 1880s church at 126 Taylorsville Road"></div>
+        <div class="figure"><img src="img/town/town-5.jpg?v=1793592073" alt="The 1880s church at 126 Taylorsville Road"></div>
         <div class="prose big">
           <span class="eyebrow">Coming soon</span>
           <h2>Revival Hall</h2>
@@ -614,7 +640,7 @@
           <div class="sect-head"><span class="eyebrow">Since 1817</span><h2>A little history.</h2></div>
           <div class="story">${T.story.map(s => `<div class="tl"><div class="yr">${s.yr}</div><div><h3>${esc(s.t)}</h3><p>${esc(s.p)}</p></div></div>`).join("")}</div>
         </div>
-        <div class="figure sticky"><img src="img/town/town-1.jpg?v=1793591691" alt="The East Fork of Simpson Creek in Bloomfield"><span class="credit">The East Fork of Simpson Creek</span></div>
+        <div class="figure sticky"><img src="img/town/town-1.jpg?v=1793592073" alt="The East Fork of Simpson Creek in Bloomfield"><span class="credit">The East Fork of Simpson Creek</span></div>
       </div>
     </section>
 
@@ -639,7 +665,7 @@
       <div class="wrap">
         <div class="tractor">
           <div><span class="eyebrow">Worth the detour</span><h2>${esc(T.tractor.t)}</h2><p style="margin-top:14px;font-size:17px">${esc(T.tractor.p)}</p></div>
-          <figure class="tractor-photo"><img src="img/town/deere-john.jpg?v=1793591691" alt="Ten John Deere tractors standing nose-down in a green field"><figcaption>Photo: Katie O'Malley, Roadside America</figcaption></figure>
+          <figure class="tractor-photo"><img src="img/town/deere-john.jpg?v=1793592073" alt="Ten John Deere tractors standing nose-down in a green field"><figcaption>Photo: Katie O'Malley, Roadside America</figcaption></figure>
         </div>
       </div>
     </section>
@@ -661,7 +687,7 @@
       <div><span class="eyebrow">Plan it in a minute</span><h2>Tell us the occasion. We'll build the weekend.</h2>
       <p class="big-p">A wedding, a girls' trip, a family reunion or a team retreat. Pick the dates and the head count, and the site lays out where to stay, where to gather and what to do.</p>
       <a class="btn solid" href="#plan">Start planning</a></div>
-      <div class="pt-photo"><img class="main" src="img/ernies/02-exterior-crowd.jpg?v=1793591691" alt="An evening crowd outside Ernie's Tavern on Taylorsville Road"><img class="inset" src="img/rowdys/02-crowd-at-bar.jpg?v=1793591691" alt="Friends at the bar at Rowdy's"></div>
+      <div class="pt-photo"><img class="main" src="img/ernies/02-exterior-crowd.jpg?v=1793592073" alt="An evening crowd outside Ernie's Tavern on Taylorsville Road"><img class="inset" src="img/rowdys/02-crowd-at-bar.jpg?v=1793592073" alt="Friends at the bar at Rowdy's"></div>
     </div></section>`;
   }
   function joinBand() {
@@ -724,7 +750,7 @@
       places.forEach(p => { const bz = D.biz[p.brand]; if (bz && bz.logo) { p.logo = pill(p.brand).src; p.head = pill(p.brand).bg; } });
       places.forEach(p => { if (p.kind === "stay") { const s = STAYS.find(x => x.id === p.id); p.short = s.title; } if (p.kind === "other") p.short = D.others.find(o => o.id === p.id).name; });
       try { mapApi = window.BloomMap.mount(box, { places, onSelect: id => pinCard(id) }); window.__map = mapApi; }
-      catch (e) { box.insertAdjacentHTML("beforeend", `<div class="map-fallback"><img src="img/town/town-2.jpg?v=1793591691" alt=""></div>`); }
+      catch (e) { box.insertAdjacentHTML("beforeend", `<div class="map-fallback"><img src="img/town/town-2.jpg?v=1793592073" alt=""></div>`); }
       box.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { box.querySelectorAll("[data-mode]").forEach(x => x.classList.toggle("on", x === b)); mapApi && mapApi.setMode(b.dataset.mode); });
       box.querySelectorAll("[data-cam]").forEach(b => b.onclick = () => { if (!mapApi) return; b.dataset.cam === "wide" ? mapApi.wide() : mapApi.home(); });
     };
@@ -770,7 +796,7 @@
   const RV_HONORS = [["1999", "Kentucky Heritage Council Preservation Project Award, for four Bloomfield buildings"], ["2017", "Ida Lee Willis Memorial Award, Kentucky's top preservation honor"], ["2017", "Named again to the National Trust for Historic Preservation board"], ["Ongoing", "The Linda Bruckheimer Excellence in Rural Preservation Award, given by Preservation Kentucky"], ["Ongoing", "The Linda and Jerry Bruckheimer Preservation Fund for Kentucky, through the National Trust"]];
   function storyView() {
     return `
-    <section class="rv-hero"><img src="img/revival/bloomfield-historic-district.jpg?v=1793591691" alt="Taylorsville Road storefronts in Bloomfield, with the Before I die chalkboard on Nettie Jarvis">
+    <section class="rv-hero"><img src="img/revival/bloomfield-historic-district.jpg?v=1793592073" alt="Taylorsville Road storefronts in Bloomfield, with the Before I die chalkboard on Nettie Jarvis">
       <div class="wrap"><span class="eyebrow">The revival</span><h1>One wrong turn brought a town back.</h1>
         <p>How Linda Bruckheimer, a great-grandmother's name and eight empty buildings put Bloomfield back on the map.</p></div></section>
 
@@ -787,7 +813,7 @@
         <p class="rv-sign">Linda Bruckheimer</p>
         <span class="rv-draft">Draft for Linda to edit</span>
       </div>
-      <figure class="rv-fig rv-road"><img src="img/press/linda-porch.jpg?v=1793591691" alt="Linda Bruckheimer in a rocking chair on a cabin porch" onerror="this.onerror=null;this.src='img/revival/nettie-jarvis-building.jpg';this.nextElementSibling.textContent='Nettie Jarvis, her first storefront'"><figcaption>Linda Bruckheimer</figcaption></figure>
+      <figure class="rv-fig rv-road"><img src="img/press/linda-porch.jpg?v=1793592073" alt="Linda Bruckheimer in a rocking chair on a cabin porch" onerror="this.onerror=null;this.src='img/revival/nettie-jarvis-building.jpg';this.nextElementSibling.textContent='Nettie Jarvis, her first storefront'"><figcaption>Linda Bruckheimer</figcaption></figure>
     </div></section>
 
     <section class="sect"><div class="wrap rv-two">
@@ -796,7 +822,7 @@
         <p>In 1996 she bought an empty storefront on Taylorsville Road and named it for her great-grandmother, Nettie Jarvis. Then the building next door, and the one after that. Eight in all, restored down to the trim. Her daughter puts it simply: she's an artist when it comes to detail.</p>
         <p>Her husband, Jerry, has been beside her the whole way. The producer behind Top Gun and Pirates of the Caribbean signs books on the porch of Nettie Jarvis, cheers on every opening and says there's nothing like Kentucky. But this one is hers.</p></div>
       <div class="rv-figs">
-        <figure class="rv-fig rv-town"><img src="img/press/linda-in-town.jpg?v=1793591691" alt="Linda Bruckheimer on Taylorsville Road in Bloomfield" onerror="this.onerror=null;this.src='img/revival/taylorsville-road.jpg';this.nextElementSibling.textContent='Taylorsville Road'"><figcaption>Linda on Taylorsville Road · Kentucky Living</figcaption></figure>
+        <figure class="rv-fig rv-town"><img src="img/press/linda-in-town.jpg?v=1793592073" alt="Linda Bruckheimer on Taylorsville Road in Bloomfield" onerror="this.onerror=null;this.src='img/revival/taylorsville-road.jpg';this.nextElementSibling.textContent='Taylorsville Road'"><figcaption>Linda on Taylorsville Road · Kentucky Living</figcaption></figure>
       </div>
     </div></section>
 
@@ -812,7 +838,7 @@
     <section class="sect rv-press-sect"><div class="wrap">
       <div class="sect-head"><span class="eyebrow">What people said</span><h2>In the papers, and on the porch.</h2></div>
       <div class="rv-press">${RV_PRESS.map(([q, who, src]) => `<blockquote><p>“${esc(q)}”</p><footer><b>${esc(who)}</b><span>${esc(src)}</span></footer></blockquote>`).join("")}</div>
-      <div class="rv-book"><img src="img/press/saving-kentucky.jpg?v=1793591691" alt="Saving Kentucky: Greening the Bluegrass, book cover"><div><span class="eyebrow">Featured in</span><b>Saving Kentucky</b><span>Greening the Bluegrass, by Sally Van Winkle Campbell</span></div></div>
+      <div class="rv-book"><img src="img/press/saving-kentucky.jpg?v=1793592073" alt="Saving Kentucky: Greening the Bluegrass, book cover"><div><span class="eyebrow">Featured in</span><b>Saving Kentucky</b><span>Greening the Bluegrass, by Sally Van Winkle Campbell</span></div></div>
       <div class="rv-hers"><span class="eyebrow">In her own words</span>${RV_HERS.map(([q, src]) => `<p>“${esc(q)}” <span>${esc(src)}</span></p>`).join("")}</div>
     </div></section>
 
@@ -891,7 +917,7 @@
           <button class="btn solid bowl-btn" data-book="lane" data-brand="${id}">Reserve a lane</button></div></div></section>` : ""}
       ${b.menu ? `<section class="sect" data-sec="menu"><div class="wrap"><div class="sect-head"><h2>The menu</h2><span class="livepill">Updated from Town Center</span></div><div class="menu">${b.menu.map(s => `<h3>${esc(s.s)}</h3>${s.items.map(i => `<div class="mi"><b>${esc(i[0])}</b><span class="p">${esc(i[1])}</span>${i[2] ? `<span class="ds">${esc(i[2])}</span>` : ""}</div>`).join("")}`).join("")}</div></div></section>` : ""}
       ${b.flavors ? `<section class="sect" data-sec="menu"><div class="wrap"><div class="sect-head"><h2>Today's flavors</h2><span class="livepill">Updated from Town Center</span></div><div class="flavors">${b.flavors.map(f => `<span>${esc(f)}</span>`).join("")}</div></div></section>` : ""}
-      ${b.bourbon ? `<section class="sect" data-sec="menu"><div class="wrap two"><div><div class="sect-head"><h2>From the bourbon bar</h2></div><div class="menu one">${b.bourbon.map(i => `<div class="mi"><b>${esc(i[0])}</b><span class="p">${esc(i[2])}</span><span class="ds">${esc(i[1])} proof</span></div>`).join("")}</div></div><div class="tasting-card"><img src="img/nettie/07-lucky-seven-tasting.jpg?v=1793591691" alt=""><h3>Bourbon tastings</h3><p>A guided flight from a different distillery each month. Private tastings for groups.</p><button class="btn solid" data-book="tasting" data-brand="nettie">Book a tasting</button></div></div></section>` : ""}
+      ${b.bourbon ? `<section class="sect" data-sec="menu"><div class="wrap two"><div><div class="sect-head"><h2>From the bourbon bar</h2></div><div class="menu one">${b.bourbon.map(i => `<div class="mi"><b>${esc(i[0])}</b><span class="p">${esc(i[2])}</span><span class="ds">${esc(i[1])} proof</span></div>`).join("")}</div></div><div class="tasting-card"><img src="img/nettie/07-lucky-seven-tasting.jpg?v=1793592073" alt=""><h3>Bourbon tastings</h3><p>A guided flight from a different distillery each month. Private tastings for groups.</p><button class="btn solid" data-book="tasting" data-brand="nettie">Book a tasting</button></div></div></section>` : ""}
       <section class="sect" data-sec="events"><div class="wrap"><div class="sect-head"><h2>What's coming up</h2><span class="livepill">From the town calendar</span></div>
         ${evs.length ? `<div class="evs">${evs.map(evRow).join("")}</div>` : `<div class="empty">New dates soon.</div>`}</div></section>
       <section class="sect"><div class="wrap"><div class="gal">${b.gallery.map(g => `<img src="${g}" alt="" loading="lazy">`).join("")}</div></div></section>
@@ -1006,7 +1032,7 @@
     return `<section class="plan">
       <div class="wrap">
         <div class="plan-head"><div><h1>Plan your Bloomfield weekend.</h1><p class="lede">Three questions. A whole weekend, laid out.</p></div>
-          <div class="plan-strip">${["img/stays/50441349/05.jpg?v=1793591691", "img/merryfield/02-tea-service.jpg?v=1793591691", "img/ernies/06-lanes-and-dining.jpg?v=1793591691", "img/nettie/07-lucky-seven-tasting.jpg?v=1793591691", "img/velvet/02-bar-mirror.jpg?v=1793591691"].map(src => `<img src="${src}" alt="">`).join("")}</div></div>
+          <div class="plan-strip">${["img/stays/50441349/05.jpg?v=1793592073", "img/merryfield/02-tea-service.jpg?v=1793592073", "img/ernies/06-lanes-and-dining.jpg?v=1793592073", "img/nettie/07-lucky-seven-tasting.jpg?v=1793592073", "img/velvet/02-bar-mirror.jpg?v=1793592073"].map(src => `<img src="${src}" alt="">`).join("")}</div></div>
         <div class="plan-box" id="planbox"></div>
       </div>
     </section>

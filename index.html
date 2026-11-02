@@ -1826,7 +1826,7 @@ body.rail .justyou { display: none }
 .wh-end h1 { font: 500 clamp(40px, 6vw, 80px)/1.02 var(--display) }
 .wh-end p { font-size: 19px; color: #f3dfc2; max-width: 46ch }
 .wh-end .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center }
-.wh-cap { position: absolute; left: clamp(20px, 5vw, 72px); bottom: clamp(40px, 9vh, 96px); right: 20px; display: grid; gap: 10px; justify-items: start; opacity: 0; transform: translateY(10px); transition: opacity .6s, transform .6s; pointer-events: none }
+.wh-cap { position: absolute; left: clamp(20px, 5vw, 72px); bottom: calc(clamp(40px, 9vh, 96px) + 40px); right: 20px; display: grid; gap: 10px; justify-items: start; opacity: 0; transform: translateY(10px); transition: opacity .6s, transform .6s; pointer-events: none }
 .wh-cap.show { opacity: 1; transform: none }
 .wh-cap .eyebrow { color: #e7c27a }
 .wh-cap h2 { font: 500 clamp(30px, 4.2vw, 58px)/1.06 var(--display); max-width: 18ch; text-shadow: 0 2px 20px rgba(0,0,0,.6) }
@@ -1840,7 +1840,18 @@ body.rail .justyou { display: none }
 .wh.at-end .wh-end { opacity: 1; pointer-events: auto }
 .wh.at-end .wh-cap, .wh.at-end .wh-skip { opacity: 0; pointer-events: none }
 .wh-skip { position: absolute; right: 18px; top: 18px; background: rgba(20,10,5,.45); color: #fff6ea; border: 1px solid rgba(255,246,234,.35); border-radius: 20px; padding: 7px 16px; font: 600 13px var(--body); backdrop-filter: blur(6px); transition: opacity .4s }
-.wh-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,246,234,.15) } .wh-bar i { display: block; height: 100%; width: 0; background: #e7c27a }
+/* the player bar along the bottom: back, play, forward, a bar to drag through, the time and the sound */
+.wh-dock { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; align-items: center; gap: 8px; padding: 26px 70px calc(12px + env(safe-area-inset-bottom, 0px)) clamp(12px, 2vw, 22px); background: linear-gradient(180deg, transparent, rgba(15,8,4,.55)) }
+.wh-dock .wh-mute { position: static }
+.wh-track { position: relative; flex: 1; height: 28px; display: flex; align-items: center; cursor: pointer; touch-action: none; margin: 0 6px }
+.wh-bar { position: relative; width: 100%; height: 4px; border-radius: 4px; background: rgba(255,246,234,.25); transition: height .15s }
+.wh-bar i { position: relative; display: block; height: 100%; width: 0; border-radius: 4px; background: #e7c27a }
+.wh-bar b { position: absolute; right: -7px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: #f4efe6; box-shadow: 0 1px 6px rgba(0,0,0,.5); transform: scale(.8); transition: transform .15s }
+.wh-track:hover .wh-bar, .wh-track.drag .wh-bar { height: 6px } .wh-track:hover .wh-bar b, .wh-track.drag .wh-bar b { transform: scale(1.1) }
+.wh-tip { position: absolute; bottom: 26px; transform: translateX(-50%); padding: 3px 8px; border-radius: 6px; background: rgba(20,10,5,.85); color: #fff6ea; font: 600 12px var(--body); opacity: 0; pointer-events: none; transition: opacity .15s; white-space: nowrap }
+.wh-track:hover .wh-tip, .wh-track.drag .wh-tip { opacity: 1 }
+.wh-time { font: 600 12px var(--body); color: #fff6ea; font-variant-numeric: tabular-nums; white-space: nowrap; text-shadow: 0 1px 4px rgba(0,0,0,.6) }
+@media (max-width: 560px) { .wh-dock { gap: 4px; padding-right: 64px } .wh-time { display: none } }
 .wh-scene.center { background: radial-gradient(circle at 50% 45%, #2f5240, #12201a 70%); display: grid; place-items: center }
 .tc-ring { position: relative; width: min(560px, 80vw); aspect-ratio: 1; transform: translateY(-6%) }
 .tc-ring > span { position: absolute; transform: translate(-50%, -50%); opacity: 0; animation: pop .6s ease both; animation-delay: calc(.3s + var(--i) * .18s) }
@@ -1855,8 +1866,11 @@ body.rail .justyou { display: none }
 
 .wh-signs { position: absolute; left: 50%; top: 50%; width: max(100%, 150vh); aspect-ratio: 3 / 2; transform: translate(-50%, -50%); pointer-events: none }
 @supports not (aspect-ratio: 3 / 2) { .wh-signs { height: max(100%, 66.7vw) } }
-.wh-signs img { position: absolute; transform: translate(-50%, -50%) scale(.92); width: auto; max-width: 16%; opacity: 0; filter: drop-shadow(0 1px 1px rgba(20,10,5,.9)) drop-shadow(0 0 8px rgba(20,10,5,.7)) drop-shadow(0 0 18px rgba(255,200,120,.45)); transition: opacity .6s, transform .6s }
-.wh.at-signs .wh-signs img { opacity: 1; transform: translate(-50%, -50%) scale(1); transition-delay: var(--d) }
+/* each logo sits in its brand color, the same pill as the menu bar */
+.wh-signs { container-type: size }
+.wh-signs .sg { position: absolute; display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: calc(var(--h) * 1cqh); padding: 0 calc(var(--h) * .55cqh); border-radius: 999px; background: var(--bc); box-shadow: 0 0 0 1px rgba(255,246,234,.22), 0 6px 20px rgba(10,5,2,.55), 0 0 26px rgba(255,200,120,.3); transform: translate(-50%, -50%) scale(.92); opacity: 0; transition: opacity .6s, transform .6s }
+.wh-signs .sg img { display: block; height: 58%; width: auto; max-width: none }
+.wh.at-signs .wh-signs .sg { opacity: 1; transform: translate(-50%, -50%) scale(1); transition-delay: var(--d) }
 .wh.at-signs .wh-shade { background: radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(20,10,5,.35) 100%) }
 
 /* one grade over every shot: warm, a little faded, darker at the edges like the closing card */
@@ -1946,7 +1960,7 @@ html.cap .nbtn { display: none }
 /* the pitch's start screen: the painting, the logo and a play button */
 .wh-start { position: absolute; inset: 0; z-index: 6; display: none; place-items: center; align-content: center; gap: 26px; text-align: center; background: radial-gradient(ellipse at 50% 50%, rgba(20,10,5,.35), rgba(20,10,5,.75)) }
 .wh.at-start .wh-start { display: grid }
-.wh.at-start .wh-skip, .wh.at-start .wh-mute, .wh.at-start .wh-lines, .wh.at-start .wh-bar { display: none }
+.wh.at-start .wh-skip, .wh.at-start .wh-mute, .wh.at-start .wh-lines, .wh.at-start .wh-dock { display: none }
 .wh-startlogo svg { width: min(480px, 76vw); height: auto; filter: drop-shadow(0 4px 30px rgba(0,0,0,.6)) }
 .wh-play { width: 104px; height: 104px; border-radius: 50%; border: 0; background: #e7c27a; color: #2a1710; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 0 10px rgba(231,194,122,.22), 0 18px 40px rgba(0,0,0,.45); transition: transform .2s, box-shadow .2s }
 .wh-play svg { margin-left: 6px } .wh-play:hover { transform: scale(1.06); box-shadow: 0 0 0 16px rgba(231,194,122,.2), 0 18px 40px rgba(0,0,0,.45) }
@@ -1959,11 +1973,12 @@ html.cap .nbtn { display: none }
 .wh-pp .i-play, .wh-pp .i-replay { display: none }
 .wh[data-paused] .wh-pp .i-pause { display: none } .wh[data-paused] .wh-pp .i-play { display: block }
 .wh.at-end .wh-pp .i-play, .wh.at-end .wh-pp .i-pause { display: none } .wh.at-end .wh-pp .i-replay { display: block }
-.wh.at-start .wh-ctls, .wh.at-end .wh-fwd, .wh.at-end .wh-ctls .wh-mute, .wh.at-end .wh-ctls .wh-skip { display: none }
+.wh.at-start .wh-ctls, .wh.at-end .wh-fwd, .wh.at-end .wh-dock .wh-mute, .wh.at-end .wh-ctls .wh-skip { display: none }
 .wh[data-paused] * { animation-play-state: paused !important }
 .wh-mute { position: absolute; right: 86px; top: 18px; width: 34px; height: 32px; display: grid; place-items: center; background: rgba(20,10,5,.45); color: #fff6ea; border: 1px solid rgba(255,246,234,.35); border-radius: 20px; backdrop-filter: blur(6px); cursor: pointer; z-index: 5 }
 .wh-mute.off .wave { display: none } .wh-mute.off { opacity: .7 }
 .wh.at-end .wh-mute { opacity: 0; pointer-events: none }
+.wh.at-end .wh-more { bottom: calc(clamp(26px, 6vh, 56px) + 56px) }
 /* the end frame: a quiet cue to keep going, with a slow drifting arrow */
 .wh-more { position: absolute; left: 50%; bottom: clamp(26px, 6vh, 56px); transform: translateX(-50%); display: grid; justify-items: center; gap: 12px; border: 0; background: none; cursor: pointer; font: 600 clamp(14px, 1.25vw, 17px) var(--sc); letter-spacing: .24em; text-transform: lowercase; color: #e7c27a; opacity: 0; transition: opacity 1s 1.6s }
 .wh.at-end .wh-more { opacity: 1 }
@@ -2052,13 +2067,13 @@ body.touring .tour-arrow { animation: nudgeup 1.2s ease-in-out infinite }
 /* phones: the street shot crops too tight for signs on storefronts, so the logos line up in two columns over the dimmed street */
 @media (max-aspect-ratio: 1/1) {
   .wh-signs { left: 0; top: 0; width: 100%; height: 100%; transform: none; aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; align-content: center; justify-items: center; gap: 30px 16px; padding: 0 22px }
-  .wh-signs img { position: static !important; height: 34px !important; width: auto; max-width: 100% !important; transform: translateY(12px) !important }
-  .wh.at-signs .wh-signs img { transform: none !important }
+  .wh-signs .sg { position: static !important; height: 50px; padding: 0 20px; max-width: 100%; transform: translateY(12px) !important }
+  .wh.at-signs .wh-signs .sg { transform: none !important }
   .wh.at-signs .wh-shade { background: rgba(20,10,5,.6) }
 }
 
-.wh-signs img.m-only { display: none }
-@media (max-aspect-ratio: 1/1) { .wh-signs img.m-only { display: block } .wh-signs { gap: 26px 16px } .wh-signs img { height: 30px !important } }
+.wh-signs .sg.m-only { display: none }
+@media (max-aspect-ratio: 1/1) { .wh-signs .sg.m-only { display: flex } .wh-signs { gap: 22px 12px } }
 
 /* desktop keeps the side nav and the brand logos across the top; phones get the Bloomfield header and full-screen menu */
 @media (min-width: 901px) { .pbar.hd, .mnav { display: none !important } }
@@ -2162,8 +2177,8 @@ html, body { overflow-x: hidden }
 .wh-mweb .mw-logo img.lg-doubledip { filter: drop-shadow(0 0 1px #fff6ea) drop-shadow(0 0 1px #fff6ea) drop-shadow(0 2px 10px rgba(0,0,0,.6)) }
 
 /* phones: no shadow filters on logos (iPhone Safari paints them as a grey box while they fade in) */
-@media (max-aspect-ratio: 1/1) { .wh-mweb .mw-logo img, .wh-mweb .mw-logo img.lg-doubledip, .wh-logos img, .tc-ring > span img, .wh-signs img, .wh-cap img { filter: none !important } }
-@supports (-webkit-touch-callout: none) { .wh-mweb .mw-logo img, .wh-logos img, .tc-ring > span img, .wh-signs img, .wh-cap img, .em-sign, .ppin .pl.sign img { filter: none !important } }
+@media (max-aspect-ratio: 1/1) { .wh-mweb .mw-logo img, .wh-mweb .mw-logo img.lg-doubledip, .wh-logos img, .tc-ring > span img, .wh-cap img { filter: none !important } }
+@supports (-webkit-touch-callout: none) { .wh-mweb .mw-logo img, .wh-logos img, .tc-ring > span img, .wh-cap img, .em-sign, .ppin .pl.sign img { filter: none !important } }
 
 .screen .bar { display: flex !important; align-items: center !important; gap: 6px; height: auto; min-height: 36px; padding: 0 12px !important; line-height: 1 }
 .screen .bar span { margin: 0 0 0 8px !important; line-height: 1; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0 }
@@ -2201,12 +2216,12 @@ html, body { overflow-x: hidden }
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-<script src="data.js?v=1793591691"></script>
-<script src="stays.data.js?v=1793591691"></script>
-<script src="map.js?v=1793591691"></script>
-<script src="app.js?v=1793591691"></script>
-<script src="brand.js?v=1793591691"></script>
-<script src="shop.js?v=1793591691"></script>
-<script src="center.js?v=1793591691"></script>
-<script src="notes.js?v=1793591691"></script>
+<script src="data.js?v=1793592073"></script>
+<script src="stays.data.js?v=1793592073"></script>
+<script src="map.js?v=1793592073"></script>
+<script src="app.js?v=1793592073"></script>
+<script src="brand.js?v=1793592073"></script>
+<script src="shop.js?v=1793592073"></script>
+<script src="center.js?v=1793592073"></script>
+<script src="notes.js?v=1793592073"></script>
 </body></html>
